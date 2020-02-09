@@ -1,29 +1,46 @@
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
-  # GET /challenges
-  # GET /challenges.json
   def index
+    # byebug
     @challenges = Challenge.all
   end
 
-  # GET /challenges/1
-  # GET /challenges/1.json
+  def my_challenges
+    @challenges = current_user.challenges
+  end
+
+  def join
+    @challenge = Challenge.find(params[:challenge_id])
+    if @challenge.users.include?(current_user)
+      redirect_to @challenge, notice: 'You\'re already a part of this challenge.'
+    else
+      @challenge.users << current_user
+    end
+  end
+
+  def leave
+    @challenge = Challenge.find(params[:challenge_id])
+    if @challenge.users.include?(current_user)
+      @challenge.users.delete(current_user)
+      redirect_to my_challenges_path, notice: 'You have left that challenge.'
+    else
+      redirect_to @challenge, notice: 'You can\'t leave a challenge you\'re not a part of.'
+    end
+  end
+
   def show
   end
 
-  # GET /challenges/new
   def new
     @challenge = Challenge.new
   end
 
-  # GET /challenges/1/edit
   def edit
     @users = User.all
   end
 
-  # POST /challenges
-  # POST /challenges.json
   def create
     @challenge = Challenge.new(challenge_params)
 
@@ -38,12 +55,9 @@ class ChallengesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /challenges/1
-  # PATCH/PUT /challenges/1.json
   def update
     respond_to do |format|
       if @challenge.update(challenge_params)
-        byebug
         format.html { redirect_to @challenge, notice: 'Challenge was successfully updated.' }
         format.json { render :show, status: :ok, location: @challenge }
       else
@@ -53,8 +67,6 @@ class ChallengesController < ApplicationController
     end
   end
 
-  # DELETE /challenges/1
-  # DELETE /challenges/1.json
   def destroy
     @challenge.destroy
     respond_to do |format|
@@ -64,12 +76,10 @@ class ChallengesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_challenge
       @challenge = Challenge.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def challenge_params
       params.fetch(:challenge, {}).permit(
         :title, :description, :users

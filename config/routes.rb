@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
-  resources :challenges
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "pages#index"
+  devise_for :users do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
+  resources :challenges do
+    get 'join', to: 'challenges#join'
+    get 'leave', to: 'challenges#leave'
+  end
+
+  resources :challenges, module: "challenges" do
+    resources :wins
+  end
+
+  get 'my_challenges', to: 'challenges#my_challenges'
 end

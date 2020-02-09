@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+<h1><%= @challenge.title %></h1>
+<p><%= @challenge.description %></p>
+<% @wins.each do |win| %>
+  <p>
+    <%= link_to win.description, challenge_win_path(@challenge, win) %>
+    <%# <%= image_tag win.images if win.images%> %>
+    <%= win.user.email if win.user  %>
+  </p>
+<% end %>

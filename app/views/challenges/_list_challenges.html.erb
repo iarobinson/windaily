@@ -1,0 +1,35 @@
+
+<h1>Challenges</h1>
+<% if @challenges.count > 0 %>
+  <table class="u-fill-width">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th colspan="3">Manage</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @challenges.each do |challenge| %>
+        <tr>
+          <td><%= challenge.title %></td>
+          <td><%= challenge.description %></td>
+          <td>
+            <% if current_user.challenges.include?(challenge) %>
+              <%= link_to 'Leave', challenge_leave_path(challenge), class: "button button-primary" %>
+            <% else %>
+              <%= link_to 'Join', challenge_join_path(challenge), class: "button button-primary" %>
+            <% end %>
+          </td>
+          <td><%= link_to 'Show', challenge, class: "button button-primary" %></td>
+          <!-- <td><#%= link_to 'Edit', edit_challenge_path(challenge), class: "button button-primary" %></td> -->
+          <!-- <td><#%= link_to 'Destroy', challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: "button button-primary" %></td> -->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>You're not currently participating in a challenge.</p>
+  <%= link_to "Join a Challenge", challenges_path, class: "button button-primary" %>
+<% end %>

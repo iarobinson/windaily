@@ -1,0 +1,29 @@
+<%= form_with(model: @win, url: url, local: true) do |f| %>
+  <% if win.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(win.errors.count, "error") %>
+        prohibited this win from being saved:
+      </h2>
+
+      <ul>
+      <% win.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.label :title %>
+    <%= f.text_area :title, class: "u-full-width" %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "u-full-width" %>
+
+    <%= f.label :images %>
+    <%= f.file_field :images, multiple: true %>
+
+    <%= f.submit "Update" %>
+  </div>
+<% end %>

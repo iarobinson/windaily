@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @win.title %></h1>
+<p><%= @win.description %></p>
+<% @win.images.each do |image| %>
+  <%= image_tag image.preview(resize_to_limit: [100, 100]) %>
+<% end %>
+
+<%= link_to 'Edit', edit_challenge_win_path(@challenge, @win), class: "button button-primary" %>
+<%= link_to 'Back', challenge_wins_path, class: "button button-primary" %>

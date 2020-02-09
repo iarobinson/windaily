@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ian_win_one:
+  title: I, Ian did it.
+  description: no problem
+  user: ian
+
+david_win_on:
+  title: I, David did it.
+  description: tired but I got it done
+  user: david

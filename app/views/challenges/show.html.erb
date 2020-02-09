@@ -1,4 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_challenge_path(@challenge) %> |
-<%= link_to 'Back', challenges_path %>
+<h1><%= @challenge.title %></h1>
+<p><%= @challenge.description %></p>
+<ul>
+  <% @challenge.users.each do |user| %>
+    <li>
+      <% if user.first_name %>
+        <%= user.first_name %>
+      <% else %>
+        <%= user.email %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Record a Win", new_challenge_win_path(@challenge), class: "button button-primary" %>
+<%= link_to 'Join', challenge_join_path(@challenge), class: "button button-primary" %>
+<%= link_to 'Edit', edit_challenge_path(@challenge), class: "button button-primary" %>
+<%= link_to 'Back', challenges_path, class: "button button-primary" %>
