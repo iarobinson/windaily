@@ -5,8 +5,10 @@
     <p>A simple app to challenge your friends to daily torturous events</p>
   </div>
   <div class="four columns">
-    <%= link_to "Sign In", new_user_session_path, class: "button button-primary" %>
-    <%= link_to "Sign Up", new_user_registration_path, class: "button button-primary" %>
+    <% unless current_user %>
+      <%= link_to "Sign In", new_user_session_path, class: "button button-primary" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "button button-primary" %>
+    <% end %>
   </div>
 </div>
 

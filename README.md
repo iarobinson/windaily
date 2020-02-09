@@ -6,11 +6,10 @@ A simple application where you can create challenges and invite your friends to 
 
 ## To Do
 
-- Create Win scaffold so users can share a picture and a few notes related to their daily successes
-- Associate wins with each challenge (/challenges/:challenge_id/wins/:win_id)
-- Empower wins to store pictures via ActiveStorage
-- Wins Object includes - date, description, images
-- 
+- Empower wins to store pictures via ActiveStorage (installed but i think it's configured improperly)
+- Currently something is broken in regards to saving wins
+- Associate wins with their challenge
+- Add testing
 
 ## Tech
 
