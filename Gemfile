@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+# Add simple mobile responsive front-end
+gem 'skeleton-rails', :git => 'https://github.com/helios-technologies/skeleton-rails'
 # User authentication
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

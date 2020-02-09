@@ -1,11 +1,27 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+ian:
+  email: ian@testing.com
+  first_name: ian
+  last_name: robinson
+  description: Just trying to stay up on burpees
+  challenges: one_hundred_burpees_daily, one_hundred_push_ups_daily
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+v:
+  email: v@testing.com
+  first_name: v
+  last_name: robinson
+  description: Not really doing enough burpees
+  challenges: one_hundred_burpees_daily
+
+jan:
+  email: jan@testing.com
+  first_name: jan
+  last_name: netherlands
+  description: Burpees and more
+  challenges: one_hundred_burpees_daily
+
+david:
+  email: david@testing.com
+  first_name: david
+  last_name: vu
+  description: Trying to get back in the game
+  challenges: one_hundred_push_ups_daily

@@ -1,2 +1,13 @@
 <h1>Torture Your Friends</h1>
 <p>A simple app to challenge your friends to daily torturous events</p>
+<% @challenges.each do |challenge| %>
+  <h2><%= challenge.title %></h2>
+  <p>Description:</p>
+  <p><%= challenge.description %></p>
+  <ul>
+    <% challenge.users.each do |user| %>
+      <li><%= user.email %></li>
+    <% end %>
+  </ul>
+  <%= link_to "Join Challenge", challenge, class: "button button-primary" %>
+<% end %>

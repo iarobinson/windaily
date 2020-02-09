@@ -19,6 +19,7 @@ class ChallengesController < ApplicationController
 
   # GET /challenges/1/edit
   def edit
+    @users = User.all
   end
 
   # POST /challenges
@@ -42,6 +43,7 @@ class ChallengesController < ApplicationController
   def update
     respond_to do |format|
       if @challenge.update(challenge_params)
+        byebug
         format.html { redirect_to @challenge, notice: 'Challenge was successfully updated.' }
         format.json { render :show, status: :ok, location: @challenge }
       else
@@ -69,6 +71,8 @@ class ChallengesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def challenge_params
-      params.fetch(:challenge, {})
+      params.fetch(:challenge, {}).permit(
+        :title, :description, :users
+      )
     end
 end

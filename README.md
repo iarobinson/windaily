@@ -1,24 +1,10 @@
-# README
+# Torture Your Friends
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## What this is
 
-Things you may want to cover:
+A simple application where you can create challenges and invite your friends to do hard things with you on a daily basis.
 
-* Ruby version
+## Tech
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- [Devise](https://github.com/heartcombo/devise) for user authentication
+- [Skeleton Rails](https://github.com/helios-technologies/skeleton-rails) to get [Skeleton](http://getskeleton.com/) Front End Framework

@@ -4,8 +4,10 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one_hundred_burpees_daily:
+  title: One hundred burpees a day
+  description: A burppe is an exercise in which you start on your belly on the ground. You then rise to your feet and clap your hands over your head.
+
+one_hundred_push_ups_daily:
+  title: One hundred push-ups a day
+  description: A pushup is a workout move where you go from a plank position to laying on the ground on your chest. You then use your arms to press your body upwards while your back stays straight.
