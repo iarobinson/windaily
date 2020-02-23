@@ -17,7 +17,6 @@ class Challenges::WinsController < ApplicationController
     @win = Win.new(win_params)
     @win.user = current_user
     @win.images.attach(win_params[:images])
-    byebug
 
     respond_to do |format|
       if @win.save

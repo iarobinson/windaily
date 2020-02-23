@@ -10,8 +10,11 @@ A simple application where you can create challenges and invite your friends to 
 - Currently something is broken in regards to saving wins
 - Associate wins with their challenge
 - Add testing
+- Move from Skeleton to Bootstrap in good time
+- Add Material Icons
 
 ## Tech
 
 - [Devise](https://github.com/heartcombo/devise) for user authentication
-- [Skeleton Rails](https://github.com/helios-technologies/skeleton-rails) to get [Skeleton](http://getskeleton.com/) Front End Framework
+- [Bootstrap 4](https://getbootstrap.com/docs/4.0) for mobile friendliness
+- [Calendar Views from D3](https://observablehq.com/@d3/calendar-view)

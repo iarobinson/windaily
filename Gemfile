@@ -1,14 +1,15 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.6.5'
 
-# Add simple mobile responsive front-end
-gem 'skeleton-rails', :git => 'https://github.com/helios-technologies/skeleton-rails'
+gem 'bootstrap', '~> 4.4.1'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'jquery-rails'
 # User authentication
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
+gem 'rails', '6.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ChallengesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @challenge = challenges(:one)
+    @challenge = challenges(:one_hundred_burpees_daily)
   end
 
   test "should get index" do

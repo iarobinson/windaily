@@ -1,8 +1,16 @@
 <% if current_user %><br>
-  <center>
-    <%= link_to "Settings", edit_user_registration_path(@user), class: "button button-primary" %>
-    <%= link_to "All Challenges", challenges_path, class: "button button-primary" %>
-    <%= link_to "My Challenges", my_challenges_path, class: "button button-primary" %>
-    <%= link_to "Sign Out", destroy_user_session_path, class: "button button-primary" %>
-  </center>
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <%= link_to "Settings", edit_user_registration_path(@user), class: "nav-link" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "All Challenges", challenges_path, class: "nav-link" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "My Challenges", my_challenges_path, class: "nav-link" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Sign Out", destroy_user_session_path, class: "nav-link" %>
+    </li>
+  </ul>
 <% end %>
