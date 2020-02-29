@@ -1,8 +1,7 @@
-<br>
-<div class="row">
+<div class="row pt-5">
   <div class="col-md-6 offset-md-3">
     <h1>Daily Burpees</h1>
-    <p>A simple app to stay strong with daily burpees.</p>
+    <p>Stay strong with daily burpees.</p>
   </div>
   <div class="col-md-3">
     <% unless current_user %>
@@ -11,20 +10,22 @@
     <% end %>
   </div>
 </div>
+<div class="row pt-3 pb-3">
+  <div class="col-md-6 offset-md-3">
 
-
-<% @challenges.each do |challenge| %>
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
+    <% @challenges.limit(1).each do |challenge| %>
       <h2><%= challenge.title %></h2>
       <p>Description:</p>
       <p><%= challenge.description %></p>
       <ul>
         <% challenge.users.each do |user| %>
           <li><%= user.email %></li>
+          <li><%= user.wins.count %></li>
         <% end %>
       </ul>
       <%= link_to "Join Challenge", challenge, class: "btn btn-primary" %>
-    </div>
+    <% end %>
+
   </div>
-<% end %>
+</div>
+<!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
