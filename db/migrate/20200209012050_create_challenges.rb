@@ -3,6 +3,7 @@ class CreateChallenges < ActiveRecord::Migration[5.2]
     create_table :challenges do |t|
       t.string :title
       t.text :description
+      t.text :frequency
       t.belongs_to :user, index: { unique: true }, foreign_key: true
       t.timestamps
     end

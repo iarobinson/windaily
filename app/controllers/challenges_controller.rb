@@ -35,6 +35,7 @@ class ChallengesController < ApplicationController
 
   def new
     @challenge = Challenge.new
+    @users = User.all
   end
 
   def edit
@@ -82,7 +83,7 @@ class ChallengesController < ApplicationController
 
     def challenge_params
       params.fetch(:challenge, {}).permit(
-        :title, :description, :users
+        :title, :description, :users, :frequency
       )
     end
 end

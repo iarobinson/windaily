@@ -1,16 +1,28 @@
-<% if current_user %><br>
-  <ul class="nav justify-content-end">
+<% if current_user %>
+  <h1 class="text-center pt-3">Daily Wins</h1>
+  <p class="text-center">Challenge your friends so you get better as a group.</p>
+  <ul class="nav nav-pills justify-content-center">
+    <li class="nav-item">
+      <%= link_to "Home", root_path, class: "nav-link" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Challenges", challenges_path, class: "nav-link" %>
+    </li>
     <li class="nav-item">
       <%= link_to "Settings", edit_user_registration_path(@user), class: "nav-link" %>
     </li>
-    <li class="nav-item">
-      <%= link_to "All Challenges", challenges_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "My Challenges", my_challenges_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
-    </li>
   </ul>
+<% else %>
+  <div class="row pt-5">
+    <div class="col-md-6 offset-md-3">
+      <h1>Daily Wins</h1>
+      <p>Challenge your friends so you get better as a group.</p>
+    </div>
+    <div class="col-md-3">
+      <% unless current_user %>
+        <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary" %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 <% end %>

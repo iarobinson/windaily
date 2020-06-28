@@ -4,10 +4,10 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one_hundred_burpees_daily:
-  title: One hundred burpees a day
-  description: A burpee is an exercise in which you start on your belly on the ground. You then rise to your feet and clap your hands over your head.
+hundred_burpees_a_day:
+  title: Do One-hundred Burpees a Day
+  description: A burpee is an exercise in which you start on your belly on the ground. You then rise to your feet and clap your hands over your head. Do 100 and record your time.
 
-one_hundred_push_ups_daily:
-  title: One hundred push-ups a day
-  description: A pushup is a workout move where you go from a plank position to laying on the ground on your chest. You then use your arms to press your body upwards while your back stays straight.
+read_a_book_a_week:
+  title: Read One Book a Week
+  description: It doesn't matter what book you read, but you have to get through one complete book a week. Read it and write the title and a synopsis for a win.

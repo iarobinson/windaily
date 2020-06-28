@@ -14,18 +14,39 @@
     </div>
   <% end %>
 
-  <div class="actions">
+  <div class="form-group">
     <%= f.label :title %>
-    <%= f.text_area :title, class: "u-full-width" %>
-
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "u-full-width" %>
-
-    <% @users.each do |user| %>
-      <%= check_box_tag(user) %>
-      <%= label_tag(user, user.email) %>
-    <% end %>
-
-    <%= f.submit "Update" %>
+    <%= f.text_area :title, class: "form-control" %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlSelect2">Add existing users:</label>
+    <p class="small text-muted">You will have the opportunity to add new users after you create the challenge.</p>
+
+    <!-- <select multiple class="form-control" id="exampleFormControlSelect2">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select> -->
+
+    <% @users.each_with_index do |user, index| %>
+      <%= check_box_tag(user) %>
+      <%= label_tag(user, user.email) %><br>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :frequency %>
+    <p class="small text-muted">This will be something like daily, weekly, monthly or whatever. Please just type it in now. I'll get it working now.</p>
+    <%= f.text_area :frequency, class: "form-control" %>
+  </div>
+
+  <%= f.submit class: "btn btn-block btn-primary" %>
 <% end %>
