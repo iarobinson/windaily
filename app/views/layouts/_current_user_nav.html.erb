@@ -15,16 +15,15 @@
 <% else %>
   <div class="container">
     <div class="row pt-5">
-      <div class="col-sm-9">
+      <div class="col-md-6 offset-md-3">
         <center>
           <h1>Daily Wins</h1>
           <p>Challenge your friends. Get better as a group.</p>
         </center>
-      </div>
-      <div class="col-sm-3">
         <% unless current_user %>
           <%= link_to "Sign In", new_user_session_path, class: "btn btn-block btn-primary" %>
-          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-block btn-primary" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-block btn-success" %>
+          <%= link_to "Create a Challenge", new_user_registration_path, class: "btn btn-block btn-info" %>
         <% end %>
       </div>
     </div>

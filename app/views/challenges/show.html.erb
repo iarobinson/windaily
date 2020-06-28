@@ -47,7 +47,13 @@
     <div class="row py-3">
       <div class="col">
         <% @challenge.wins.each do |win| %>
-          <%= win.inspect %><br><br>
+          <div class="card py-3">
+            <div class="card-body">
+              <h3><%= win.title %></h3>
+              <p><%= win.description %></p>
+              <%= win.inspect %>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>
