@@ -13,7 +13,7 @@
           </thead>
 
           <tbody>
-            <% @challenges.each do |challenge| %>
+            <% @challenges.reverse.each do |challenge| %>
               <tr>
                 <td><%= challenge.title %></td>
                 <td><%= challenge.description %></td>

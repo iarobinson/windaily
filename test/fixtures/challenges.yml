@@ -4,10 +4,17 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-hundred_burpees_a_day:
+burpees_each_day:
   title: Do One-hundred Burpees a Day
   description: A burpee is an exercise in which you start on your belly on the ground. You then rise to your feet and clap your hands over your head. Do 100 and record your time.
 
-read_a_book_a_week:
+write_each_week:
+  title: Write 1000 Words Towards Your Next Book
+  description: Get 1000 words down towards your next book.
+  frequency: Once a week. Need to record by Wednesday.
+  users: users(:ian)
+
+read_each_month:
   title: Read One Book a Week
   description: It doesn't matter what book you read, but you have to get through one complete book a week. Read it and write the title and a synopsis for a win.
+  frequency: Monthly

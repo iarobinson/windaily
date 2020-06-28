@@ -8,24 +8,48 @@
   <div class="row">
     <div class="col-md-8">
       <p><%= @challenge.description %></p>
-      <ul>
-        <% @challenge.users.each do |user| %>
-          <li>
-            <% if user.first_name %>
-              <%= user.first_name %>
-            <% else %>
-              <%= user.email %>
+      <% if @challenge.users.size > 0 %>
+        <h3>Participants:</h3>
+        <ul>
+          <% @challenge.users.each do |user| %>
+            <li>
+              <% if user.first_name %>
+                <%= user.first_name %>
+              <% else %>
+                <%= user.email %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <div class="text-center">
+          <p>This challenge doesn't currently have any challengers.</p>
+          <p>
+            <%= link_to challenge_join_path(@challenge), class: "btn btn-success" do %>
+              Be the first to start the challenge.
             <% end %>
-          </li>
-        <% end %>
-      </ul>
+          </p>
+        </div>
+      <% end %>
     </div>
     <div class="col-md-4">
-
-      <%= link_to "Record a Win", new_challenge_win_path(@challenge), class: "btn btn-block btn-primary" %>
-      <%= link_to 'Join', challenge_join_path(@challenge), class: "btn btn-block btn-primary" %>
+      <% if @challenge.users.include?(current_user) %>
+        <%= link_to "Record a Win", new_challenge_win_path(@challenge), class: "btn btn-block btn-success" %>
+      <% else %>
+        <%= link_to 'Join', challenge_join_path(@challenge), class: "btn btn-block btn-success" %>
+      <% end %>
+      <%= link_to "Add a Friend", challenge_add_friend_path(@challenge), class: "btn btn-block btn-info" %>
       <%= link_to 'Edit', edit_challenge_path(@challenge), class: "btn btn-block btn-primary" %>
-      <%= link_to 'Back', challenges_path, class: "btn btn-block btn-primary" %>
+      <%= link_to 'Back', challenges_path, class: "btn btn-block btn-secondary" %>
     </div>
   </div>
+  <% if @challenge.wins.size > 0 %>
+    <div class="row py-3">
+      <div class="col">
+        <% @challenge.wins.each do |win| %>
+          <%= win.inspect %><br><br>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>

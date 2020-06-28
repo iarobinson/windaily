@@ -14,16 +14,22 @@
     </div>
   <% end %>
 
-  <div class="actions">
+  <div class="form-group">
     <%= f.label :title %>
-    <%= f.text_area :title, class: "u-full-width" %>
+    <%= f.text_area :title, class: "form-control" %>
+  </div>
 
+  <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_area :description, class: "u-full-width" %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
 
-    <%= f.label :images %>
-    <%= f.file_field :images, multiple: true %>
+  <div class="form-group">
+    <%= f.label :images %><br>
+    <%= f.file_field :images, multiple: true, class: "input-control" %>
+  </div>
 
-    <%= f.submit "Update" %>
+  <div class="form-group">
+    <%= f.submit "Save", class: "btn btn-block btn-primary" %>
   </div>
 <% end %>

@@ -2,7 +2,10 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
 
-      <% @challenges.limit(3).each do |challenge| %>
+      <!-- <p class="text-muted text-center small">Notificaitons will go here.</p> -->
+
+      <% @challenges = Challenge.all if @challenges.size === 0 %>
+      <% @challenges.each do |challenge| %>
         <div class="card my-3">
           <div class="card-body">
             <h2><%= challenge.title %></h2>
@@ -10,11 +13,10 @@
             <p><%= challenge.description %></p>
             <ul>
               <% challenge.users.each do |user| %>
-                <li><%= user.email %></li>
-                <li><%= user.wins.count %></li>
+                <li><%= user.email %> | Win count: <%= user.wins.count %></li>
               <% end %>
             </ul>
-            <%= link_to "Join Challenge", challenge, class: "btn btn-primary" %>
+            <%= link_to "Join / View", challenge, class: "btn btn-block btn-primary" %>
           </div>
         </div>
       <% end %>
@@ -22,4 +24,5 @@
     </div>
   </div>
 </div>
-  <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+
+<!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->

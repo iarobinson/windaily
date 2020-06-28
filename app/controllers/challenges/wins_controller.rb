@@ -3,7 +3,7 @@ class Challenges::WinsController < ApplicationController
   before_action :set_win, except: [:index, :new, :create]
 
   def index
-    @wins = Win.all.reverse
+    @wins = Win.where(challenge_id: params[:challenge_id]).reverse
   end
 
   def new
@@ -16,7 +16,8 @@ class Challenges::WinsController < ApplicationController
   def create
     @win = Win.new(win_params)
     @win.user = current_user
-    @win.images.attach(win_params[:images])
+    # @win.images.attach(win_params[:images])
+    @win.challenge = Challenge.find(params[:challenge_id]);
 
     respond_to do |format|
       if @win.save
