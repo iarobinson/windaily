@@ -9,8 +9,23 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def create
+    @user = User.new(params[:user])
+    respond_to do |format|
+      if @user.save
+        UserMailer.with(user: @user).welcome_email.deliver_later
+        format.html { redirect_to(@user, notice 'User was successfully created.') }
+        format.json { render json: @user, status: :created, location: @user }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def update
     # We want to attache the avatar image here
+    @user.attach(user_params[:avatar])
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
