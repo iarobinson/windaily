@@ -3,12 +3,15 @@ class ChallengesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # byebug
     @challenges = Challenge.all
   end
 
   def my_challenges
     @challenges = current_user.challenges
+  end
+
+  def add_friend
+    @user = User.new
   end
 
   def join
@@ -35,6 +38,7 @@ class ChallengesController < ApplicationController
 
   def new
     @challenge = Challenge.new
+    @users = User.all
   end
 
   def edit
@@ -43,6 +47,7 @@ class ChallengesController < ApplicationController
 
   def create
     @challenge = Challenge.new(challenge_params)
+    @challenge.users << current_user if current_user
 
     respond_to do |format|
       if @challenge.save
@@ -82,7 +87,7 @@ class ChallengesController < ApplicationController
 
     def challenge_params
       params.fetch(:challenge, {}).permit(
-        :title, :description, :users
+        :title, :description, :users, :frequency
       )
     end
 end
