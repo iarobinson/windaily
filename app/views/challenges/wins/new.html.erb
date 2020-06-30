@@ -1,5 +1,13 @@
-<h1>New Win</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h4 class="text-center py-3">Record a Win</h4>
+      <p>Challenge: <%= @challenge.title %></p>
+      <p><%= @challenge.description %></p>
 
-<%= render 'form', url: challenge_wins_url, win: @win %>
+      <%= render 'form', url: challenge_wins_url, win: @win %>
 
-<%= link_to 'Back', challenges_path %>
+      <%= link_to 'Back', challenges_path, class: "btn btn-block btn-secondary my-3" %>
+    </div>
+  </div>
+</div>

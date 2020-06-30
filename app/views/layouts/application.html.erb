@@ -2,6 +2,9 @@
 <html>
   <head>
     <title>Daily Wins</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,9 +13,7 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= render "/layouts/current_user_nav" %>
-      <%= yield %>
-    </div>
+    <%= render "/layouts/current_user_nav" %>
+    <%= yield %>
   </body>
 </html>

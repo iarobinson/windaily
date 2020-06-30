@@ -2,7 +2,16 @@
 
 ## What this is
 
-A simple application where you can create challenges and invite your friends to do hard things with you on a daily basis.
+Invite your friends to keep a habit with you.
+
+## User Story
+
+- User signs in
+- User creates a challenge
+  - Daily or Weekly
+  - Description of challenge
+- Challenge created so we can invite friends
+- Challenge updates daily with element if participants are involved
 
 ## To Do
 

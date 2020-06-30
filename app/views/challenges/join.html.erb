@@ -1,2 +1,14 @@
-<h1>You've joined <%= @challenge.title %></h1>
-<%= link_to "View Challenge", @challenge, class: "button button-primary" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="text-center">You're in.</h3>
+          <p><strong><%= @challenge.title %></strong></p>
+          <p><%= @challenge.description %></p>
+          <%= link_to "View Challenge", @challenge, class: "btn btn-block btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

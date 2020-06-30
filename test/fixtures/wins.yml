@@ -1,9 +1,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-ian_win_one:
+ian_burpee_win_1:
   title: I, Ian did it.
   description: no problem
   user: ian
+  challenge: burpees_each_day
+  created_at: <%= Time.now - 1.day %>
+
+ian_burpee_win_2:
+  title: I, Ian did it.
+  description: no problem
+  user: ian
+  challenge: burpees_each_day
+  created_at: <%= Time.now - 2.days %>
 
 david_win_on:
   title: I, David did it.
