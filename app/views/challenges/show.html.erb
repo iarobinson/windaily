@@ -47,7 +47,7 @@
     <div class="row py-3">
       <div class="col">
         <% @challenge.wins.each do |win| %>
-          <div class="card py-3">
+          <div class="card my-3">
             <div class="card-body">
               <h3><%= link_to win.title, challenge_win_path(@challenge, win) %></h3>
               <p><%= win.user.first_name %> <%= win.user.last_name %></p>

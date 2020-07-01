@@ -3,6 +3,9 @@
   <div class="row">
     <div class="col-md-6 offset-md-3 py-4">
 
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar %>
+      <% end %>
       <div class="card mb-3">
         <div class="card-header">
           Public Settings
