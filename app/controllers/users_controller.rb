@@ -24,8 +24,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    # We want to attache the avatar image here
-    @user.attach(user_params[:avatar])
+    @user.avatar.attach(user_params[:avatar])
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -44,7 +43,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.fetch(:user, {}).permit(
+      params.require(:user).permit(
         :first_name, :last_name, :avatar
       )
     end
