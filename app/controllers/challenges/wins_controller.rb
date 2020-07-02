@@ -16,12 +16,11 @@ class Challenges::WinsController < ApplicationController
   def create
     @win = Win.new(win_params)
     @win.user = current_user
-    # @win.images.attach(win_params[:images])
     @win.challenge = Challenge.find(params[:challenge_id]);
 
     respond_to do |format|
       if @win.save
-        format.html { redirect_to challenge_wins_path, notice: 'Win was successfully created for this challenge.' }
+        format.html { redirect_to challenge_path(@win.challenge), notice: 'Win was successfully saved for this challenge.' }
       else
         format.html { render :new }
         format.json { render json: @challenge.errors, status: :unprocessable_entity }
@@ -53,7 +52,7 @@ class Challenges::WinsController < ApplicationController
 
     def win_params
       params.require(:win).permit(
-        :title, :description, :images
+        :title, :description, images: []
       )
     end
 end
