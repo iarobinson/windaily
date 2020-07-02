@@ -2,13 +2,30 @@
   <div class="row">
     <div class="col-md-6 offset-3">
       <% if @users.size > 0 %>
-        <h3 class="text-center">Users</h3>
-        <p class="text-center text-muted">User count: <%= @users.size %></p>
-        <% @users.each do |user| %>
-          <%= link_to user.email, user %><br>
-        <% end %>
-      <% else %>
-        No users are currently signed up to this application.
+        <div class="card my-3">
+          <h3 class="text-center">Users</h3>
+          <p class="text-center text-muted">User count: <%= @users.size %></p>
+          <ul class="list-group list-group-flush">
+            <% @users.reverse.each do |user| %>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-2">
+                    <%= image_tag user.avatar, class: "img-fluid", width: "50px" if user.avatar.attached? %>
+                  </div>
+                  <div class="col-4">
+                    <%= link_to "#{user.first_name} #{user.last_name}", user %>
+                  </div>
+                  <div class="col-6">
+                    <strong>Challenge Count:</strong> <%= user.challenges.size %><br>
+                    <strong>Win Count:</strong> <%= user.wins.size %>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <% else %>
+          No users are currently signed up to this application.
       <% end %>
     </div>
   </div>
