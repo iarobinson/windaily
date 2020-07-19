@@ -11,20 +11,7 @@
         <h3>Participants:</h3>
         <ul class="list-group mb-3">
           <% @challenge.users.each do |user| %>
-            <li class="list-group-item">
-              <div class="row">
-                <div class="col-2">
-                  <%= image_tag user.avatar, class: "img-fluid" if user.avatar.attached? %>
-                </div>
-                <div class="col-10">
-                  <% if user.first_name %>
-                    <%= user.first_name %>
-                  <% else %>
-                    <%= user.email %>
-                  <% end %>
-                </div>
-              </div>
-            </li>
+            <%= render "users/list_group_item", user: user %>
           <% end %>
         </ul>
       <% else %>
@@ -53,29 +40,7 @@
         <div class="row py-3">
           <div class="col">
             <% @challenge.wins.reverse.each do |win| %>
-              <div class="card my-3">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <p>
-                        <%= image_tag win.user.avatar, class: 'img-fluid', width: "50px" %>
-                        <strong>
-                          <%= link_to win.title, challenge_win_path(@challenge, win) %>
-                        </strong>
-                        <%= win.user.first_name %> <%= win.user.last_name %>
-                      </p>
-                      <p><%= win.description %></p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <% win.images.limit(3).each do |image| %>
-                    <div class="col">
-                      <%= image_tag image, class: "img-fluid" %>
-                    </div>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
+              <%= render "challenges/wins/win", win: win %>
             <% end %>
           </div>
         </div>

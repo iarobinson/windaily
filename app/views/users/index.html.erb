@@ -7,20 +7,7 @@
           <p class="text-center text-muted">User count: <%= @users.size %></p>
           <ul class="list-group list-group-flush">
             <% @users.reverse.each do |user| %>
-              <li class="list-group-item">
-                <div class="row">
-                  <div class="col-2">
-                    <%= image_tag user.avatar, class: "img-fluid", width: "50px" if user.avatar.attached? %>
-                  </div>
-                  <div class="col-4">
-                    <%= link_to "#{user.first_name} #{user.last_name}", user %>
-                  </div>
-                  <div class="col-6">
-                    <strong>Challenge Count:</strong> <%= user.challenges.size %><br>
-                    <strong>Win Count:</strong> <%= user.wins.size %>
-                  </div>
-                </div>
-              </li>
+              <%= render "users/list_group_item", user: user %>
             <% end %>
           </ul>
         </div>

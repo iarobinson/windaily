@@ -1,8 +1,22 @@
-<div class="text-center">
-  <h1>
-    User Profile For <%= @user.email %>
-  </h1>
-  <p>
-    This... well this could use some work.
-  </p>
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+      <%= image_tag @user.avatar, class: "img-fluid" %>
+    </div>
+    <div class="col-md">
+      <p>
+        <%= @user.first_name %> <%= @user.last_name %>
+      </p>
+
+      <h2>Challenges (<%= @user.challenges.size %>)</h2>
+        <% @user.challenges.each do |challenge| %>
+          <%= challenge.title %>
+        <% end %>
+      <h2>Wins (<%= @user.wins.size %>)</h2>
+
+      <% @user.wins.each do |win| %>
+        <%= render "challenges/wins/win", win: win %>
+      <% end %>
+    </div>
+  </div>
 </div>

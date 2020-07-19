@@ -1,0 +1,36 @@
+<div class="card my-3">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-8">
+        <p>
+          <% if win.user.avatar.attached? %>
+            <%= image_tag win.user.avatar, class: 'img-fluid', width: "50px" %>
+          <% else %>
+            <%= image_tag "/default_avatar.jpg", class: 'img-fluid', width: "50px" %>
+          <% end %>
+          <strong>
+            <%= link_to win.title, challenge_win_path(win.challenge, win) %>
+          </strong>
+          <%= win.user.first_name %> <%= win.user.last_name %>
+        </p>
+        <p><%= win.description %></p>
+      </div>
+      <div class="col-md-4">
+        <% if current_user === win.user %>
+          <div class="float-right">
+            <%= link_to edit_challenge_win_path(win.challenge, win)  do %>
+              <%= material_icon.edit %><br>Edit
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <% win.images.limit(3).each do |image| %>
+      <div class="col">
+        <%= image_tag image, class: "img-fluid" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
