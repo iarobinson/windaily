@@ -1,15 +1,10 @@
 Rails.application.routes.draw do
   root to: "pages#index"
 
-
-
-  devise_for :users, controllers: 
-    omniauth_callbacks: "users/omniauth_callbacks"
-  }
-
-  resources :users, module: "users" do
+  devise_for :users do
+    get '/users/sign_out' => 'devise/sessions#destroy'
   end
-
+  resources :users
 
   resources :challenges do
     get 'join', to: 'challenges#join'
