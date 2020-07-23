@@ -4,11 +4,12 @@
       <%= image_tag user.avatar, class: "img-fluid", width: "150px" if user.avatar.attached? %>
     </div>
     <div class="col-8">
-      <%= link_to "#{user.first_name} #{user.last_name}", user %>
-      <p class="small">
-        <strong>Challenges</strong> (<%= user.challenges.size %>)
-        <strong>Wins</strong> (<%= user.wins.size %>)
-      </p>
+      <%= link_to user do %>
+        <p class="small">
+          <strong>Challenges</strong> (<%= user.challenges.size %>)
+          <strong>Wins</strong> (<%= user.wins.size %>)
+        </p>
+      <% end %>
     </div>
   </div>
 </li>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md">
-      <%= image_tag @user.avatar, class: "img-fluid" %>
+      <%= image_tag @user.avatar, class: "img-fluid" if @user.avatar.attached? %>
     </div>
     <div class="col-md">
       <p>

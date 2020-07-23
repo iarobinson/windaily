@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'dailywinner@dailywinner.com'
+  default from: 'victory@windaily.app'
   layout 'mailer'
 end

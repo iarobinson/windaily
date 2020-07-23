@@ -1,11 +1,7 @@
-Welcome to example.com, <%= @user.name %>
+Welcome to windaily.app <%= @user.first_name %>
 
-Your friend has invited you to join them in a challenge.
-
-To accept this challenge, please visit <%= @user.login %>.
-
-To login to the site, just follow this link: <%= @url %>.
+You can see your public profile here: <%= user_url @user %>.
 
 Thanks for joining and have a great day!
 
-Good luck in developing your new habit.
+Good luck!
