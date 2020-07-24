@@ -8,10 +8,10 @@ class TwilioTextMessenger
   end
 
   def perform
-    client = Twilio::REST::Client.new("AC34423d49b65ab33230fbc9eee3527dd1", "f55bbe07cb90091bd209c9281283ff81")
+    client = Twilio::REST::Client.new(ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TOKEN"])
     client.messages.create({
       from: Rails.application.secrets.twilio_phone_number,
-      to: '+13476883697',
+      to: ENV["IAN_PHONE"],
       body: message
     })
   end
