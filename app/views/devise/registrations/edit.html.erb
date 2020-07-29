@@ -16,7 +16,7 @@
               <%= @user.first_name %> <%= @user.last_name %> | <%= @user.email %>
             </p>
             <p>
-              <%= link_to "View Public Profile", user_path(@user) %>
+              <%= link_to "View Public Profile", users_admin_path(@user) %>
             </p>
           </div>
         </div>
@@ -26,7 +26,7 @@
           Public Settings
         </div>
         <div class="card-body">
-          <%= form_with(model: @user, local: true) do |f| %>
+          <%= form_with(model: @user, url: users_admin_url(@user), method: :patch, local: true) do |f| %>
             <div class="form-group">
               <%= f.label :first_name %><br />
               <%= f.text_area :first_name, class:"form-control" %>
