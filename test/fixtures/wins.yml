@@ -17,4 +17,5 @@ ian_burpee_win_2:
 david_win_on:
   title: I, David did it.
   description: tired but I got it done
+  challenge: burpees_each_day
   user: david

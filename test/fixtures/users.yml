@@ -5,6 +5,7 @@ ian:
   description: Just trying to stay up on burpees
   challenges: one_hundred_burpees_daily, one_hundred_push_ups_daily
   encrypted_password: <%= User.new.send(:password_digest, 'testing') %>
+  confirmed_at: <%= 2.days.ago %>
 
 v:
   email: v@testing.com
@@ -13,6 +14,7 @@ v:
   description: Not really doing enough burpees
   challenges: one_hundred_burpees_daily
   encrypted_password: <%= User.new.send(:password_digest, 'testing') %>
+  confirmed_at: <%= 3.days.ago %>
 
 jan:
   email: jan@testing.com
@@ -21,6 +23,7 @@ jan:
   description: Burpees and more
   challenges: one_hundred_burpees_daily
   encrypted_password: <%= User.new.send(:password_digest, 'testing') %>
+  confirmed_at: <%= 4.days.ago %>
 
 david:
   email: david@testing.com
@@ -29,3 +32,4 @@ david:
   description: Trying to get back in the game
   challenges: one_hundred_push_ups_daily
   encrypted_password: <%= User.new.send(:password_digest, 'testing') %>
+  confirmed_at: <%= 5.days.ago %>

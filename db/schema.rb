@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_09_055520) do
+ActiveRecord::Schema.define(version: 2020_07_29_230545) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -37,15 +40,15 @@ ActiveRecord::Schema.define(version: 2020_02_09_055520) do
     t.string "title"
     t.text "description"
     t.text "frequency"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_challenges_on_user_id", unique: true
   end
 
   create_table "challenges_users", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "challenge_id"
+    t.bigint "user_id"
+    t.bigint "challenge_id"
     t.index ["challenge_id"], name: "index_challenges_users_on_challenge_id"
     t.index ["user_id"], name: "index_challenges_users_on_user_id"
   end
@@ -62,6 +65,18 @@ ActiveRecord::Schema.define(version: 2020_02_09_055520) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -69,8 +84,8 @@ ActiveRecord::Schema.define(version: 2020_02_09_055520) do
   create_table "wins", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.integer "challenge_id"
-    t.integer "user_id"
+    t.bigint "challenge_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["challenge_id"], name: "index_wins_on_challenge_id"
