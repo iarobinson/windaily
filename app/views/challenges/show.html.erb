@@ -30,7 +30,7 @@
       <% else %>
         <%= link_to 'Join', challenge_join_path(@challenge), class: "btn btn-block btn-success" %>
       <% end %>
-      <%= link_to "Add a Friend", challenge_add_friend_path(@challenge), class: "btn btn-block btn-info" %>
+      <%= link_to "Add a Friend", new_user_path(challenge: @challenge), class: "btn btn-block btn-info" %>
       <%= link_to 'Edit', edit_challenge_path(@challenge), class: "btn btn-block btn-primary" %>
       <%= link_to 'Back', challenges_path, class: "btn btn-block btn-secondary" %>
     </div>

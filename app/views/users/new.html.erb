@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <%= form_with model: @user, method: "POST" do |f| %>
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+            </div>
+            <h1 class="text-center">or</h1>
+            <div class="form-group">
+              <%= f.label :phone %>
+              <%= f.text_area :phone, class:"form-control" %>
+            </div>
+            <%= f.submit "Add a Friend", class: "btn btn-block btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

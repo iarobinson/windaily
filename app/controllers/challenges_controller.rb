@@ -87,7 +87,7 @@ class ChallengesController < ApplicationController
 
     def challenge_params
       params.fetch(:challenge, {}).permit(
-        :title, :description, :users, :frequency
+        :title, :description, :users, :frequency, :phone
       )
     end
 end
