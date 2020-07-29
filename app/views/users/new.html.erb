@@ -3,7 +3,7 @@
     <div class="col-md-6 offset-md-3">
       <div class="card">
         <div class="card-body">
-          <%= form_with model: @user, method: "POST" do |f| %>
+          <%= form_with model: @user, url: users_admin_index_path(@user), method: "POST" do |f| %>
             <div class="form-group">
               <%= f.label :email %>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>

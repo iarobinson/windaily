@@ -4,7 +4,7 @@
       <%= image_tag user.avatar, class: "img-fluid", width: "150px" if user.avatar.attached? %>
     </div>
     <div class="col-8">
-      <%= link_to user do %>
+      <%= link_to users_admin_path user do %>
         <p class="small">
           <strong>Challenges</strong> (<%= user.challenges.size %>)
           <strong>Wins</strong> (<%= user.wins.size %>)

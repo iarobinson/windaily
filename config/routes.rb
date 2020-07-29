@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     } do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-  resources :users
+  resources :users_admin, :controller => 'users'
 
   resources :challenges do
     get 'join', to: 'challenges#join'

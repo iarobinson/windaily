@@ -14,11 +14,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
-    @user = User.new(params[:user])
+    automatically_generated_password = Devise.friendly_token.first(6)
+    @user = User.new user_params
+    @user.password = automatically_generated_password
     respond_to do |format|
       if @user.save
-        UserMailer.with(user: @user).welcome_email.deliver_later
+        UserMailer.with(user: @user, password: automatically_generated_password).you_have_been_challenged_email.deliver_later
         format.html { redirect_to(@user, notice: 'User was successfully created.') }
         format.json { render json: @user, status: :created, location: @user }
       else
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(
-        :first_name, :last_name, :avatar, :phone
+        :first_name, :last_name, :avatar, :phone, :email
       )
     end
 end

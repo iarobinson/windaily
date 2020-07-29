@@ -4,13 +4,13 @@
       <%= image_tag @user.avatar, class: "img-fluid" if @user.avatar.attached? %>
     </div>
     <div class="col-md">
-      <p>
-        <%= @user.first_name %> <%= @user.last_name %>
-      </p>
+      <p><strong>First Name:</strong><%= @user.first_name %></p>
+      <p><strong>Last Name:</strong><%= @user.last_name %></p>
 
       <h2>Challenges (<%= @user.challenges.size %>)</h2>
+      <ul class="list-group">
         <% @user.challenges.each do |challenge| %>
-          <%= challenge.title %>
+          <%= link_to challenge.title, challenge, class: "list-group-item list-group-item-action" %>
         <% end %>
       <h2>Wins (<%= @user.wins.size %>)</h2>
 
