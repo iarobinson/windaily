@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "pages#index"
 
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+      sessions: 'users/sessions'
     } do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end

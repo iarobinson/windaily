@@ -1,20 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="col-md">
+    <div class="col-md-2">
+      <p>
+        <strong>First Name:</strong><br>
+        <%= @user.first_name %>
+      </p>
+      <p>
+        <strong>Last Name:</strong><br>
+        <%= @user.last_name %>
+      </p>
       <%= image_tag @user.avatar, class: "img-fluid" if @user.avatar.attached? %>
     </div>
-    <div class="col-md">
-      <p><strong>First Name:</strong><%= @user.first_name %></p>
-      <p><strong>Last Name:</strong><%= @user.last_name %></p>
+    <div class="col-md-10">
 
-      <h2>Challenges (<%= @user.challenges.size %>)</h2>
+      <h2 class="pb-3">Challenges (<%= @user.challenges.size %>)</h2>
       <ul class="list-group">
-        <% @user.challenges.each do |challenge| %>
+        <% @user.challenges.reverse.each do |challenge| %>
           <%= link_to challenge.title, challenge, class: "list-group-item list-group-item-action" %>
         <% end %>
-      <h2>Wins (<%= @user.wins.size %>)</h2>
+      </ul>
+      <h2 class="py-3">Wins (<%= @user.wins.size %>)</h2>
 
-      <% @user.wins.each do |win| %>
+      <% @user.wins.reverse.each do |win| %>
         <%= render "challenges/wins/win", win: win %>
       <% end %>
     </div>
