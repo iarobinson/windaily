@@ -24,6 +24,16 @@
     <%= f.file_field :images, multiple: true, class: "input-control" %>
   </div>
 
+  <% if @win.images.attached? %>
+    <div class="row">
+      <% @win.images.each do |image| %>
+        <div class="col">
+          <%= image_tag image, class: "img-fluid", width:"150px" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="form-group">
     <%= f.submit "Save", class: "btn btn-block btn-primary" %>
   </div>

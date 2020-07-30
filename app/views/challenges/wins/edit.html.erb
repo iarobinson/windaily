@@ -1,6 +1,13 @@
-<h1>Editing Win</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
 
-<%= render 'form', url: challenge_win_path(@challenge, @win), win: @win %>
+      <h1>Editing Win</h1>
 
-<%= link_to 'Show', challenge_win_path(@challenge, @win) %> |
-<%= link_to 'Back', challenge_win_path %>
+      <%= render 'form', url: challenge_win_path(@challenge, @win), win: @win %>
+
+      <%= link_to 'Show', challenge_win_path(@challenge, @win) %> |
+      <%= link_to 'Back', challenge_win_path %>
+    </div>
+  </div>
+</div>
