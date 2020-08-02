@@ -14,16 +14,18 @@ class UsersController < ApplicationController
   end
 
   def create
+    challenge = Challenge.find(params[:user][:challenge_id])
     automatically_generated_password = Devise.friendly_token.first(6)
     @user = User.new user_params
     @user.password = automatically_generated_password
     respond_to do |format|
       if @user.save
+        challenge.users << @user
         UserMailer.with(user: @user, password: automatically_generated_password).you_have_been_challenged_email.deliver_later
-        format.html { redirect_to(@user, notice: 'User was successfully created.') }
+        format.html { redirect_to(challenge_path(challenge), notice: 'User was successfully created.') }
         format.json { render json: @user, status: :created, location: @user }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to(challenge_path(challenge), notice: 'There was an error saving that user. They may exist.') }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -50,7 +52,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(
-        :first_name, :last_name, :avatar, :phone, :email
+        :first_name, :last_name, :avatar, :phone, :email, :challenge
       )
     end
 end

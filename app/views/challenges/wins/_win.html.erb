@@ -6,11 +6,13 @@
           <% if win.user.avatar.attached? %>
             <%= image_tag win.user.avatar, class: 'img-fluid', width: "50px" %>
           <% else %>
-            <%= image_tag "/default_avatar.jpg", class: 'img-fluid', width: "50px" %>
+            <%= image_tag "default_avatar.jpg", class: 'img-fluid', width: "50px" %>
           <% end %>
           <%= win.user.first_name %>
         </p>
-        <p><%= win.description %></p>
+        <p>
+          <%= win.description %>
+        </p>
       </div>
       <% if current_user === win.user %>
         <div class="col">

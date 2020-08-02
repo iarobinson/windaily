@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 pb-5">
       <h3>
         <%= @challenge.title %>
       </h3>
@@ -9,11 +9,11 @@
       </p>
       <% if @challenge.users.size > 0 %>
         <h3>Participants:</h3>
-        <ul class="list-group mb-3">
+        <div class="list-group py-3">
           <% @challenge.users.each do |user| %>
             <%= render "users/list_group_item", user: user %>
           <% end %>
-        </ul>
+        </div>
       <% else %>
         <div class="text-center">
           <p>This challenge doesn't currently have any challengers.</p>
@@ -35,7 +35,7 @@
       <%= link_to 'Back', challenges_path, class: "btn btn-block btn-secondary" %>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-8 pb-5">
       <% if @challenge.wins.size > 0 %>
         <div class="row py-3">
           <div class="col">

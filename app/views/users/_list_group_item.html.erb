@@ -1,15 +1,17 @@
-<li class="list-group-item">
-  <div class="row">
-    <div class="col-4">
-      <%= image_tag user.avatar, class: "img-fluid", width: "150px" if user.avatar.attached? %>
-    </div>
-    <div class="col-8">
-      <%= link_to users_admin_path user do %>
-        <p class="small">
-          <strong>Challenges</strong> (<%= user.challenges.size %>)
-          <strong>Wins</strong> (<%= user.wins.size %>)
-        </p>
-      <% end %>
-    </div>
+<%= link_to users_admin_path(user), class: "list-group-item list-group-item-action flex-column align-items-start"  do %>
+  <div class="d-flex w-100 justify-content-between">
+    <% if user.avatar.attached? %>
+      <%= image_tag user.avatar, class: "img-fluid", width: "50px" %>
+    <% else %>
+      <%= image_tag "default_avatar.jpg", class: 'img-fluid', width: "50px" %>
+    <% end %>
+    <h5 class="mb-1">
+
+    </h5>
+    <small>
+      <strong>Challenges</strong> (<%= user.challenges.size %>)
+      <strong>Wins</strong> (<%= user.wins.size %>)
+      <%= user.email %>
+    </small>
   </div>
-</li>
+<% end %>
