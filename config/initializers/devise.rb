@@ -1,3 +1,4 @@
+
 # frozen_string_literal: true
 
 # Use this hook to configure devise mailer, warden hooks and so forth.
@@ -19,7 +20,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = ENV["GMAIL_USERNAME"]
-  config.reconfirmable = false
+  config.reconfirmable = true
 
   # Configure the class responsible to send e-mails.
   config.mailer = 'Devise::Mailer'
