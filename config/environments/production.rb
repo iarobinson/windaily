@@ -62,9 +62,21 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "win_daily#{Rails.env}"
 
-  config.action_mailer.perform_caching = false
+  # # Removing this so we can use SendGrid to send emails
+  # config.action_mailer.perform_caching = false
+  #
+  # config.action_mailer.default_url_options = { host: "https://www.windaily.app" }
 
-  config.action_mailer.default_url_options = { host: "https://www.windaily.app" }
+  # SendGrid Settings
+  ActionMailer::Base.smtp_settings = {
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
+    :domain => 'windaily.app',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

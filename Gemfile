@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
+gem 'sendgrid-ruby'
 gem 'twilio-ruby'
 gem 'material_icons'
 gem "aws-sdk-s3", require: false
