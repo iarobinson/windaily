@@ -28,7 +28,7 @@ class UserMailer < ApplicationMailer
 
     from = Email.new(email: "victory@windaily.app", name: "Win Daily")
     subject = 'You have been challenged to develop a new habit with a friend.'
-    to = Email.new(email: challenged.emal)
+    to = Email.new(email: challenged.email)
     content = Content.new(type: 'text/plain', value: email_text)
     mail = SendGrid::Mail.new(from, subject, to, content)
 
