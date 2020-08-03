@@ -10,19 +10,20 @@ class UserMailer < ApplicationMailer
     @challenged = challenged
     @challenger = challenger
 
-    email_text = `
-    You have been challenged to develop a habit.
+    email_text = """
+    You have been challenged to develop the following habit:
 
-    You have been challenged by a user with the following email: #{@the_challenger.email}
+    #{challenge.title} #{challenge.description}
+
+    You have been challenged by a user with the following email: #{challenger.email}
 
     To accept this challenge, visit www.windaily.com.
 
-    Your login email is: #{@challenged.email}
+    Your login email is: #{challenged.email}
 
-    Your login password is: #{@temporary_password}
-    `
+    Your login password is: #{temporary_password}
+    """
 
-    # binding.pry
     from = Email.new(email: "victory@windaily.app", name: "Win Daily")
     subject = 'You have been challenged to develop a new habit with a friend.'
     to = Email.new(email: challenged)
