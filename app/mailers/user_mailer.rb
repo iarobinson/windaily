@@ -19,7 +19,7 @@ class UserMailer < ApplicationMailer
 
     You have been challenged by a user with the following email: #{challenger.email}
 
-    To accept this challenge, visit www.windaily.com.
+    To accept this challenge, visit http://www.windaily.com.
 
     Your login email is: #{challenged.email}
 

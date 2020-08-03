@@ -1,5 +1,7 @@
 # Win Daily
 
+See it as a live, malfunctioning app at http://wwww.windaily.app
+
 ## What this is
 
 An app to help you competitively develop habits with friends.
@@ -10,12 +12,20 @@ We kept it up for months afterwards by sending each other WhatsApp messages. I'v
 
 ## User Story
 
-- User creates a challenge
-  - Daily or Weekly
-  - Description of challenge
-- For user to share with friends they must sign in with a phone + PW or email + PW.
-- Challenge created so we can invite friends
-- Challenge updates daily with element if participants are involved
+[x] - User creates a challenge
+[x]   - Daily or Weekly
+[x] - For user to share with friends they must sign in with a phone + PW or email + PW.
+[x] - Challenge created so we can invite friends
+[x] - Challenge updates daily with element if participants are involved
+[x] - Allow for users to invite friends via email
+[x] - Get the twilio API working
+[ ] - Allow for users to invite friends via phone (get twilio functioning for users)
+[ ] - Get confirmable working with devise to tighten up security
+[ ] - Clean up mailers and figure out how to get them using templates
+[ ] - Resize avatar images before saving them to the DB so we can have clean avatars
+[ ] - Get jQuery loading before - Notifications are broken.
+[ ] - .... more to come
+
 
 ## Completed
 
