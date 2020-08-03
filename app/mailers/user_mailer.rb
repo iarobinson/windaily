@@ -9,7 +9,6 @@ class UserMailer < ApplicationMailer
     @challenge = challenge
     @challenged = challenged
     @challenger = challenger
-    binding.pry
 
     email_text = """
     You have been challenged to develop the following habit:
