@@ -21,9 +21,10 @@ class UserMailer < ApplicationMailer
     #   subject: "Welcome to the Win Daily App where you challenge your frineds to develop good habits."
     # )
 
-    from = Email.new(email:  @the_challenged.email)
+    # binding.pry
+    from = Email.new(email: params[:the_challenger][:email], name: "Win Daily")
     subject = 'You have been challenged to develop a new habit with a friend.'
-    to = Email.new(email: @the_challenger.email)
+    to = Email.new(email: params[:the_challenged][:email])
     content = Content.new(type: 'text/plain', value: 'This should be the content of the email... windaily!')
     mail = Mail.new(from, subject, to, content)
 
