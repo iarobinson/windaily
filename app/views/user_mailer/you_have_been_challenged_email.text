@@ -1,0 +1,9 @@
+You have been challenged to develop a habit.
+
+You have been challenged by a user with the following email: <%= @the_challenger.email %>
+
+To accept this challenge, visit www.windaily.com.
+
+Your login email is: <%= @challenged.email %>
+
+Your login password is: <%= @temporary_password %>

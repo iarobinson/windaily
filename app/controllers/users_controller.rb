@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         challenge.users << @user
-        UserMailer.with(the_challenger: current_user, the_challenged: @user, password: automatically_generated_password).you_have_been_challenged_email.deliver_later
+        UserMailer.you_have_been_challenged_email(current_user, @user, challenge, automatically_generated_password).deliver_later
         format.html { redirect_to(challenge_path(challenge), notice: 'User was successfully created.') }
         format.json { render json: @user, status: :created, location: @user }
       else

@@ -6,7 +6,7 @@ if Rails.env.development?
     authentication:         :plain,
     user_name:              ENV['SENDGRID_USERNAME'],
     password:               ENV['SENDGRID_PASSWORD'],
-    domain:                 'heroku.com',
+    domain:                 'windaily.app',
     enable_starttls_auto:   true
   }
 end
