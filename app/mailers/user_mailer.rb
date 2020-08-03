@@ -4,37 +4,35 @@ include SendGrid
 class UserMailer < ApplicationMailer
   default from: 'victory@windaily.app'
 
-  def welcome_email
-    @user = params[:user]
-    @url = 'http://dailywinner.com/login'
-    mail(
-      to: @user.email,
-      subject: "Welcome to the Win Daily App where you challenge your frineds to develop good habits."
-    )
-  end
-
   def you_have_been_challenged_email(challenger, challenged, challenge, temporary_password)
     @temporary_password = temporary_password
     @challenge = challenge
     @challenged = challenged
     @challenger = challenger
 
-    mail(
-      to: @challenged.email,
-      subject: 'You have been challenged to develop a new habit with a friend.'
-    )
+    email_text = `
+    You have been challenged to develop a habit.
+
+    You have been challenged by a user with the following email: #{@the_challenger.email}
+
+    To accept this challenge, visit www.windaily.com.
+
+    Your login email is: #{@challenged.email}
+
+    Your login password is: #{@temporary_password}
+    `
 
     # binding.pry
-    # from = Email.new(email: "victory@windaily.app", name: "Win Daily")
-    # subject = 'You have been challenged to develop a new habit with a friend.'
-    # to = Email.new(email: params[:the_challenged][:email])
-    # content = Content.new(type: 'text/plain', value: 'This should be the content of the email... windaily!')
-    # mail = SendGrid::Mail.new(from, subject, to, content)
-    #
-    # sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
-    # response = sg.client.mail._('send').post(request_body: mail.to_json)
-    # puts response.status_code
-    # puts response.body
-    # puts response.headers
+    from = Email.new(email: "victory@windaily.app", name: "Win Daily")
+    subject = 'You have been challenged to develop a new habit with a friend.'
+    to = Email.new(email: challenged)
+    content = Content.new(type: 'text/plain', value: email_text)
+    mail = SendGrid::Mail.new(from, subject, to, content)
+
+    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+    response = sg.client.mail._('send').post(request_body: mail.to_json)
+    puts response.status_code
+    puts response.body
+    puts response.headers
   end
 end
