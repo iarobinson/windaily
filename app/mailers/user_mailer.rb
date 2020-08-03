@@ -9,11 +9,14 @@ class UserMailer < ApplicationMailer
     @challenge = challenge
     @challenged = challenged
     @challenger = challenger
+    binding.pry
 
     email_text = """
     You have been challenged to develop the following habit:
 
-    #{challenge.title} #{challenge.description}
+    #{challenge.title}
+
+    #{challenge.description}
 
     You have been challenged by a user with the following email: #{challenger.email}
 
@@ -26,7 +29,7 @@ class UserMailer < ApplicationMailer
 
     from = Email.new(email: "victory@windaily.app", name: "Win Daily")
     subject = 'You have been challenged to develop a new habit with a friend.'
-    to = Email.new(email: challenged)
+    to = Email.new(email: challenged.emal)
     content = Content.new(type: 'text/plain', value: email_text)
     mail = SendGrid::Mail.new(from, subject, to, content)
 
