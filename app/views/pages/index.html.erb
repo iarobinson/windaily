@@ -8,13 +8,47 @@
             <h2><%= challenge.title %></h2>
             <p>Description:</p>
             <p><%= challenge.description %></p>
-            <ul>
-              <% challenge.users.each do |user| %>
-                <li><%= user.email %> | Win count: <%= user.wins.count %></li>
-              <% end %>
-            </ul>
+
             <%= link_to "View", challenge, class: "btn btn-block btn-primary" %>
           </div>
+          <ul class="list-group list-group-flush">
+            <% challenge.users.each do |user| %>
+              <%= link_to users_admin_path(user), class: "list-group-item list-group-item-action" do %>
+                <div class="row">
+                  <div class="col-3">
+                    <%= image_tag user.thumbnail, class: "img-fluid rounded-circle", width: "50px" if user.avatar.attached? %>
+                    <%= image_tag "default_avatar.jpg", class: "img-fluid rounded-circle", width: "50px" unless user.avatar.attached? %>
+                  </div>
+                  <div class="col-5">
+                    <p>
+                      <% if user.moniker %>
+                        <%= user.moniker %>
+                      <% else %>
+                        <%= "Anonymous" %>
+                      <% end %>
+                    </p>
+                  </div>
+                  <div class="col-4">  
+                    <p class="text-muted">
+                      <small>
+                        Wins:
+                        <span class="badge badge-primary badge-pill">
+                          <%= user.wins.count %>
+                        </span>
+                      </small>
+                      <small>
+                        Challenges:
+                        <span class="badge badge-primary badge-pill">
+                          <%= user.challenges.count %>
+                        </span>
+                      </small>
+                    </p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </ul>
+
         </div>
       <% end %>
 

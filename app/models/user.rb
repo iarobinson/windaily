@@ -9,4 +9,7 @@ class User < ApplicationRecord
    has_one_attached :avatar
    has_many :wins
 
+   def thumbnail
+     return self.avatar.variant(resize: "150x150!").processed
+   end
 end

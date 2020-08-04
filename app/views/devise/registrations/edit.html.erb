@@ -28,6 +28,11 @@
         <div class="card-body">
           <%= form_with(model: @user, url: users_admin_url(@user), method: :patch, local: true) do |f| %>
             <div class="form-group">
+              <%= f.label :moniker %><br />
+              <%= f.text_area :moniker, class:"form-control" %>
+            </div>
+
+            <div class="form-group">
               <%= f.label :first_name %><br />
               <%= f.text_area :first_name, class:"form-control" %>
             </div>

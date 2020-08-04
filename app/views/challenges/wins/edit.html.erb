@@ -1,13 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-
       <h1>Editing Win</h1>
-
       <%= render 'form', url: challenge_win_path(@challenge, @win), win: @win %>
-
-      <%= link_to 'Show', challenge_win_path(@challenge, @win) %> |
-      <%= link_to 'Back', challenge_win_path %>
+      <%= link_to 'Show', challenge_win_path(@challenge, @win), class: "btn btn-block btn-primary" %>
+      <%= link_to 'Back', challenge_win_path, class: "btn btn-block btn-primary" %>
     </div>
   </div>
 </div>

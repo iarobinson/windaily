@@ -1,17 +1,32 @@
 <%= link_to users_admin_path(user), class: "list-group-item list-group-item-action flex-column align-items-start"  do %>
-  <div class="d-flex w-100 justify-content-between">
-    <% if user.avatar.attached? %>
-      <%= image_tag user.avatar, class: "img-fluid", width: "50px" %>
-    <% else %>
-      <%= image_tag "default_avatar.jpg", class: 'img-fluid', width: "50px" %>
-    <% end %>
-    <h5 class="mb-1">
-
-    </h5>
-    <small>
-      <strong>Challenges</strong> (<%= user.challenges.size %>)
-      <strong>Wins</strong> (<%= user.wins.size %>)
-      <%= user.email %>
-    </small>
+  <div class="row">
+    <div class="col-4">
+      <% if user.avatar.attached? %>
+        <%= image_tag user.thumbnail, class: "img-fluid rounded-circle" %>
+      <% else %>
+        <%= image_tag "default_avatar.jpg", class: 'img-fluid rounded-circle' %>
+      <% end %>
+    </div>
+    <div class="col-8">
+      <h5 class="mb-1">
+        <%= user.moniker %>
+      </h5>
+      <p class="mb-1">
+        <small>
+          <strong>
+            Challenges
+            <span class="badge badge-primary badge-pill">
+              <%= user.challenges.size %>
+            </span>
+          </strong><br>
+          <strong>
+            Wins
+            <span class="badge badge-primary badge-pill">
+              <%= user.wins.size %>
+            </span>
+          </strong>
+        </small>
+      </p>
+    </div>
   </div>
 <% end %>

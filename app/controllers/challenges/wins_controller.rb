@@ -20,6 +20,7 @@ class Challenges::WinsController < ApplicationController
 
     respond_to do |format|
       if @win.save
+        UserMailer.notify_others_of_win(@win).deliver_later
         format.html { redirect_to challenge_path(@win.challenge), notice: 'Win was successfully saved for this challenge.' }
       else
         format.html { render :new }
