@@ -16,7 +16,7 @@ class UserMailer < ApplicationMailer
 
       #{win.description}
 
-      #{challenge_url(win.challenge)}
+      #{challenges_url(win.challenge)}
       """
 
       from = Email.new(email: "victory@windaily.app", name: "Win Daily")
