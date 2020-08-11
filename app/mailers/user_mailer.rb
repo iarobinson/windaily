@@ -45,7 +45,7 @@ class UserMailer < ApplicationMailer
 
     You have been challenged by a user with the following email: #{challenger.email}
 
-    Click here to accept this challenge, visit .
+    Click here to accept this challenge, visit https://www.windaily.app/challenges/#{challenge.id.to_s}.
 
     Your login email is: #{challenged.email}
 

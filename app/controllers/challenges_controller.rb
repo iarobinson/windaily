@@ -14,6 +14,16 @@ class ChallengesController < ApplicationController
     @user = User.new
   end
 
+  def my_challenges
+    @challenges = []
+    Challenge.all.each do |challenge|
+      if challenge.users.include?(current_user)
+        @challenges << challenge
+      end
+    end
+    @challenges
+  end
+
   def join
     @challenge = Challenge.find(params[:challenge_id])
     if @challenge.users.include?(current_user)
@@ -87,7 +97,7 @@ class ChallengesController < ApplicationController
 
     def challenge_params
       params.fetch(:challenge, {}).permit(
-        :title, :description, :users, :frequency, :phone
+        :title, :description, :users, :frequency, :phone, :primary_image
       )
     end
 end

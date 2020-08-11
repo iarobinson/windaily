@@ -1,61 +1,91 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <% @challenges = Challenge.all if @challenges.size === 0 %>
-      <% @challenges.each do |challenge| %>
-        <div class="card my-3">
-          <div class="card-body">
-            <h2><%= challenge.title %></h2>
-            <p>Description:</p>
-            <p><%= challenge.description %></p>
+<main role="main">
 
-            <%= link_to "View", challenge, class: "btn btn-block btn-primary" %>
-          </div>
-          <ul class="list-group list-group-flush">
-            <% challenge.users.each do |user| %>
-              <%= link_to users_admin_path(user), class: "list-group-item list-group-item-action" do %>
-                <div class="row">
-                  <div class="col-3">
+  <% unless current_user %>
+    <section class="jumbotron mb-0 text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Win Daily</h1>
+        <p class="lead text-muted">
+          Challenge your friends to develop good habits with you.
+        </p>
+        <p>
+          <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary my-2" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-secondary" %>
+          <%= link_to "Create a Challenge", new_challenge_path, class: "btn btn-success" %>
+        </p>
+      </div>
+    </section>
+  <% end %>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+
+        <% @challenges = Challenge.all if @challenges.size === 0 %>
+
+        <% @challenges.each do |challenge| %>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <% if false %>
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#55595c"></rect>
+                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">
+                    Thumbnail
+                  </text>
+                </svg>
+              <% end %>
+              <div class="card-body">
+                <p class="card-heading">
+                  <%= challenge.title %>
+                </p>
+                <p class="card-text">
+                  <%= challenge.description %>
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <%= link_to "View", challenge, class: "btn btn-sm btn-outline-primary" %>
+                    <%= link_to "Join", challenge, class: "btn btn-sm btn-outline-success" %>
+                  </div>
+                  <small class="text-muted">
+                     <%= time_ago_in_words challenge.created_at %>
+                  </small>
+                </div>
+              </div>
+              <ul class="list-group list-group-flush">
+                <% challenge.users.each do |user| %>
+                  <%= link_to users_admin_path(user), class: "list-group-item list-group-item-action" do %>
+
                     <%= image_tag user.thumbnail, class: "img-fluid rounded-circle", width: "50px" if user.avatar.attached? %>
                     <%= image_tag "default_avatar.jpg", class: "img-fluid rounded-circle", width: "50px" unless user.avatar.attached? %>
-                  </div>
-                  <div class="col-5">
-                    <p>
-                      <% if user.moniker %>
-                        <%= user.moniker %>
-                      <% else %>
-                        <%= "Anonymous" %>
-                      <% end %>
-                    </p>
-                  </div>
-                  <div class="col-4">
-                    <p class="text-muted">
+
+                    <% if user.moniker %>
+                      <%= user.moniker %>
+                    <% else %>
+                      <%= "Anonymous" %>
+                    <% end %>
+
+                    <p class="text-muted float-right">
                       <small>
                         Wins:
                         <span class="badge badge-primary badge-pill">
                           <%= user.wins.count %>
                         </span>
-                      </small>
-                    </p>
-                    <p class="text-muted">
-                      <small>
                         Challenges:
                         <span class="badge badge-primary badge-pill">
                           <%= user.challenges.count %>
                         </span>
                       </small>
                     </p>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-          </ul>
+                  <% end %>
+                <% end %>
+              </ul>
 
-        </div>
-      <% end %>
+            </div>
+          </div>
+        <% end %>
 
+      </div>
     </div>
   </div>
-</div>
 
-<!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+</main>

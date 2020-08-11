@@ -13,6 +13,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+  end
+
   def create
     challenge = Challenge.find(params[:user][:challenge_id])
     automatically_generated_password = Devise.friendly_token.first(6)

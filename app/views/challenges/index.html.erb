@@ -1,9 +1,1 @@
-<div class="container">
-  <div class="row mb-5">
-    <div class="col">
-      <%= render "challenges/list_challenges" %>
-
-      <%= link_to 'New Challenge', new_challenge_path, class: "btn btn-block btn-primary" %>
-    </div>
-  </div>
-</div>
+<%= render "challenges/list_challenges", title: "All Challenges" %>

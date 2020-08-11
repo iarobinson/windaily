@@ -1,31 +1,67 @@
 <% if current_user %>
-  <h1 class="text-center pt-3">Win Daily</h1>
-  <p class="text-center">Challenge your friends. Get better as a group.</p>
-  <ul class="nav nav-pills justify-content-center">
-    <li class="nav-item">
-      <%= link_to "Home", root_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Challenges", challenges_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Settings", edit_user_registration_path, class: "nav-link" %>
-    </li>
-  </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <%= link_to root_path, class: "text-white" do %>
+      Win Daily
+    <% end %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to "Settings", edit_user_registration_path(current_user), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'New Challenge', new_challenge_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "My Challenges", my_challenges_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Explore Challenges", challenges_path, class: "nav-link" %>
+        </li>
+      </ul>
+    </div>
+  </nav>
 <% else %>
-  <div class="container">
-    <div class="row pt-5">
-      <div class="col-md-6 offset-md-3">
-        <center>
-          <h1>Win Daily</h1>
-          <p>Challenge your friends. Get better as a group.</p>
-        </center>
-        <% unless current_user %>
-          <%= link_to "Sign In", new_user_session_path, class: "btn btn-block btn-primary" %>
-          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-block btn-success" %>
-          <%= link_to "Create a Challenge", new_user_registration_path, class: "btn btn-block btn-info" %>
-        <% end %>
+  <header>
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white">About</h4>
+            <p class="text-muted">
+              This is a tool for you and your friends to challenge each other to develop better habits. If you're new here, create a challenge and invite your friends. If you've been invited by an existing memeber, feel free to accept the challenge and start recording your wins. Good luck.
+            </p>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-white">Get Started</h4>
+            <ul class="list-unstyled">
+              <li>
+                <%= link_to "Sign In", new_user_session_path, class: "text-white" %>
+              </li>
+              <li>
+                <%= link_to "Create an Account", new_users_admin_path, class: "text-white" %>
+              </li>
+              <li>
+                <%= link_to "Create a Challenge", new_challenge_path, class: "text-white" %>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container d-flex justify-content-between">
+        <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
+          <%= image_tag "win_daily_logo_white.png", width: "50px", class: "mt-1 mr-2" %>
+          <strong>Win Daily</strong>
+        <% end %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </header>
 <% end %>

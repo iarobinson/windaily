@@ -1,42 +1,43 @@
 <div class="container">
-  <h2 class="text-center">Challenges</h2>
-  <div class="row">
-    <% if @challenges.count > 0 %>
-      <div class="card my-3">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Wins</th>
-              <th colspan="3">Manage</th>
-            </tr>
-          </thead>
 
-          <tbody>
-            <% @challenges.reverse.each do |challenge| %>
-              <tr>
-                <td><%= challenge.title %></td>
-                <td><%= challenge.description %></td>
-                <td><%= challenge.wins.size %></td>
-                <td>
-                  <% if current_user.challenges.include?(challenge) %>
-                    <%= link_to 'Leave', challenge_leave_path(challenge), class: "btn btn-block btn-primary" %>
-                  <% else %>
-                    <%= link_to 'Join', challenge_join_path(challenge), class: "btn btn-block btn-primary" %>
-                  <% end %>
-                </td>
-                <td><%= link_to 'Show', challenge, class: "btn btn-block btn-primary" %></td>
-                <!-- <td><#%= link_to 'Edit', edit_challenge_path(challenge), class: "btn btn-block btn-primary" %></td> -->
-                <!-- <td><#%= link_to 'Destroy', challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-block btn-primary" %></td> -->
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    <% else %>
-      <p>You're not currently participating in a challenge.</p>
-      <%= link_to "Join a Challenge", challenges_path, class: "btn btn-block btn-primary" %>
-    <% end %>
-  </div>
+  <h2 class="text-center pt-3"><%= title %></h2>
+  <% if @challenges.count > 0 %>
+    <div class="card m-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Wins</th>
+            <th colspan="3">Manage</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @challenges.reverse.each do |challenge| %>
+            <tr>
+              <td><%= challenge.title %></td>
+              <td><%= challenge.description %></td>
+              <td><%= challenge.wins.size %></td>
+              <td>
+                <% if current_user.challenges.include?(challenge) %>
+                  <%= link_to 'Leave', challenge_leave_path(challenge), class: "btn btn-block btn-primary" %>
+                <% else %>
+                  <%= link_to 'Join', challenge_join_path(challenge), class: "btn btn-block btn-primary" %>
+                <% end %>
+              </td>
+              <td><%= link_to 'Show', challenge, class: "btn btn-block btn-primary" %></td>
+              <!-- <td><#%= link_to 'Edit', edit_challenge_path(challenge), class: "btn btn-block btn-primary" %></td> -->
+              <!-- <td><#%= link_to 'Destroy', challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-block btn-primary" %></td> -->
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <p class="text-center">You're not currently participating in a challenge.</p>
+    <%= link_to "Join a Challenge", challenges_path, class: "btn btn-block btn-success" %>
+  <% end %>
+  <%= link_to 'Create a New Challenge', new_challenge_path, class: "btn btn-block btn-primary" %>
+
 </div>
