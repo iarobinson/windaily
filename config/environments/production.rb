@@ -69,12 +69,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'windaily.app' }
   ActionMailer::Base.smtp_settings = {
-    address:         "smtp.sendgrid.net",
-    port:            25,
-    user_name:       ENV['SENDGRID_USERNAME'],
-    password:        ENV['SENDGRID_PASSWORD'],
-    domain:          'windaily.app',
-    authentication:  :plain
+    user_name:            ENV['SENDGRID_USERNAME'],
+    password:             ENV['SENDGRID_PASSWORD'],
+    address:              "smtp.sendgrid.net",
+    port:                 587,
+    enable_starttls_auto: true,
+    authentication:       :plain,
+    domain:               'windaily.app'
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
