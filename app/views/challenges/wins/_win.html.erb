@@ -1,17 +1,20 @@
 <div class="card mb-3">
   <div class="card-body">
+
     <div class="row mb-3">
       <div class="col-2 text-center">
-        <% if win.user.avatar.attached? %>
-          <%= image_tag win.user.thumbnail, class: 'img-fluid rounded-circle', width: "50px" %>
-        <% else %>
+        <% unless win.user.avatar.attached? %>
           <%= image_tag "default_avatar.jpg", class: 'img-fluid rounded-circle', width: "50px" %>
+        <% else %>
+          <%= image_tag win.user.thumbnail, class: 'img-fluid rounded-circle', width: "50px" %>
         <% end %>
       </div>
+
       <div class="col-4">
         <%= win.user.moniker %><br>
         <%= time_ago_in_words(win.created_at) + " ago" %>
       </div>
+
       <div class="col-3">
         <% if current_user === win.user %>
           <%= link_to edit_challenge_win_path(win.challenge, win), class: "btn btn-block btn-primary"  do %>
@@ -19,12 +22,14 @@
           <% end %>
         <% end %>
       </div>
+
       <div class="col-3">
         <%= link_to challenge_win_path(win.challenge, win), class: "btn btn-block btn-primary"  do %>
           <%= material_icon.remove_red_eye %><br>show
         <% end %>
       </div>
     </div>
+
     <div class="row">
       <% win.images.limit(3).each do |image| %>
         <div class="col">
@@ -32,5 +37,6 @@
         </div>
       <% end %>
     </div>
+
   </div>
 </div>
