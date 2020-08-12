@@ -1,4 +1,4 @@
-<div class="card my-3">
+<div class="card mb-3">
   <div class="card-body">
     <div class="row mb-3">
       <div class="col-2 text-center">
@@ -12,13 +12,13 @@
         <%= win.user.moniker %><br>
         <%= time_ago_in_words(win.created_at) + " ago" %>
       </div>
-      <% if current_user === win.user %>
-        <div class="col-3">
+      <div class="col-3">
+        <% if current_user === win.user %>
           <%= link_to edit_challenge_win_path(win.challenge, win), class: "btn btn-block btn-primary"  do %>
             <%= material_icon.edit %><br>Edit
           <% end %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
       <div class="col-3">
         <%= link_to challenge_win_path(win.challenge, win), class: "btn btn-block btn-primary"  do %>
           <%= material_icon.remove_red_eye %><br>show

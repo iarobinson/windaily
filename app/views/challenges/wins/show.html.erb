@@ -3,6 +3,10 @@
     <div class="col-md-6 offset-md-3 pb-5">
 
       <h1><%= @win.title %></h1>
+      <p>
+        <%= image_tag @win.user.avatar, class: "img-fluid", width: "50px" if @win.user.avatar.attached? %>
+        <%= @win.user.moniker %>
+      </p>
       <p><%= @win.description %></p>
       <% @win.images.each do |image| %>
         <%= image_tag image, class: "img-fluid my-3" %>

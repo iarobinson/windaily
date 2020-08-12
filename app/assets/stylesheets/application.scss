@@ -11,6 +11,20 @@
  * It is generally better to create a new file per style scope.
  */
 
+ $theme-colors: (
+   "primary": #CC0000,
+   "secondary": #AC0000,
+   "success": #8B0000,
+   "info": #6B0000,
+   "warning": #4D0003,
+   "danger": #2F0002,
+   "light": #800000,
+   "dark": #000000
+ );
+
 @import 'bootstrap/scss/bootstrap';
-@import 'bootstrap/dist/css/bootstrap';
 @import 'material_icons';
+
+body {
+  font-family: Georgia;
+}

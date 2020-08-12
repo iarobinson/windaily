@@ -3,8 +3,10 @@
     <div class="col-md-6 offset-3">
       <% if @users.size > 0 %>
         <div class="card my-3">
-          <h3 class="text-center">Users</h3>
-          <p class="text-center text-muted">User count: <%= @users.size %></p>
+          <div class="card-body">
+            <h3 class="text-center">Users</h3>
+            <p class="text-center text-muted">User count: <%= @users.size %></p>
+          </div>
           <ul class="list-group list-group-flush">
             <% @users.reverse.each do |user| %>
               <%= render "users/list_group_item", user: user %>

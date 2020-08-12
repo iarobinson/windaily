@@ -18,14 +18,19 @@ class UsersController < ApplicationController
 
   def create
     challenge = Challenge.find(params[:user][:challenge_id])
-    automatically_generated_password = Devise.friendly_token.first(6)
-    @user = User.new user_params
-    @user.password = automatically_generated_password
+    if User.where(email: user_params[:email]).exists?
+      @user = User.where(email: user_params[:email]).first
+      challenge.users << @user
+    else
+      automatically_generated_password = Devise.friendly_token.first(6)
+      @user = User.new user_params
+      @user.password = automatically_generated_password
+      challenge.users << @user
+    end
     respond_to do |format|
       if @user.save
-        challenge.users << @user
         UserMailer.you_have_been_challenged_email(current_user, @user, challenge, automatically_generated_password).deliver_later
-        format.html { redirect_to(challenge_path(challenge), notice: 'User was successfully created.') }
+        format.html { redirect_to(challenge_path(challenge), notice: 'User added.') }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { redirect_to(challenge_path(challenge), notice: 'There was an error saving that user. They may exist.') }

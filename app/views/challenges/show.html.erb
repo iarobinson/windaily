@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row py-3">
-    <div class="col-md-4 pb-5">
-      <%= image_tag @challenge.primary_image, class: "img-fluid" if @challenge.primary_image.attached? %>
+    <div class="col-md-4 pb-5 py-3">
+      <%= image_tag @challenge.primary_image, class: "img-fluid rounded pb-3" if @challenge.primary_image.attached? %>
       <h3>
         <%= @challenge.title %>
       </h3>
@@ -10,7 +10,7 @@
       </p>
       <% if @challenge.users.size > 0 %>
         <h3>Participants:</h3>
-        <div class="list-group py-3">
+        <div class="list-group pb-3">
           <% @challenge.users.each do |user| %>
             <%= render "users/list_group_item", user: user %>
           <% end %>
@@ -36,9 +36,9 @@
       <%= link_to 'Back', challenges_path, class: "btn btn-block btn-secondary" %>
     </div>
 
-    <div class="col-md-8 pb-5">
+    <div class="col-md-8 pb-5 py-3">
       <% if @challenge.wins.size > 0 %>
-        <div class="row py-3">
+        <div class="row">
           <div class="col">
             <% @challenge.wins.reverse.each do |win| %>
               <%= render "challenges/wins/win", win: win %>

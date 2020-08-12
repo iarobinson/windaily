@@ -12,7 +12,7 @@
             <h1 class="text-center">or</h1>
             <div class="form-group">
               <%= f.label :phone %>
-              <%= f.telephone_field :phone, placeholder: '(xxx) xxx-xxxx', class:"form-control" %>
+              <%= f.telephone_field :phone, placeholder: '(xxx) xxx-xxxx', class:"form-control", pattern: "[0-9]{10}" %>
             </div>
             <%= f.submit "Add a Friend", class: "btn btn-block btn-primary" %>
           <% end %>
