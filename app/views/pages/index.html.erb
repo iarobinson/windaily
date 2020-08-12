@@ -3,9 +3,12 @@
   <% unless current_user %>
     <section class="jumbotron mb-0 text-center">
       <div class="container">
-        <h1 class="jumbotron-heading">Win Daily</h1>
+        <h1 class="jumbotron-heading">
+          <%= image_tag "win_daily_logo.png", width: "75px" %>
+          Win Daily
+        </h1>
         <p class="lead text-muted">
-          Challenge your friends to develop good habits with you.
+          Challenge your friends to develop habits with you.
         </p>
         <p>
           <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary my-2" %>
