@@ -46,8 +46,8 @@
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <%= link_to "View", challenge, class: "btn btn-sm btn-outline-primary" %>
-                    <%= link_to "Join", challenge, class: "btn btn-sm btn-outline-success" %>
+                    <%= link_to "View", challenge, class: "btn btn-lg btn-outline-primary" %>
+                    <%= link_to "Join", challenge, class: "btn btn-lg btn-outline-success" %>
                   </div>
                   <small class="text-muted">
                      <%= time_ago_in_words challenge.created_at %>
@@ -57,28 +57,35 @@
               <ul class="list-group list-group-flush">
                 <% challenge.users.each do |user| %>
                   <%= link_to users_admin_path(user), class: "list-group-item list-group-item-action" do %>
-
-                    <%= image_tag user.thumbnail, class: "img-fluid rounded-circle", width: "50px" if user.avatar.attached? %>
-                    <%= image_tag "default_avatar.jpg", class: "img-fluid rounded-circle", width: "50px" unless user.avatar.attached? %>
-
-                    <% if user.moniker %>
-                      <%= user.moniker %>
-                    <% else %>
-                      <%= "Anonymous" %>
-                    <% end %>
-
-                    <p class="text-muted float-right">
-                      <small>
-                        Wins:
-                        <span class="badge badge-primary badge-pill">
-                          <%= user.wins.count %>
-                        </span>
-                        Challenges:
-                        <span class="badge badge-primary badge-pill">
-                          <%= user.challenges.count %>
-                        </span>
-                      </small>
-                    </p>
+                    <div class="row">
+                      <div class="col-3">
+                        <%= image_tag user.thumbnail, class: "img-fluid rounded-circle", width: "50px" if user.avatar.attached? %>
+                        <%= image_tag "default_avatar.jpg", class: "img-fluid rounded-circle", width: "50px" unless user.avatar.attached? %>
+                      </div>
+                      <div class="col-9">
+                        <p>
+                          <% if user.moniker %>
+                            <%= user.moniker %>
+                          <% else %>
+                            <%= "Anonymous" %>
+                          <% end %>
+                        </p>
+                        <p>
+                          <small>
+                            Wins:
+                          </small>
+                          <span class="badge badge-primary">
+                            <%= user.wins.count %>
+                          </span>
+                          <small>
+                            Challenges:
+                          </small>
+                          <span class="badge badge-primary">
+                            <%= user.challenges.count %>
+                          </span>
+                        </p>
+                      </div>
+                    </div>
                   <% end %>
                 <% end %>
               </ul>

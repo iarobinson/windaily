@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -55,7 +56,7 @@ class UsersController < ApplicationController
   private
 
     def set_user
-      @user = current_user
+      @user = User.find(params[:id])
     end
 
     def user_params

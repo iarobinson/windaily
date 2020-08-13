@@ -30,23 +30,29 @@
     <div class="collapse bg-dark" id="navbarHeader">
       <div class="container">
         <div class="row">
-          <div class="col-sm-8 col-md-7 py-4">
+          <div class="col-sm-8 col-md-7 py-2">
             <h4 class="text-white">About</h4>
             <p class="text-muted">
-              This is a tool for you and your friends to challenge each other to develop better habits. If you're new here, create a challenge and invite your friends. If you've been invited by an existing memeber, feel free to accept the challenge and start recording your wins. Good luck.
+              This is a tool for you and your friends to challenge each other to develop better habits.
+            </p>
+            <p class="text-muted">
+              If you're new here, create a challenge and invite your friends. If you've been invited by an existing memeber, feel free to accept the challenge and start recording your wins.
+            </p>
+            <p class="text-primary">
+              Good luck.
             </p>
           </div>
           <div class="col-sm-4 offset-md-1 py-4">
             <h4 class="text-white">Get Started</h4>
             <ul class="list-unstyled">
               <li>
-                <%= link_to "Sign In", new_user_session_path, class: "text-white" %>
+                <%= link_to "Sign In", new_user_session_path, class: "text-white btn btn-primary btn-block my-3" %>
               </li>
               <li>
-                <%= link_to "Create an Account", new_users_admin_path, class: "text-white" %>
+                <%= link_to "Create an Account", new_user_registration_path, class: "text-white btn btn-primary btn-block my-3" %>
               </li>
               <li>
-                <%= link_to "Create a Challenge", new_challenge_path, class: "text-white" %>
+                <%= link_to "Create a Challenge", new_challenge_path, class: "text-white btn btn-primary btn-block my-3" %>
               </li>
             </ul>
           </div>
