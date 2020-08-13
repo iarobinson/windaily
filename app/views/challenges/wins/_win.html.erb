@@ -2,7 +2,6 @@
   <div class="card-body">
 
     <div class="row mb-3">
-
       <div class="col-6 text-center">
         <% unless win.user.avatar.attached? %>
           <%= image_tag "default_avatar.jpg", class: 'img-fluid rounded-circle', width: "75px" %>
@@ -12,7 +11,6 @@
         <%= win.user.moniker %><br>
         <%= time_ago_in_words(win.created_at) + " ago" %>
       </div>
-
       <div class="col-6">
         <% if current_user === win.user %>
           <%= link_to edit_challenge_win_path(win.challenge, win), class: "btn btn-block btn-sm btn-primary"  do %>
@@ -32,6 +30,11 @@
         </div>
       <% end %>
     </div>
-
+    <div class="row">
+      <div class="card-body">
+        <h3><%= win.title %></h3>
+        <p><%= win.description %></p>
+      </div>
+    </div>
   </div>
 </div>

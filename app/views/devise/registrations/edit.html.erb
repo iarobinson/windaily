@@ -42,9 +42,14 @@
               <%= f.text_area :last_name, class:"form-control" %>
             </div>
 
-            <div class="form-group">
-              <%= f.label :avatar %><br />
-              <%= f.file_field :avatar, class:"input-control" %>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Upload</span>
+              </div>
+              <div class="custom-file">
+                <%= f.file_field :avatar, class: "form-control" %>
+                <%= f.label :avatar, class:"custom-file-label" %>
+              </div>
             </div>
 
             <%= f.submit class: "btn btn-block btn-primary" %>
@@ -95,7 +100,7 @@
           <div class="form-group">
             <label>Sign Out for Now</label>
             <p class="text-muted">You don't need to sign out. The app tries to remember you, but if you don't want to be remembered, click below.</p>
-            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-block btn-warning" %>
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-block btn-warning", data: {confirm: "Are you sure?"} %>
           </div>
         </div>
       </div>

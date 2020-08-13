@@ -7,7 +7,7 @@
 
       <%= link_to 'Show', @challenge, class: "btn btn-block btn-info" %>
       <%= link_to 'Back', challenges_path, class: "btn btn-block btn-secondary" %>
-      <%= link_to "Destroy this Challenge and All of it's wins forever", challenge_path(@challenge), method: :delete, class: "btn btn-block btn-warning" %>
+      <%= link_to "Destroy this Challenge and All of it's wins forever", challenge_path(@challenge), method: :delete, class: "btn btn-block btn-warning", data: {confirm: "Are you sure? This cannot be undone and is effective immediately."} %>
     </div>
   </div>
 </div>
