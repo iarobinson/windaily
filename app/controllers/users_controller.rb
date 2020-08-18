@@ -22,15 +22,30 @@ class UsersController < ApplicationController
     if User.where(email: user_params[:email]).exists?
       @user = User.where(email: user_params[:email]).first
       challenge.users << @user
+      UserMailer.you_have_been_challenged_email(current_user, @user, challenge, automatically_generated_password).deliver_later
+    elsif User.where(phone: user_params[:phone]).exists?
+      @user = User.where(phone: user_params[:phone]).first
+      challenge.users << @user
+      UserMailer.you_have_been_challenged_email(current_user, @user, challenge, automatically_generated_password).deliver_later
     else
       automatically_generated_password = Devise.friendly_token.first(6)
       @user = User.new user_params
+      if @user[:email].empty?
+        @user[:email] = "#{@user.email[/^[^@]+/]}-#{SecureRandom.hex(1)}" + "@windaily.com"
+        @user.skip_confirmation!
+        text_message = """
+          You've been challenged to win daily!
+          Your email password is: #{@user[:email]}
+          Your login password is: #{automatically_generated_password}
+        """
+        TwilioTextMessenger.new(@user.phone, text_message).send!
+      end
       @user.password = automatically_generated_password
       challenge.users << @user
     end
+
     respond_to do |format|
       if @user.save
-        UserMailer.you_have_been_challenged_email(current_user, @user, challenge, automatically_generated_password).deliver_later
         format.html { redirect_to(challenge_path(challenge), notice: 'User added.') }
         format.json { render json: @user, status: :created, location: @user }
       else
