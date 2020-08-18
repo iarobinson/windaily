@@ -7,7 +7,7 @@ class TwilioTextMessenger
 
   def send!
     if valid_and_not_test?
-      initialze_sms_client
+      initialize_sms_client
       msg = @api_client.messages.create(
         from: ApplicationConfig["TWILIO_NUMBER"],
         to: @number,

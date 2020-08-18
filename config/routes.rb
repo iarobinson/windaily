@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   end
 
   get 'my_challenges', to: 'challenges#my_challenges'
+  get 'taxjar', to: 'pages#taxjar'
 end

@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    binding.pry
     challenge = Challenge.find(params[:user][:challenge_id])
     if User.where(email: user_params[:email]).exists?
       @user = User.where(email: user_params[:email]).first
@@ -72,6 +73,11 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def set_challenge
+      params.require(:challenge).permit(params[:id])
+      @challenge = Challenge.find(params[:id])
     end
 
     def user_params

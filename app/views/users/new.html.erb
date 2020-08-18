@@ -4,7 +4,7 @@
       <div class="card my-3">
         <div class="card-body">
           <%= form_with model: @user, url: users_admin_index_path(@user), method: "POST" do |f| %>
-            <%= f.hidden_field :challenge_id, value: params[:challenge] %>
+            <!-- <%# <%= f.hidden_field :challenge_id, value: params[:challenge] %> %> -->
             <div class="form-group">
               <%= f.label :email %>
               <%= f.email_field :email, placeholder: 'your_friend@testing.com', autofocus: true, autocomplete: "email", class:"form-control" %>
