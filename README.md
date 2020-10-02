@@ -24,6 +24,7 @@ We kept it up for months afterwards by sending each other WhatsApp messages. I'v
 [ ] - Clean up mailers and figure out how to get them using templates
 [ ] - Resize avatar images before saving them to the DB so we can have clean avatars
 [ ] - Get jQuery loading before - Notifications are broken.
+[ ] - Set up the WhatsApp integration (https://github.com/getninjas/whatsapp)
 [ ] - .... more to come
 
 
