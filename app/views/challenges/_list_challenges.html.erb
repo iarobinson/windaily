@@ -32,10 +32,10 @@
                   <td><%= challenge.description %></td>
                   <td><%= challenge.wins.size %></td>
                   <td>
-                    <% if current_user.challenges.include?(challenge) %>
-                      <%= link_to 'Leave', challenge_leave_path(challenge), class: "btn btn-block btn-primary" %>
-                    <% else %>
+                    <% if current_user.nil? || current_user.challenges.include?(challenge) %>
                       <%= link_to 'Join', challenge_join_path(challenge), class: "btn btn-block btn-primary" %>
+                    <% else %>
+                      <%= link_to 'Leave', challenge_leave_path(challenge), class: "btn btn-block btn-primary" %>
                     <% end %>
                   </td>
                   <td><%= link_to 'Show', challenge, class: "btn btn-block btn-primary" %></td>

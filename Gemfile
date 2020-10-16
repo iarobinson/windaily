@@ -3,55 +3,26 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
-gem 'webpacker', '~> 5.x'
-gem 'figaro'
-gem 'sendgrid-ruby'
-gem 'twilio-ruby'
-gem 'material_icons'
-gem "aws-sdk-s3", require: false
-gem 'bootstrap', '~> 4.4.1'
-gem 'sprockets-rails', :require => 'sprockets/railtie'
-gem 'jquery-rails'
-# User authentication
-gem 'devise'
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.0.0'
-# Use Postgres as the database for Active Record
-gem 'pg'
-# Use Puma as the app server
-gem 'puma', '~> 3.12'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'mini_racer', platforms: :ruby
-
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 5.0.0'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use ActiveStorage variant
-gem 'mini_magick', '~> 4.8'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Reduces boot times through caching; required in config/boot.rb
+gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.1.0', require: false
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'pry'
-end
+gem 'bootstrap', '~> 4.4.1'
+gem 'coffee-rails', '~> 5.0.0'
+gem 'devise'
+gem 'figaro'
+gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
+gem 'material_icons'
+gem 'mini_magick', '~> 4.8'
+gem 'pg'
+gem 'puma', '~> 3.12'
+gem 'rails', '6.0.0'
+gem 'sass-rails', '~> 5.0'
+gem 'sendgrid-ruby'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'twilio-ruby'
+gem 'uglifier', '>= 1.3.0'
+gem 'webpacker', '~> 5.x'
+gem 'turbolinks', '~> 5'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
@@ -60,16 +31,23 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rspec-rails', "~> 3.7"
+
   gem 'rails-controller-testing'
 end
 
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
+end
+
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'rspec'
+  gem 'capybara', "~> 2.0"
+  gem 'database_cleaner'
   gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  # Easy installation and use of web drivers to run system tests with browsers
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -1,7 +1,6 @@
 class ChallengesController < ApplicationController
-  before_action :authenticate_user!, only: [:join, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:join, :update, :destroy, :edit]
   before_action :set_challenge, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
 
   def index
     @challenges = Challenge.all
@@ -58,7 +57,9 @@ class ChallengesController < ApplicationController
 
   def create
     @challenge = Challenge.new(challenge_params)
-    @challenge.users << current_user if current_user
+    if current_user
+      @challenge.users << current_user
+    end
 
     respond_to do |format|
       if @challenge.save

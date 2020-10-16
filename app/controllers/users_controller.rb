@@ -18,7 +18,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
     challenge = Challenge.find(params[:user][:challenge_id])
     if User.where(email: user_params[:email]).exists?
       @user = User.where(email: user_params[:email]).first

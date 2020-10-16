@@ -1,21 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 ian_burpee_win_1:
-  title: I, Ian did it.
-  description: no problem
+  title: Feeling strong with the burpees
+  description: This afternoon I got the burpees done in 10m12s
   user: ian
   challenge: burpees_each_day
   created_at: <%= Time.now - 1.day %>
 
 ian_burpee_win_2:
-  title: I, Ian did it.
-  description: no problem
+  title: Ian had a rough day with the burpees.
+  description: Today I was exhausted from surfing all day. Go the burpees done in 15m10s
   user: ian
   challenge: burpees_each_day
   created_at: <%= Time.now - 2.days %>
 
 david_win_on:
-  title: I, David did it.
-  description: tired but I got it done
+  title: Feeling awesome buddy.
+  description: Had a great day of burpees.
   challenge: burpees_each_day
   user: david
+  created_at: <%= Time.now - 3.days %>

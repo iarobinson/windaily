@@ -42,15 +42,7 @@
               <%= f.text_area :last_name, class:"form-control" %>
             </div>
 
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Upload</span>
-              </div>
-              <div class="custom-file">
-                <%= f.file_field :avatar, class: "form-control" %>
-                <%= f.label :avatar, class:"custom-file-label" %>
-              </div>
-            </div>
+            <%= render "layouts/bootstrap_file_field", f: f, image_symbol: :avatar %>
 
             <%= f.submit class: "btn btn-block btn-primary" %>
           <% end %>
