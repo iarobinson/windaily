@@ -6,15 +6,18 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     @user = users(:ian)
   end
 
-  test "visit root path" do
+  test "user can sign in and sign out" do
     visit root_path
     click_link('Sign In', match: :first)
     within('form#new_user') do
       fill_in("user_email", with: @user.email)
       fill_in("user_password", with: @user.password)
     end
-    # binding.pry
     click_button "Log in"
     page.has_content? "Win Daily! Signed in successfully."
+    click_link "Settings"
+    click_link "Sign Out"
+    page.driver.browser.switch_to.alert.accept
+    page.has_content? "Win Daily! Signed out successfully."
   end
 end
