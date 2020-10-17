@@ -24,27 +24,28 @@ blocks:
           - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH-,gems-master-
           # Set Ruby version:
           - sem-version ruby 2.6.5
-          - bundle install --deployment -j 4 --path vendor/bundle
+          - bundle install --deployment -j 4
           # Store the latest version of dependencies in cache,
           # to be used in next blocks and future workflows:
-          - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
+          - bin/setup
+          - bin/rails test
 
-  - name: Test
-    task:
-      env_vars:
-        - name: DATABASE_URL
-          value: 'postgresql://postgres:@0.0.0.0:5432/myapp_test'
-        - name: RAILS_ENV
-          value: test
-      jobs:
-        - name: Test
-          commands:
-            - checkout
-            - sem-service start postgres 11
-            - sem-version ruby 2.6.5
-            - bundle config set deployment 'true'
-            - vendor/bundle install --deployment --path vendor/bundle
-            - cache restore
-            - cache store
-            - bin/setup
-            - bin/rails test
+  # - name: Test
+  #   task:
+  #     env_vars:
+  #       - name: DATABASE_URL
+  #         value: 'postgresql://postgres:@0.0.0.0:5432/myapp_test'
+  #       - name: RAILS_ENV
+  #         value: test
+  #     jobs:
+  #       - name: Test
+  #         commands:
+  #           - checkout
+  #           - sem-service start postgres 11
+  #           - sem-version ruby 2.6.5
+  #           - bundle config set deployment 'true'
+  #           - vendor/bundle install --deployment --path vendor/bundle
+  #           - cache restore
+  #           - cache store
+  #           - bin/setup
+  #           - bin/rails test
