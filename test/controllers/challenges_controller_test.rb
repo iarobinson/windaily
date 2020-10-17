@@ -56,11 +56,15 @@ class ChallengesControllerTest < ActionDispatch::IntegrationTest
     expect(page).to have_content "Do One-hundred Burpees a Day UPDATED!"
   end
 
-  test "should destroy dummy" do
+  test "should destroy challenge and it's associated wins" do
     original_challenge_count = Challenge.all.size
+    original_challenge_win_count = @challenge_burpees.wins.all.size
+    original_win_count = Win.all.size
+
     sign_in_user_and_edit_challenge
     click_on "Destroy this Challenge and All it's Wins Forever"
     assert_equal original_challenge_count - 1, Challenge.all.size
+    assert_equal original_win_count - original_challenge_win_count, Win.all.size
   end
 
   def sign_in_user_and_edit_challenge
