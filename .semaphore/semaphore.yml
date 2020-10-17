@@ -39,8 +39,6 @@ blocks:
           value: test
         - name: TZ
           value: Pacific Time (US & Canada)
-      secrets:
-        - name: windaily-secrets
       # This block runs two jobs in parallel and they both share common
       # setup steps. We can group them in a prologue.
       # See https://docs.semaphoreci.com/article/50-pipeline-yaml#prologue
