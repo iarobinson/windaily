@@ -10,6 +10,11 @@ agent:
 blocks:
   - name: Setup
     task:
+      env_vars:
+        - name: DATABASE_URL
+          value: 'postgresql://postgres:@0.0.0.0:5432/myapp_test'
+        - name: RAILS_ENV
+          value: test
       jobs:
         - name: bundle
           commands:
@@ -24,7 +29,8 @@ blocks:
           - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH-,gems-master-
           # Set Ruby version:
           - sem-version ruby 2.6.5
-          - bundle install --deployment -j 4
+          - bundle config set deployment 'true'
+          - bundle install -j 4
           # Store the latest version of dependencies in cache,
           # to be used in next blocks and future workflows:
           - bin/setup
