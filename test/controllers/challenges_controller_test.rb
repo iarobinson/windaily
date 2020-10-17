@@ -2,30 +2,29 @@ require 'test_helper'
 
 class ChallengesControllerTest < ActionDispatch::IntegrationTest
 
-  # setup do
-  #   @challenge = challenges(:burpees_each_day)
-  #   @ian = users(:ian)
-  # end
-  #
-  # test "should get index" do
-  #   sign_in @ian
-  #   visit challenges_url
-  #   expect(page).to have_content "All Challenges"
-  # end
+  setup do
+    @challenge = challenges(:burpees_each_day)
+    @ian = users(:ian)
+  end
 
-  # test "should get new" do
-  #   get new_dummy_url
-  #   assert_response :success
-  # end
-  #
-  # test "should create dummy" do
-  #   assert_difference('Dummy.count') do
-  #     post dummies_url, params: { dummy: {  } }
-  #   end
-  #
-  #   assert_redirected_to dummy_url(Dummy.last)
-  # end
-  #
+  test "should get index" do
+    visit challenges_url
+    expect(page).to have_content "All Challenges"
+  end
+
+  test "should get new" do
+    get new_challenge_url
+    assert_response :success
+  end
+
+  test "should create challenge" do
+    assert_difference('Challenge.count') do
+      post challenges_url(Challenge.last), params: { challenge: { title: "hello" } }
+    end
+
+    assert_redirected_to challenges_url(Challenge.last)
+  end
+
   # test "should show dummy" do
   #   get dummy_url(@dummy)
   #   assert_response :success
