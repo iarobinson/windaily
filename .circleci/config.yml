@@ -48,7 +48,7 @@ jobs:
           command: bundle exec rails db:migrate
       - run:
           name: Run Rails Test
-          command: bundle exec rail test
+          command: bundle exec rails test
 
 
 workflows:
