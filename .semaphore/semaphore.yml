@@ -17,9 +17,9 @@ blocks:
           commands:
             - checkout
             - sem-service start postgres 11
-            - sem-version ruby 2.6.6
-            - gem install bundler --conservative
-            - 'bin/rails db:setup'
-            - 'bin/rails db:fixtures:load'
-            - 'bin/rails log:clear tmp:clear'
-            - bin/rails test
+            - sem-version ruby 2.6.5
+            - bundle install --deployment --path vendor/bundle
+            - cache restore
+            - cache store
+            - 'bundle exec rake db:setup'
+            - bundle exec rspec
