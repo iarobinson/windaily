@@ -19,7 +19,6 @@ gem 'rails', '6.0.0'
 gem 'sass-rails', '~> 5.0'
 gem 'sendgrid-ruby'
 gem 'sprockets-rails', require: 'sprockets/railtie'
-gem 'travis'
 gem 'twilio-ruby'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 5.x'
@@ -38,6 +37,7 @@ end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec_junit_formatter'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
 end
