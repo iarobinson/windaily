@@ -25,9 +25,6 @@ blocks:
           # Set Ruby version:
           - sem-version ruby 2.6.5
           - bundle install
-          # Store the latest version of dependencies in cache,
-          # to be used in next blocks and future workflows:
-          - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
 
   - name: Test
     task:
@@ -43,7 +40,7 @@ blocks:
             - sem-service start postgres 11
             - sem-version ruby 2.6.5
             - bundle config set deployment 'true'
-            - vendor/bundle
+            - bundle install
             - cache restore
             - cache store
             - bin/setup
