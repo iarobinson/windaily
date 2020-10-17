@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ChallengesControllerTest < ActionDispatch::IntegrationTest
-
+  include AuthenticationHelper
   setup do
     @challenge = challenges(:burpees_each_day)
     @ian = users(:ian)
@@ -18,9 +18,7 @@ class ChallengesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create challenge" do
-    assert_difference('Challenge.count') do
-      post challenges_url(Challenge.last), params: { challenge: { title: "hello" } }
-    end
+    sign_in
 
     assert_redirected_to challenges_url(Challenge.last)
   end
