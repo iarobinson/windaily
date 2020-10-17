@@ -4,10 +4,11 @@ class ChallengesControllerTest < ActionDispatch::IntegrationTest
   include AuthenticationHelper
 
   setup do
-    @challenge = challenges(:read_each_month)
-    @ian = users(:ian)
+    @challenge_read = challenges :read_each_month
+    @challenge_burpees = challenges :burpees_each_day
+    @ian = users :ian
   end
-  
+
   test "should get index" do
     visit challenges_url
     expect(page).to have_content "All Challenges"
@@ -33,28 +34,37 @@ class ChallengesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show challenge" do
-    visit challenge_path @challenge
-    expect(page).to have_content @challenge.title
+    visit challenge_path @challenge_read
+    expect(page).to have_content @challenge_read.title
   end
 
   test "should get edit" do
     sign_in @ian
-    visit challenge_path @challenge
+    visit challenge_path @challenge_read
     click_on "Join"
     click_on "View Challenge"
     click_on "Edit"
   end
 
-  # test "should update dummy" do
-  #   patch dummy_url(@dummy), params: { dummy: {  } }
-  #   assert_redirected_to dummy_url(@dummy)
-  # end
-  #
-  # test "should destroy dummy" do
-  #   assert_difference('Dummy.count', -1) do
-  #     delete dummy_url(@dummy)
-  #   end
-  #
-  #   assert_redirected_to dummies_url
-  # end
+  test "should update challenge" do
+    sign_in_user_and_edit_challenge
+    within "form" do
+      fill_in "challenge_title", with: "Do One-hundred Burpees a Day UPDATED!"
+      click_on "Update"
+    end
+    expect(page).to have_content "Win Daily! Challenge was successfully updated."
+    expect(page).to have_content "Do One-hundred Burpees a Day UPDATED!"
+  end
+
+  test "should destroy dummy" do
+    original_challenge_count = Challenge.all.size
+    sign_in_user_and_edit_challenge
+    click_on "Destroy this Challenge and All it's Wins Forever"
+    assert_equal original_challenge_count - 1, Challenge.all.size
+  end
+
+  def sign_in_user_and_edit_challenge
+    sign_in @ian
+    visit edit_challenge_url @challenge_burpees
+  end
 end
