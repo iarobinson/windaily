@@ -50,7 +50,7 @@ blocks:
           - cat /dev/null > config/database.yml
           - sem-version ruby 2.6.6
           - bundle install
-          - bundle config set deployment 'true'`
+          - bundle config set deployment 'true'
           - bundle config set path 'vendor/bundle'
           - bundle exec rake db:setup
 
