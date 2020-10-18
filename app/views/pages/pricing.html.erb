@@ -1,0 +1,54 @@
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">Pricing</h1>
+  <p class="lead">
+    Get better with your friends.
+  </p>
+</div>
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Free</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Participate in 3 challenges</li>
+          <li>Save your win data for 3 months</li>
+          <li>Invite your friends</li>
+        </ul>
+        <%= link_to "Sigun up for free", new_user_session_path, class: "btn btn-lg btn-block btn-outline-primary" %>
+      </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Polymath</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">$10 <small class="text-muted">/ mo</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Participate in unlimited challenges</li>
+          <li>Save your win data forever</li>
+          <li>Full access to preimum features</li>
+        </ul>
+        <%= link_to "Get Started", new_user_session_path, class: "btn btn-lg btn-block btn-primary" %>
+      </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Development Partner</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">
+          $300 <small class="text-muted">/ mo</small>
+        </h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Unlimited storage of challenges and wins</li>
+          <li>15 GB of storage</li>
+          <li>Phone and email support</li>
+        </ul>
+        <%= link_to "Get Started", new_user_session_path, class: "btn btn-lg btn-block btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
