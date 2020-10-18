@@ -12,7 +12,7 @@ jobs:
       - image: cimg/ruby:2.7-node # use a tailored CircleCI docker image.
         auth:
           username: <%= ENV["DOCKER_USERNAME"] %>
-          password: $<%= ENV["DOCKER_PASSWORD"] %>  # context / project UI env-var reference
+          password: <%= ENV["DOCKER_PASSWORD"] %>  # context / project UI env-var reference
     steps:
       - checkout # pull down our git code.
       - ruby/install-deps # use the ruby orb to install dependencies
