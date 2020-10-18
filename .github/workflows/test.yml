@@ -1,59 +1,67 @@
-name: Test
-
-on: [push]
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+    - development
+    - release
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
-    # Similar to docker-compose.yml but not the same, 🤷‍♂️
+    container:
+      image: timbru31/ruby-node:latest
+
     services:
       postgres:
-        image: postgres:11.6-alpine
+        image: postgres:11
         env:
-          POSTGRES_PASSWORD: password
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ci_db_test
         ports:
-          - ${{ job.services.postgres.ports[5432] }}
-        # needed because the postgres container does not provide a healthcheck
+          - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
+    chrome:
+        image: selenium/standalone-chrome:latest
+        ports:
+          - 4444:4444
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Install Ruby version specified in `.ruby-version`
-        uses: eregon/use-ruby-action@master # this will use by default the .ruby-version file in your repository
-      - name: Install required apt packages
-        run: |
-          sudo apt-get -y install libpq-dev
-      - name: Setup cache key and directory for gems cache
-        uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gem-use-ruby-${{ hashFiles('**/Gemfile.lock') }}
-      - name: Read Node.js version to install from `.nvmrc`
-        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
-        id: nvm
-      - name: Install required Node.js version
-        uses: actions/setup-node@v1
-        with:
-          node-version: "${{ steps.nvm.outputs.NVMRC }}"
-      - name: Get Yarn cache directory path
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Setup cache key and directory for node_modules cache
-        uses: actions/cache@v1
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-      - name: Bundle install
-        run: |
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
-      - name: Yarn install
-        run: yarn --frozen-lockfile
-      - name: Rails test
-        env: # Or as an environment variable
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-        run: |
-          bundle exec rails db:setup
-          bundle exec rails test
+    - uses: actions/checkout@v1
+
+    - name: Setup app dependencies
+      run: |
+        gem install bundler -v 1.17.3 --no-document
+        bundle install --jobs 4 --retry 3
+        npm install
+        npm install -g yarn
+
+    - name: Setup database
+      env:
+        RAILS_ENV: test
+        POSTGRES_HOST: postgres
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_DB: ci_db_test
+        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+      run: |
+        cp config/database.yml.ci config/database.yml
+        bundle exec rails db:create
+        bundle exec rails db:schema:load
+
+    - name: Run rspec
+      env:
+        RAILS_ENV: test
+        POSTGRES_HOST: postgres
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_DB: ci_db_test
+        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        SELENIUM_URL: 'http://chrome:4444/wd/hub'
+      run: bundle exec rails test
