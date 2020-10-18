@@ -25,6 +25,7 @@ We kept it up for months afterwards by sending each other WhatsApp messages. I'v
 - [ ] Resize avatar images before saving them to the DB so we can have clean avatars
 - [ ] Get jQuery loading before - Notifications are broken.
 - [ ] Set up the WhatsApp integration (https://github.com/getninjas/whatsapp)
+- [ ] Follow this tutorial to set up subscription payments via stripe (https://www.toptal.com/ruby-on-rails/ruby-on-rails-ecommerce-tutorial)
 - [ ] .... more to come
 
 

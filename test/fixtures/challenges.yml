@@ -7,7 +7,7 @@
 burpees_each_day:
   title: Do One-hundred Burpees a Day
   description: A burpee is an exercise in which you start on your belly on the ground. You then rise to your feet and clap your hands over your head. Do 100 and record your time.
-  created_at: <%= 5.days.ago %>
+  created_at: <%= 2.weeks.ago %>
 
 write_each_week:
   title: Write 1000 Words Towards Your Next Book
