@@ -28,7 +28,16 @@ We kept it up for months afterwards by sending each other WhatsApp messages. I'v
 - [ ] Follow this tutorial to set up subscription payments via stripe (https://www.toptal.com/ruby-on-rails/ruby-on-rails-ecommerce-tutorial)
 - [ ] Make sure the challenge titles are unique....
 - [ ] Challenge create fill add helper needs to reflect the file name when a user is creatinga  new challenge
-- [ ] .... more to come
+
+
+Public/Private ability for both challenges and users needs to be set up
+- [ ] The views need to be hooked up
+- [ ] Can the users set the challenge to be public or private?
+- [ ] The controllers need to ensure they aren't showing public challenges and users
+- [ ] The testing needs to reach these features
+- [ ] Test to ensure private don't show
+- [ ] Tests to show public do show
+- [ ] We want people in challenges to be able to see users there... this will be a tricky controller call to get users that might be set to visibiliity _only me_ to still be visiible to those they are in challenges with....
 
 
 ## Completed
