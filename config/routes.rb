@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root to: 'pages#index'
+
+  get 'about', to: 'pages#about'
   get 'careers', to: 'pages#careers'
   get 'pricing', to: 'pages#pricing'
-  get 'about', to: 'pages#about'
+  get 'my_challenges', to: 'challenges#my_challenges'
 
   devise_for :users, controllers: {
       sessions: 'users/sessions'
@@ -21,6 +23,4 @@ Rails.application.routes.draw do
   resources :challenges, module: "challenges" do
     resources :wins
   end
-
-  get 'my_challenges', to: 'challenges#my_challenges'
 end
