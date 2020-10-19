@@ -6,4 +6,5 @@ class Challenge < ApplicationRecord
   def owner
     self.users.first
   end
+  enum visibility: [:draft, :only_you, :the_whole_world]
 end

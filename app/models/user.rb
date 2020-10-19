@@ -12,4 +12,7 @@ class User < ApplicationRecord
    def thumbnail
      return self.avatar.variant(resize: "150x150!").processed
    end
+
+   enum payment_plan: [:free, :first_class, :partner_class]
+   enum visibility: [:only_you, :the_whole_world]
 end
