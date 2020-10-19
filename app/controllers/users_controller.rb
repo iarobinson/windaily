@@ -18,7 +18,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    challenge = Challenge.find(params[:user][:challenge_id])
+    challenge = Challenge.find(params[:challenge_id]) if params[:challenge_id]
+    challenge = Challenge.find(params[:user][:challenge_id]) if params[:user][:challenge_id]
     if User.where(email: user_params[:email]).exists?
       @user = User.where(email: user_params[:email]).first
       challenge.users << @user

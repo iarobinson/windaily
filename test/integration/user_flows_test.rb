@@ -9,10 +9,10 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "user can sign in and sign out" do
     sign_in @user
-    page.has_content? "Win Daily! Signed in successfully."
+    page.has_content? "Signed in successfully."
     click_link "Settings"
     click_link "Sign Out"
 
-    page.has_content? "Win Daily! Signed out successfully."
+    page.has_content? "Signed out successfully."
   end
 end

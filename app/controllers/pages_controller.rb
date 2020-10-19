@@ -1,5 +1,9 @@
 class PagesController < ApplicationController
   def index
-    @challenges = Challenge.all
+    if current_user
+      @challenges = current_user.challenges
+    else
+      @challenges = Challenge.all
+    end
   end
 end

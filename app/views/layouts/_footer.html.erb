@@ -1,12 +1,8 @@
 <footer class="text-muted">
   <div class="container">
     <div class="row my-4">
-      <div class="col-md-4">
-        © Win Daily LLC.
-        <%= image_tag "win_daily_logo.png", width: '40px', style: "opacity:0.6;", class: "ml-2" %>
-      </div>
       <div class="col-md-8">
-        <ul class="nav justify-content-end">
+        <ul class="nav justify-content-center">
           <li class="nav-item">
             <%= link_to "Pricing", pricing_path, class: "nav-link" %>
           </li>
@@ -20,6 +16,10 @@
             <%= link_to "Back to Top", "#", class: "nav-link"  %>
           </li>
         </ul>
+      </div>
+      <div class="col-md-4 text-center">
+        © Win Daily LLC.
+        <%= image_tag "win_daily_logo.png", width: '40px', style: "opacity:0.6;", class: "ml-2" %>
       </div>
     </div>
   </div>

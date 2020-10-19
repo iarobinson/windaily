@@ -26,6 +26,8 @@ We kept it up for months afterwards by sending each other WhatsApp messages. I'v
 - [ ] Get jQuery loading before - Notifications are broken.
 - [ ] Set up the WhatsApp integration (https://github.com/getninjas/whatsapp)
 - [ ] Follow this tutorial to set up subscription payments via stripe (https://www.toptal.com/ruby-on-rails/ruby-on-rails-ecommerce-tutorial)
+- [ ] Make sure the challenge titles are unique....
+- [ ] Challenge create fill add helper needs to reflect the file name when a user is creatinga  new challenge
 - [ ] .... more to come
 
 
