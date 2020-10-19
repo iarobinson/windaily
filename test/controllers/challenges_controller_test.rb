@@ -10,8 +10,8 @@ class ChallengesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    visit challenges_url
-    expect(page).to have_content "All Challenges"
+    get challenges_url @challenge_burpees
+    assert_response :success
   end
 
   test "should get new" do
@@ -29,7 +29,7 @@ class ChallengesControllerTest < ActionDispatch::IntegrationTest
       fill_in "challenge_frequency", with: "FREQUENCY of Challenge TK"
       click_on "Create Challenge"
     end
-    expect(page).to have_content "Win Daily! Challenge was successfully created."
+    expect(page).to have_content "Challenge was successfully created."
     expect(page).to have_content "TITLE of Challenge TK"
   end
 
@@ -52,7 +52,7 @@ class ChallengesControllerTest < ActionDispatch::IntegrationTest
       fill_in "challenge_title", with: "Do One-hundred Burpees a Day UPDATED!"
       click_on "Update"
     end
-    expect(page).to have_content "Win Daily! Challenge was successfully updated."
+    expect(page).to have_content "Challenge was successfully updated."
     expect(page).to have_content "Do One-hundred Burpees a Day UPDATED!"
   end
 

@@ -56,17 +56,47 @@ class ChallengesController < ApplicationController
   end
 
   def create
-    @challenge = Challenge.new(challenge_params)
+    @challenge = Challenge.new(challenge_params.except(:email))
+
+    if challenge_params[:email]
+      submitted_email = challenge_params[:email]
+      if User.where({email: submitted_email}).size > 0
+        @new_user = User.where({email: challenge_params[:email]}).first
+      else
+        @new_user = User.new({
+          email: submitted_email,
+          password: Devise.friendly_token.first(8)
+          })
+        @new_user.save
+      end
+    end
+
     if current_user
       @challenge.users << current_user
+    elsif @new_user
+      @challenge.users << @new_user
     end
 
     respond_to do |format|
       if @challenge.save
-        format.html { redirect_to @challenge, notice: 'Challenge was successfully created.' }
-        format.json { render :show, status: :created, location: @challenge }
+        if @new_user
+          sign_in(:user, @new_user)
+          format.html {
+            redirect_to edit_user_registration_path(
+              user: {
+                email: @new_user.email,
+                current_password: @new_user.password,
+                id: @new_user.id
+            }) + "#security-settings-card",
+            notice: "Challenge was successfully created. PLEASE SET YOUR PASSWORD: Your current password is: #{@new_user.password}"
+          }
+          format.json { render :show, status: :created, location: @challenge }
+        else
+          format.html { redirect_to @challenge, notice: 'Challenge was successfully created.' }
+          format.json { render :show, status: :created, location: @challenge }
+        end
       else
-        format.html { render :new }
+        format.html { render :new, notice: "Something went wrong..." }
         format.json { render json: @challenge.errors, status: :unprocessable_entity }
       end
     end
@@ -99,7 +129,7 @@ class ChallengesController < ApplicationController
 
     def challenge_params
       params.fetch(:challenge, {}).permit(
-        :title, :description, :users, :frequency, :phone, :primary_image
+        :title, :description, :users, :frequency, :phone, :primary_image, :email
       )
     end
 end

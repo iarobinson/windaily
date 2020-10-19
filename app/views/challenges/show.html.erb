@@ -16,10 +16,10 @@
           <% end %>
         </div>
       <% else %>
+        <p>This challenge doesn't currently have any challengers.</p>
         <div class="text-center">
-          <p>This challenge doesn't currently have any challengers.</p>
           <p>
-            <%= link_to challenge_join_path(@challenge), class: "btn btn-block btn-success" do %>
+            <%= link_to challenge_join_path(@challenge, value: {challenge_id: @challenge.id }), class: "btn btn-block btn-success" do %>
               Be the first to start the challenge.
             <% end %>
           </p>
@@ -33,7 +33,7 @@
       <% else %>
         <%= link_to 'Join', challenge_join_path(@challenge), class: "btn btn-block btn-success" %>
       <% end %>
-      <%= link_to 'Back', challenges_path, class: "btn btn-block btn-secondary" %>
+      <%= link_to 'All Challenges', challenges_path, class: "btn btn-block btn-secondary" %>
     </div>
 
     <div class="col-md-8 pb-5 py-3">
