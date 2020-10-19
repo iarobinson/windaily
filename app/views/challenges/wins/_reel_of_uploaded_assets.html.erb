@@ -1,0 +1,11 @@
+<div class="card-columns">
+  <% assets.each do |asset| %>
+    <div class="card">
+      <% if asset.blob.video? %>
+        <%= video_tag url_for(asset), controls: "true", class: "embed-responsive-item" %>
+      <% else %>
+        <%= image_tag asset, class: "img-fluid my-3" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
