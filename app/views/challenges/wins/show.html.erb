@@ -8,12 +8,15 @@
         <%= @win.user.moniker %>
       </p>
       <p><%= @win.description %></p>
-      <% @win.images.each do |image| %>
-        <%= image_tag image, class: "img-fluid my-3" %>
-      <% end %>
-
-      <%= link_to 'Edit', edit_challenge_win_path(@challenge, @win), class: "btn btn-block btn-primary" %>
-      <%= link_to 'Back', challenge_path(@challenge), class: "btn btn-block btn-primary" %>
     </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= render "reel_of_uploaded_assets", assets: @win.images %>
+    </div>
+  </div>
+  <div class="col-md-6 offset-md-3 pb-5">
+    <%= link_to 'Edit', edit_challenge_win_path(@challenge, @win), class: "btn btn-block btn-primary" %>
+    <%= link_to 'Back', challenge_path(@challenge), class: "btn btn-block btn-primary" %>
   </div>
 </div>

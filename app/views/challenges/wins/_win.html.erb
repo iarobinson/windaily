@@ -24,11 +24,7 @@
     </div>
 
     <div class="row">
-      <% win.images.limit(3).each do |image| %>
-        <div class="col">
-          <%= image_tag image, class: "img-fluid rounded", style: "width:150px;" %>
-        </div>
-      <% end %>
+      <%= render "challenges/wins/row_of_win_assets", assets: win.images.limit(3) %>
     </div>
     <div class="row">
       <div class="card-body">

@@ -1,0 +1,6 @@
+<% assets.each do |asset| %>
+  <div class="col">
+    <%= image_tag asset, class: "img-fluid rounded", style: "width:150px;" if asset.image? %>
+    <%= video_tag url_for(asset), class: "embed-responsive-item", controls: true, style: "width:150px;" if asset.video? %>
+  </div>
+<% end %>
