@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   def create
     challenge = Challenge.find(params[:challenge_id]) if params[:challenge_id]
     challenge = Challenge.find(params[:user][:challenge_id]) if params[:user][:challenge_id]
+    automatically_generated_password = Devise.friendly_token.first(6)
     if User.where(email: user_params[:email]).exists?
       @user = User.where(email: user_params[:email]).first
       challenge.users << @user
@@ -29,7 +30,6 @@ class UsersController < ApplicationController
       challenge.users << @user
       UserMailer.you_have_been_challenged_email(current_user, @user, challenge, automatically_generated_password).deliver_later
     else
-      automatically_generated_password = Devise.friendly_token.first(6)
       @user = User.new user_params
       if @user[:email].empty?
         @user[:email] = "#{@user.email[/^[^@]+/]}-#{SecureRandom.hex(1)}" + "@windaily.com"
