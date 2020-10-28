@@ -1,0 +1,20 @@
+<% today = Time.now %>
+<p class="text-muted"><small>Win Streak</small></p>
+<% 15.times do %>
+
+  <% if @user.win_count_for_the_day(today) >= 2 %>
+    <i class="material-icons text-highly-active">sentiment_very_satisfied</i>
+  <% elsif @user.win_count_for_the_day(today) >= 1 %>
+    <i class="material-icons text-moderatly-active">sentiment_satisfied</i>
+  <% elsif @user.win_count_for_the_day(today) >= 0 %>
+    <i class="material-icons text-warning">sentiment_dissatisfied</i>
+  <% else %>
+    <i class="material-icons text-barely-active">sentiment_very_dissatisfied</i>
+  <% end %>
+
+  <% if today.day <= 1 %>
+    <% today = today.last_month.end_of_month %>
+  <% else %>
+    <% today = today.yesterday %>
+  <% end %>
+<% end %>

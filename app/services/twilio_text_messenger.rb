@@ -9,7 +9,7 @@ class TwilioTextMessenger
     if valid_and_not_test?
       initialize_sms_client
       msg = @api_client.messages.create(
-        from: ApplicationConfig["TWILIO_NUMBER"],
+        from: ENV["TWILIO_NUMBER"],
         to: @number,
         body: @content,
       )

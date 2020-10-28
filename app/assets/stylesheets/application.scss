@@ -19,7 +19,12 @@
    "warning": #FBC12D,
    "danger": #2F0002,
    "light": #800000,
-   "dark": #000000
+   "dark": #000000,
+   "highly-active": #256d3b,
+   "moderatly-active": #36a052,
+   "semi-active": #47c367,
+   "barely-active": #9ee8aa,
+   "not-active": #ebedf0
  );
 
 @import 'bootstrap/scss/bootstrap';
@@ -31,4 +36,8 @@ body {
 
 .jumbotron {
   background-color: #fff;
+}
+
+.text-miniscule {
+  font-size: 5px;
 }

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'pricing', to: 'pages#pricing'
   get 'my_challenges', to: 'challenges#my_challenges'
 
+  get '/@:id', to: 'users#show'
   devise_for :users, controllers: {
       sessions: 'users/sessions'
     } do

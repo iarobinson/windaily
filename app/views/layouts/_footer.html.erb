@@ -1,26 +1,35 @@
 <footer class="text-muted">
   <div class="container">
     <div class="row my-4">
-      <div class="col-md-8">
-        <ul class="nav justify-content-center">
-          <li class="nav-item">
-            <%= link_to "Pricing", pricing_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "About", about_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Careers", careers_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Back to Top", "#", class: "nav-link"  %>
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-4 text-center">
-        © Win Daily LLC.
-        <%= image_tag "win_daily_logo.png", width: '40px', style: "opacity:0.6;", class: "ml-2" %>
-      </div>
+      <% if current_user %>
+        <div class="col text-center">
+          © Win Daily LLC.
+          <%= image_tag "win_daily_logo.png", width: '40px', style: "opacity:0.6;", class: "ml-2" %>
+        </div>
+      <% else %>
+        <div class="col-md-8">
+          <ul class="nav justify-content-center">
+            <% unless current_user %>
+              <li class="nav-item">
+                <%= link_to "Pricing", pricing_path, class: "nav-link" %>
+              </li>
+            <% end %>
+            <li class="nav-item">
+              <%= link_to "About", about_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Careers", careers_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Back to Top", "#", class: "nav-link"  %>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4 text-center">
+          © Win Daily LLC.
+          <%= image_tag "win_daily_logo.png", width: '40px', style: "opacity:0.6;", class: "ml-2" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </footer>

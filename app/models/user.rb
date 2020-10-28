@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :omniauthable
+  include FriendlyId
+  friendly_id :moniker, use: :slugged
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable
@@ -15,4 +17,15 @@ class User < ApplicationRecord
 
    enum payment_plan: [:free, :first_class, :partner_class]
    enum visibility: [:only_you, :the_whole_world]
+
+   def win_count_for_the_day hoy
+     hoy_formatted = [hoy.month, hoy.day]
+     win_count = 0
+     self.wins.each do |win|
+       if hoy_formatted == [win.created_at.month, win.created_at.day]
+         win_count += 1
+       end
+     end
+     win_count
+   end
 end

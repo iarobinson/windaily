@@ -34,28 +34,16 @@
     </div>
   </div>
 
-  <!-- <div class="form-group">
-    <label for="exampleFormControlSelect2">Add existing users:</label>
-    <p class="small text-muted">You will have the opportunity to add new users after you create the challenge.</p>
-
-    <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-
-    <%# <% @users.each_with_index do |user, index| %> %>
-      <%# <%= check_box_tag("users", user.id, user.first_name) %> %>
-      <%# <%= label_tag user.email, user.email, user.phone %><br> %>
-    <%# <% end %> %>
-  </div>  -->
-
   <div class="form-group">
     <%= f.label :frequency %>
     <p class="small text-muted">This will be something like daily, weekly, monthly or whatever. Please just type it in now. I'll get it working now.</p>
     <%= f.text_area :frequency, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :visibility %>
+    <p class="small text-muted">Is this a public or private?</p>
+    <%= select_tag(:visibility, options_for_select([["Draft", 0], ["Private", 1], ["Public", 2]], selected: 2), class: 'form-control') %>
   </div>
 
   <% unless current_user %>

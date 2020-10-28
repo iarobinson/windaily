@@ -26,9 +26,8 @@
 
   <div class="form-group">
     <%= f.label :images %><br>
-    <%= f.file_field :images, multiple: true, class: "input-control" %>
+    <%= render 'layouts/bootstrap_files_field', image_symbol: :images, f: f %>
   </div>
-  <%= render 'layouts/bootstrap_file_field', image_symbol: :images, f: f, multiple: true %>
 
   <div class="form-group">
     <% if @win.images.attached? %>
