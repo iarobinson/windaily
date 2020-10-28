@@ -22,7 +22,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
       fill_in "challenge_title", with: "Test Challenge"
       fill_in "challenge_description", with: "This is the description for a test challenge"
       fill_in "challenge_frequency", with: "test frequency daily"
-      select "the_whole_world"
+      select "Public"
       click_on "Create Challenge"
     end
     page.has_content? "Challenge was successfully created."
