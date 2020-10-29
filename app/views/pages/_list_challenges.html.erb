@@ -4,6 +4,7 @@
       <% challenges.each do |challenge| %>
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
+            <%= image_tag challenge.primary_image, class: "card-img-top", alt: "Card image cap" if challenge.primary_image.attached? %>
             <div class="card-body">
               <h3 class="card-heading">
                 <%= challenge.title %>

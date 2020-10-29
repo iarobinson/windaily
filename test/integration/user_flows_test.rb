@@ -35,5 +35,11 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     page.has_content? "Win was successfully saved for this challenge."
     page.has_content? "title for the first win of the test challenge"
     assert_equal Challenge.last.title, "Test Challenge"
+    # TODO this still needs work
+  end
+
+  test "user can use forgot password processs" do
+    # TODO
+    # assert_equal fail
   end
 end
