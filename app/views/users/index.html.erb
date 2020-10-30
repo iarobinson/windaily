@@ -1,12 +1,26 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-3">
+
+      <h2>Friends</h2>
+      <ul>
+        <% for friendship in current_user.friendships %>
+          <li>
+            <%= h friendship.friend.moniker %>
+            (<%= link_to "remove", friendship, method: :delete %>)
+          </li>
+        <% end %>
+      </ul>
+
+      <h2>Friended by Users</h2>
+      <ul>
+        <% for user in current_user.inverse_friends %>
+          <li><%= h user.username %></li>
+        <% end %>
+      </ul>
+
       <% if @users.size > 0 %>
         <div class="card my-3">
-          <div class="card-body">
-            <h3 class="text-center">Users</h3>
-            <p class="text-center text-muted">User count: <%= @users.size %></p>
-          </div>
           <ul class="list-group list-group-flush">
             <% @users.reverse.each do |user| %>
               <%= render "users/list_group_item", user: user %>
