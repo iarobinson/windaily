@@ -1,27 +1,5 @@
 <% if current_user %>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <%= link_to root_path, class: "nav-link text-white" do %>
-      <%= image_tag "win_daily_logo_white.png", width: "50px", class: "mt-1 mr-2" %>
-      Win Daily
-    <% end %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "Explore Challenges", challenges_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'New Challenge', new_challenge_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Settings", edit_user_registration_path, class: "nav-link" %>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <%= render "layouts/instagram_like_footer_nav" %>
 <% else %>
   <%= render 'layouts/guest_user_header' %>
 <% end %>

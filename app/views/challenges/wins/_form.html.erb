@@ -31,13 +31,7 @@
 
   <div class="form-group">
     <% if @win.images.attached? %>
-      <div class="row">
-        <% @win.images.each do |image| %>
-          <div class="col">
-            <%= image_tag image, class: "img-fluid", width:"150px" %>
-          </div>
-        <% end %>
-      </div>
+      <div class="row"><%= render "challenges/wins/row_of_win_assets", assets: @win.images %></div>
     <% end %>
   </div>
 

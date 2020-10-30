@@ -1,34 +1,45 @@
 <div class="container">
   <div class="row py-5">
-    <div class="col-md-5">
-      <h2 class="pb-3">
-        Challenges (<%= @user.challenges.size %>)
-      </h2>
+
+    <div class="col-md-8 pb-3">
+
       <ul class="list-group">
-        <% @user.challenges.reverse.each do |challenge| %>
-          <%= link_to challenge.title, challenge, class: "list-group-item list-group-item-action" %>
+        <li class="list-group-item list-group-item text-center text-center">
+          <h5 class="card-title">Wins (<%= @user.wins.size %>)</h5>
+        </li>
+        <% @user.wins.reverse.each do |win| %>
+          <li class="list-group-item list-group-item">
+            <%= render "challenges/wins/win", win: win %>
+          </li>
         <% end %>
       </ul>
-    </div>
-    <div class="col-md-5">
-      <div class="card">
-        <div class="card-body">
-          <h2 class="py-3">Wins (<%= @user.wins.size %>)</h2>
-          <% @user.wins.reverse.each do |win| %>
-            <%= render "challenges/wins/win", win: win %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="card">
-        <%= image_tag @user.avatar, class: "card-img-top", alt: "#{@user.first_name}" if @user.avatar.attached? %>
 
+    </div>
+    <div class="col-md-4">
+
+      <div class="card mb-3">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item text-center">@<%= @user.moniker %></li>
-          <li class="list-group-item"><%= render "users/frequency_graph" %></li>
+          <li class="list-group-item list-group-item text-center">
+            <h5 class="card-title">Challenges (<%= @user.challenges.size %>)</h5>
+          </li>
+          <% @user.challenges.reverse.each do |challenge| %>
+            <%= link_to challenge.title, challenge, class: "list-group-item list-group-item-action" %>
+          <% end %>
         </ul>
       </div>
+
+      <div class="card mb-3">
+        <%= image_tag @user.avatar, class: "card-img-top", alt: "#{@user.first_name}" if @user.avatar.attached? %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item text-center">
+            <small>@<%= @user.moniker %></small>
+          </li>
+          <li class="list-group-item">
+            <%= render "users/frequency_graph", streak_length: 30 %>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </div>

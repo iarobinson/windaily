@@ -18,7 +18,8 @@
                   <%= link_to "Join", challenge, class: "btn btn-lg btn-outline-success" unless challenge.users.include? current_user %>
                 </div>
                 <small class="text-muted p-3">
-                   <%= time_ago_in_words challenge.created_at %>
+                  Last recorded win <%= time_ago_in_words challenge.updated_at %>
+                  Created <%= time_ago_in_words challenge.created_at %>
                 </small>
               </div>
             </div>

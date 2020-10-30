@@ -1,0 +1,18 @@
+<nav class="navbar fixed-bottom navbar-dark bg-dark text-white">
+  <div class="col-3 text-center">
+    <%= link_to material_icon.home, root_url %>
+  </div>
+  <div class="col-3 text-center">
+    <%= link_to material_icon.search, challenges_url %>
+  </div>
+  <div class="col-3 text-center">
+    <%= link_to my_challenges_url do %>
+      <%= material_icon.check_circle_outline %>
+    <% end %>
+  </div>
+  <div class="col-3 text-center">
+    <%= link_to edit_user_registration_path(current_user) do %>
+      <%= material_icon.settings %>
+    <% end %>
+  </div>
+</nav>
