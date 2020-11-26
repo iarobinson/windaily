@@ -3,7 +3,7 @@
     <div class="col-md-6 offset-md-3">
       <div class="card my-3">
         <div class="card-body">
-          <%= form_with model: @user, url: users_admin_index_path(@user), method: "POST" do |f| %>
+          <%= form_with model: @user, url: user_index_path(@user), method: "POST" do |f| %>
             <%= f.hidden_field :challenge_id, value: params[:challenge] if params[:challenge]%>
             <div class="form-group">
               <%= f.label :email %>

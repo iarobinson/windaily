@@ -59,7 +59,7 @@ class UsersController < ApplicationController
     @user.avatar.attach(user_params[:avatar]) unless user_params[:avatar].nil?
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to users_admin_url(@user), notice: 'User was successfully updated.' }
+        format.html { redirect_to user_url(@user), notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }

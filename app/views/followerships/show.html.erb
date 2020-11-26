@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= User.find(@followership.user_id).slug %>
+</p>
+
+<p>
+  <strong>Friend:</strong>
+  <%= User.find(@followership.follower_id).slug %>
+</p>
+
+<%= link_to 'Edit', edit_followership_path(@followership) %> |
+<%= link_to 'Back', followerships_path %>

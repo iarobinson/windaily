@@ -1,10 +1,10 @@
-<%= link_to users_admin_path(user), class: "list-group-item list-group-item-action flex-column align-items-start"  do %>
+<%= link_to user_path(user), class: "list-group-item list-group-item-action flex-column align-items-start"  do %>
   <div class="row">
     <div class="col-4">
       <% if user.avatar.attached? %>
-        <%= image_tag user.thumbnail, class: "img-fluid rounded-circle", width: "75px" %>
+        <%= image_tag user.thumbnail, class: "img-fluid rounded-circle", width: "50px" %>
       <% else %>
-        <%= image_tag "default_avatar.jpg", class: "img-fluid rounded-circle", width: "75px" %>
+        <%= image_tag "default_avatar.jpg", class: "img-fluid rounded-circle", width: "50px" %>
       <% end %>
     </div>
     <div class="col-8">

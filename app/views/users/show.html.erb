@@ -37,6 +37,11 @@
           <li class="list-group-item">
             <%= render "users/frequency_graph", streak_length: 30 %>
           </li>
+          <% if current_user && current_user != @user%>
+            <li class="list-group-item">
+              <%= link_to "Follow", followerships_path(follower_id: @user), method: :post, class: "btn btn-block btn-primary" %>
+            </li>
+          <% end %>
         </ul>
       </div>
 

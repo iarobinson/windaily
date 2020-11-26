@@ -25,7 +25,7 @@
             </div>
             <ul class="list-group list-group-flush">
               <% challenge.users.each do |user| %>
-                <%= link_to users_admin_path(user), class: "list-group-item list-group-item-action" do %>
+                <%= link_to user_path(user), class: "list-group-item list-group-item-action" do %>
                   <div class="row">
                     <div class="col-3">
                       <%= image_tag user.thumbnail, class: "img-fluid rounded-circle", width: "50px" if user.avatar.attached? %>

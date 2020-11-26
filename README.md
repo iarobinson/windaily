@@ -40,6 +40,18 @@ Public/Private ability for both challenges and users needs to be set up
 - [ ] We want people in challenges to be able to see users there... this will be a tricky controller call to get users that might be set to visibiliity _only me_ to still be visiible to those they are in challenges with....
 
 
+## Wild awesome things to add:
+
+- [ ] Calling the app EternalBraggingRights.com  or whetvere
+- [ ] Animations for when you beat your frines (The Hulk, Macho Man Randy Savage, Street Fighter, Flexing)
+- [ ] Everyone should have a gameified character/avatar option
+- [ ] Suggested name generator that changes _Dean_ to _Dean Deleware the Destroyer_ (mix words together)
+- [ ] Each time you open the app, they say congrats x  (people that sign in each day are x% more likely to keep the habit) - You did x much work, and if you keep it up you'll be x
+- [ ] Instead of notifications for others that you got a win, call the notifications Taunts
+- [ ] The person with the longest winning streak is posted on the main feed... or something
+- [ ] Automate taunts for people that don't follow eachother
+- [ ]
+
 ## Completed
 
 ### Technologies

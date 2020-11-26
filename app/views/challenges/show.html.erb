@@ -28,7 +28,7 @@
 
       <% if @challenge.users.include?(current_user) %>
         <%= link_to "Record a Win", new_challenge_win_path(@challenge), class: "btn btn-block btn-success" %>
-        <%= link_to "Add a Friend", new_users_admin_path(challenge: @challenge), class: "btn btn-block btn-info" %>
+        <%= link_to "Add a Friend", new_user_path(challenge: @challenge), class: "btn btn-block btn-info" %>
         <%= link_to 'Edit', edit_challenge_path(@challenge), class: "btn btn-block btn-primary" %>
       <% else %>
         <%= link_to 'Join', challenge_join_path(@challenge), class: "btn btn-block btn-success" %>

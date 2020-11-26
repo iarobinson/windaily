@@ -3,13 +3,20 @@ class User < ApplicationRecord
   # :omniauthable
   include FriendlyId
   friendly_id :moniker, use: :slugged
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable, :lockable, :timeoutable, :trackable
+  before_save :generate_slug
 
-   has_and_belongs_to_many :challenges
-   has_one_attached :avatar, dependent: :destroy
-   has_many :wins, dependent: :destroy
+  devise :database_authenticatable, :registerable,
+       :recoverable, :rememberable, :validatable,
+       :confirmable, :lockable, :timeoutable, :trackable
+
+  has_and_belongs_to_many :challenges
+  has_one_attached :avatar, dependent: :destroy
+  has_many :wins, dependent: :destroy
+
+  has_many :followerships
+  has_many :followers, through: :followerships
+  has_many :inverse_followerships, class_name: "Followership", foreign_key: "follower_id"
+  has_many :inverse_followers, through: :inverse_followerships, source: :user
 
    def thumbnail
      return self.avatar.variant(resize: "150x150!").processed
@@ -27,5 +34,19 @@ class User < ApplicationRecord
        end
      end
      win_count
+   end
+
+   def generate_slug
+     p "Generating Slug for #{self.first_name}"
+     p "self.email = #{self.email}"
+     return slug if self.slug
+     automated_slug = ""
+     i = 0
+     while i <= self.email.length
+       break if self.email[i] == "@"
+       automated_slug += self.email[i]
+       i += 1
+     end
+     self.slug = automated_slug
    end
 end

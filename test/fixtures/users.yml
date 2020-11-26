@@ -7,6 +7,8 @@ ian:
   challenges: one_hundred_burpees_daily, one_hundred_push_ups_daily
   encrypted_password: <%= User.new.send(:password_digest, 'testing') %>
   confirmed_at: <%= 2.days.ago %>
+  slug: ian
+  payment_plan: 0
 
 v:
   email: v@testing.com
@@ -16,6 +18,8 @@ v:
   challenges: one_hundred_burpees_daily
   encrypted_password: <%= User.new.send(:password_digest, 'testing') %>
   confirmed_at: <%= 3.days.ago %>
+  slug: V
+  payment_plan: 0
 
 jan:
   email: jan@testing.com
@@ -25,12 +29,16 @@ jan:
   challenges: one_hundred_burpees_daily
   encrypted_password: <%= User.new.send(:password_digest, 'testing') %>
   confirmed_at: <%= 4.days.ago %>
+  slug: Jan
+  payment_plan: 0
 
-david:
-  email: david@testing.com
-  first_name: david
-  last_name: vu
-  description: Trying to get back in the game
+rick:
+  email: rick@testing.com
+  first_name: rick
+  last_name: netherlands
+  description: It's me Rick!
   challenges: one_hundred_push_ups_daily
   encrypted_password: <%= User.new.send(:password_digest, 'testing') %>
   confirmed_at: <%= 5.days.ago %>
+  slug: Rick
+  payment_plan: 0
