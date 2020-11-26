@@ -10,14 +10,14 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   test "user can sign in and sign out" do
     sign_in @user
     page.has_content? "Signed in successfully."
-    click_link "Settings"
+    visit edit_user_registration_path @user
     click_link "Sign Out"
     page.has_content? "Signed out successfully."
   end
 
   test "user can create a challenge, add friends and record wins" do
     create_new_user
-    click_on "New Challenge"
+    visit new_challenge_path
     within "form" do
       fill_in "challenge_title", with: "Test Challenge"
       fill_in "challenge_description", with: "This is the description for a test challenge"

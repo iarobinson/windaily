@@ -1,13 +1,15 @@
 <div class="row pb-3">
   <div class="col-md-2 text-center">
-    <% unless win.user.avatar.attached? %>
-      <%= image_tag "default_avatar.jpg", class: 'img-fluid rounded-circle', width: "50px" %>
-    <% else %>
-      <%= image_tag win.user.thumbnail, class: 'img-fluid rounded-circle', width: "50px" %>
+    <% if win.user %>
+      <% unless win.user.avatar.attached? %>
+        <%= image_tag "default_avatar.jpg", class: 'img-fluid rounded-circle', width: "50px" %>
+      <% else %>
+        <%= image_tag win.user.thumbnail, class: 'img-fluid rounded-circle', width: "50px" %>
+      <% end %>
     <% end %>
     <p>
       <small>
-        @<%= win.user.moniker %><br>
+        <%= "@#{win.user.moniker}" if win.user %><br>
         <%= time_ago_in_words(win.created_at) + " ago" %>
       </small>
     </p>

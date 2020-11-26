@@ -43,8 +43,6 @@ class User < ApplicationRecord
    end
 
    def generate_slug
-     p "Generating Slug for #{self.first_name}"
-     p "self.email = #{self.email}"
      return slug if self.slug
      automated_slug = ""
      i = 0
