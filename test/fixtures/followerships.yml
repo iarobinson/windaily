@@ -1,13 +1,12 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  user: users(:i)
+  follower: users(:v)
 
-# one:
-#   user: users(:i)
-#   follower: users(:v)
-#
-# two:
-#   user_id: <%= User.second.id %>
-#   follower_id: <%= User.first.id %>
-#
-# three:
-#   user_id: <%= User.first.id %>
-#   follower_id: <%= User.third.id %>
+two:
+  user_id: <%= User.second.id %>
+  follower_id: <%= User.first.id %>
+
+three:
+  user_id: <%= User.first.id %>
+  follower_id: <%= User.third.id %>
