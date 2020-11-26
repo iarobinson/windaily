@@ -18,6 +18,12 @@ class User < ApplicationRecord
   has_many :inverse_followerships, class_name: "Followership", foreign_key: "follower_id"
   has_many :inverse_followers, through: :inverse_followerships, source: :user
 
+  # Friendship stuff
+  has_many :friendships
+  has_many :friends, through: :friendships
+  has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :inverse_friends, through: :inverse_friendships, source: :user
+
    def thumbnail
      return self.avatar.variant(resize: "150x150!").processed
    end

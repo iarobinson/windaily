@@ -1,15 +1,22 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-3">
-      <div class="row py-3">
-        <div class="col">
-          <%= link_to "Followers", followers_path, class: "btn btn-block btn-primary" %>
-        </div>
-        <div class="col">
-          <%= link_to "Following", following_path, class: "btn btn-block btn-primary" %>
-        </div>
-      </div>
-      <h1>OLD</h1>
+      <h2>Friends</h2>
+      <ul>
+        <% for friendship in current_user.friendships %>
+          <li>
+            <%= h friendship.friend.moniker %>
+            (<%= link_to "remove", friendship, method: :delete %>)
+          </li>
+        <% end %>
+      </ul>
+
+      <h2>Friended by Users</h2>
+      <ul>
+        <% for user in current_user.inverse_friends %>
+          <li><%= h user.username %></li>
+        <% end %>
+      </ul>
       <% if @users.size > 0 %>
         <div class="card my-3">
           <ul class="list-group list-group-flush">
