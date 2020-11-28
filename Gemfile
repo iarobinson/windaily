@@ -10,6 +10,7 @@ gem 'coffee-rails', '~> 5.0.0'
 gem 'devise'
 gem 'figaro'
 gem 'friendly_id'
+gem "image_processing", "~> 1.0"
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'material_icons'

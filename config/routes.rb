@@ -6,15 +6,15 @@ Rails.application.routes.draw do
   get 'my_challenges', to: 'challenges#my_challenges'
   get 'followers', to: 'followerships#followers'
   get 'following', to: 'followerships#following'
-  get '/@:id', to: 'users#show'
+
 
   devise_for :users, controllers: {
       sessions: 'users/sessions'
     } do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-
   resources :users
+
   resources :followerships
 
   resources :challenges do

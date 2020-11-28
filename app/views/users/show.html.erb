@@ -2,7 +2,6 @@
   <div class="row py-5">
 
     <div class="col-md-8 pb-3">
-
       <ul class="list-group">
         <li class="list-group-item list-group-item text-center text-center">
           <h5 class="card-title">Wins (<%= @user.wins.size %>)</h5>
@@ -13,10 +12,9 @@
           </li>
         <% end %>
       </ul>
-
     </div>
-    <div class="col-md-4">
 
+    <div class="col-md-4">
       <div class="card mb-3">
         <ul class="list-group list-group-flush">
           <li class="list-group-item list-group-item text-center">
@@ -31,20 +29,19 @@
       <div class="card mb-3">
         <%= image_tag @user.avatar, class: "card-img-top", alt: "#{@user.first_name}" if @user.avatar.attached? %>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item text-center">
-            <small>@<%= @user.moniker %></small>
-          </li>
+          <% if @user.moniker %>
+            <li class="list-group-item text-center">
+              <small><%= "#@#{@user.moniker}" %></small>
+            </li>
+          <% end %>
           <li class="list-group-item">
             <%= render "users/frequency_graph", streak_length: 30 %>
           </li>
-          <% if current_user && current_user != @user%>
-            <li class="list-group-item">
-              <%= link_to "Follow", followerships_path(follower_id: @user), method: :post, class: "btn btn-block btn-primary" %>
-            </li>
-          <% end %>
         </ul>
-      </div>
 
+        <%= render "users/follow_button" %>
+      </div>
     </div>
+
   </div>
 </div>

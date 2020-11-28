@@ -1,0 +1,13 @@
+<% if !@user.followers.include?(current_user) %>
+  <li class="list-group-item">
+    <%= link_to "Follow", followerships_path(follower_id: @user), method: :post, class: "btn btn-block btn-primary" %>
+  </li>
+<% elsif current_user == @user %>
+  <li class="list-group-item">
+    <%= link_to "You have #{@user.followers.size} followers", user_followers_path %>
+  </li>
+<% else %>
+  <li class="list-group-item">
+    You follow <%= @user.first_name %>
+  </li>
+<% end %>

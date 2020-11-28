@@ -17,11 +17,12 @@ class FollowershipsController < ApplicationController
   end
 
   def create
-    @followership = current_user.followerships.build(follower_id: params[:follower_id])
+    binding.pry
+    @followership = current_user.followerships.build(user_id: params[:follower_id], follower_id: current_user.id)
 
     respond_to do |format|
       if @followership.save
-        format.html { redirect_to users_path, notice: "You're now following them." }
+        format.html { redirect_to users_path, notice: "" }
         format.json { render :show, status: :created, location: @followership }
       else
         format.html { render :new, notice: "Something went wrong." }

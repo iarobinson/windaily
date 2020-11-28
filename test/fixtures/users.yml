@@ -18,7 +18,7 @@ v:
   challenges: one_hundred_burpees_daily
   encrypted_password: <%= User.new.send(:password_digest, 'testing') %>
   confirmed_at: <%= 3.days.ago %>
-  slug: V
+  slug: v
   payment_plan: 0
 
 jan:
@@ -29,7 +29,7 @@ jan:
   challenges: one_hundred_burpees_daily
   encrypted_password: <%= User.new.send(:password_digest, 'testing') %>
   confirmed_at: <%= 4.days.ago %>
-  slug: Jan
+  slug: jan
   payment_plan: 0
 
 rick:
@@ -40,5 +40,5 @@ rick:
   challenges: one_hundred_push_ups_daily
   encrypted_password: <%= User.new.send(:password_digest, 'testing') %>
   confirmed_at: <%= 5.days.ago %>
-  slug: Rick
+  slug: rick
   payment_plan: 0

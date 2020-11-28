@@ -1,6 +1,8 @@
 <main role="main">
   <% if current_user %>
+    <%= render "layouts/nav_for_user_settings" %>
     <%= render "list_challenges", challenges: @challenges %>
+    <hr>
   <% else %>
     <%= render "new_user_view" %>
     <%= render "list_challenges", challenges: @challenges %>
