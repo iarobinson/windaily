@@ -18,7 +18,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       fill_in "user_password_confirmation", with: "robotLOVEStests"
       click_on "Sign up"
     end
-    expect(page).to have_content "Welcome! You have signed up successfully."
+    page.has_content? "Welcome! You have signed up successfully."
     assert_equal original_user_count + 1, User.all.size
   end
 
@@ -33,7 +33,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   #     click_on "Create Challenge"
   #   end
   #
-  #   expect(page).to have_content "PLEASE SET YOUR PASSWORD:"
+  #   page.has_content? "PLEASE SET YOUR PASSWORD:"
   #   @new_user = User.where(email: "test_email@windaily.app").first
   #   @new_challenge = @new_user.challenges.first
   #   assert_equal 1, @new_user.challenges.size

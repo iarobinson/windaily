@@ -5,7 +5,6 @@ require 'capybara/rails'
 require 'capybara/minitest'
 
 class ActionDispatch::IntegrationTest
-  include RSpec::Matchers
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
   # Make `assert_*` methods behave like Minitest assertions

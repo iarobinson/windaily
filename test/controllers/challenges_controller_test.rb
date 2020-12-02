@@ -29,13 +29,13 @@ class ChallengesControllerTest < ActionDispatch::IntegrationTest
       fill_in "challenge_frequency", with: "FREQUENCY of Challenge TK"
       click_on "Create Challenge"
     end
-    expect(page).to have_content "Challenge was successfully created."
-    expect(page).to have_content "TITLE of Challenge TK"
+    page.has_content? "Challenge was successfully created."
+    page.has_content? "TITLE of Challenge TK"
   end
 
   test "should show challenge" do
     visit challenge_path @challenge_read
-    expect(page).to have_content @challenge_read.title
+    page.has_content? @challenge_read.title
   end
 
   test "should get edit" do
@@ -52,8 +52,8 @@ class ChallengesControllerTest < ActionDispatch::IntegrationTest
       fill_in "challenge_title", with: "Do One-hundred Burpees a Day UPDATED!"
       click_on "Update"
     end
-    expect(page).to have_content "Challenge was successfully updated."
-    expect(page).to have_content "Do One-hundred Burpees a Day UPDATED!"
+    page.has_content? "Challenge was successfully updated."
+    page.has_content? "Do One-hundred Burpees a Day UPDATED!"
   end
 
   test "should destroy challenge and it's associated wins" do

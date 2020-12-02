@@ -1,6 +1,6 @@
 module AuthenticationHelper
 
-  def sign_in(user)
+  def sign_in user
     visit new_user_session_path
     password = user.password || "testing"
     within('form') do
