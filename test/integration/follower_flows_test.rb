@@ -8,7 +8,7 @@ class FollowerFlowsTest < ActionDispatch::IntegrationTest
     @v = users(:v)
   end
 
-  scenario "a user can follow another user" do
+  test "a user can follow another user" do
     assert false, "<= got it!"
   end
 

@@ -5,7 +5,6 @@ require 'capybara/rails'
 require 'capybara/minitest'
 
 class ActionDispatch::IntegrationTest
-  include RSpec::Matchers
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
   # Make `assert_*` methods behave like Minitest assertions
@@ -19,9 +18,7 @@ class ActionDispatch::IntegrationTest
 end
 
 class ActiveSupport::TestCase
+  # Run tests in parallel with specified workers
+  parallelize(workers: :number_of_processors)
   fixtures :all
-end
-
-Dir["#{File.expand_path(File.dirname(__FILE__))}/support/*.rb"].each do |file|
-  require file
 end

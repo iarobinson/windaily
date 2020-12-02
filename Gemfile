@@ -25,6 +25,7 @@ gem 'twilio-ruby'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 5.x'
 gem 'turbolinks', '~> 5'
+gem 'capybara'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
@@ -45,8 +46,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec'
-  gem 'capybara', "~> 2.0"
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
