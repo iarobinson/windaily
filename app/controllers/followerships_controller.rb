@@ -17,7 +17,8 @@ class FollowershipsController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
+    @user_to_be_followed = User.friendly.find(params[:follower_id])
     @followership = current_user.followerships.build(user_id: params[:follower_id], follower_id: current_user.id)
 
     respond_to do |format|
