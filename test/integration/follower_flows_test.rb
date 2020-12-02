@@ -13,10 +13,10 @@ class FollowerFlowsTest < ActionDispatch::IntegrationTest
     assert true, "<= got it!"
   end
 
-  test "a signed in user can follow another user" do
+  test "a follower sees the unfollow button when viewing profiles of people they follow" do
     sign_in @ian
     visit user_path @v
-    click_on "Follow"
-    assert @v.followers.include? @ian
+    click_on "Unfollow"
+    assert_false @v.followers.include? @ian
   end
 end

@@ -1,13 +1,9 @@
 <% if !@user.followers.include?(current_user) %>
   <li class="list-group-item">
-    <%= link_to "Follow", "#", method: :post, class: "btn btn-block btn-primary" %>
-  </li>
-<% elsif current_user == @user %>
-  <li class="list-group-item">
-    <%= link_to "You have #{@user.followers.size} followers", user_followers_path %>
+    <%= link_to "Follow", user_followers_path(@user), method: :post, class: "btn btn-block btn-primary" %>
   </li>
 <% else %>
   <li class="list-group-item">
-    You follow <%= @user.first_name %>
+    <%= link_to "Unfollow", user_follower_path(current_user), method: :delete, class: "btn btn-block btn-secondary" %>
   </li>
 <% end %>

@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  follower_id: 1
-  followed_user_id: 1
+ian_follows_v:
+  follower_id: <%= ActiveRecord::FixtureSet.identify(:ian) %>
+  followed_user_id: <%= ActiveRecord::FixtureSet.identify(:v) %>
 
-two:
-  follower_id: 1
-  followed_user_id: 1
+v_follows_jan:
+  follower_id: <%= ActiveRecord::FixtureSet.identify(:v) %>
+  followed_user_id: <<%= ActiveRecord::FixtureSet.identify(:jan) %>
+
+jan_follows_v:
+  follower_id: <%= ActiveRecord::FixtureSet.identify(:jan) %>
+  followed_user_id: <%= ActiveRecord::FixtureSet.identify(:v) %>

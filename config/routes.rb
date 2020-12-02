@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   get 'pricing', to: 'pages#pricing'
   get 'my_challenges', to: 'challenges#my_challenges'
 
-  resources :users
   devise_for :users, controllers: {
       sessions: 'users/sessions'
     } do
     get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+  resources :users do
+    resources :followers, only: [:create, :destroy]
   end
 
 
