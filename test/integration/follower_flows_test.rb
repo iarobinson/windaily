@@ -16,6 +16,7 @@ class FollowerFlowsTest < ActionDispatch::IntegrationTest
   test "a signed in user can follow another user" do
     sign_in @ian
     visit user_path @v
-    page.has_content? "Follow"
+    click_on "Follow"
+    assert @v.followers.include? @ian
   end
 end

@@ -1,6 +1,6 @@
 <% if !@user.followers.include?(current_user) %>
   <li class="list-group-item">
-    <%= link_to "Follow", followerships_path(follower_id: @user), method: :post, class: "btn btn-block btn-primary" %>
+    <%= link_to "Follow", "#", method: :post, class: "btn btn-block btn-primary" %>
   </li>
 <% elsif current_user == @user %>
   <li class="list-group-item">
