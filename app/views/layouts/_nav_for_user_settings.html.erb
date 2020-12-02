@@ -1,13 +1,10 @@
-<div class="container">
-  <div class="row pt-3">
-    <div class="col">
-      <%= render "users/small_circular_avatar" %>
-    </div>
-    <div class="col">
-      <%= link_to material_icon.account_circle.md_24, edit_user_path(current_user), class: "btn btn-block btn-primary" %>
-    </div>
-    <div class="col">
-      <%= link_to material_icon.settings.md_24, edit_user_registration_path, class: "btn btn-block btn-primary" %>
-    </div>
-  </div>
-</div>
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <%= link_to material_icon.settings.md_24, edit_user_registration_path, class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to edit_user_path(current_user), class: "nav-link" do %>
+      <%= render "users/small_circular_avatar", image_size: 20 %>
+    <% end %>
+  </li>
+</ul>
