@@ -1,4 +1,4 @@
-<% if !@user.followers.include?(current_user) %>
+<% unless @user.followers.include?(current_user) %>
   <li class="list-group-item">
     <%= link_to "Follow", user_followers_path(@user), method: :post, class: "btn btn-block btn-primary" %>
   </li>

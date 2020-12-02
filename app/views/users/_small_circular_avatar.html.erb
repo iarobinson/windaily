@@ -1,6 +1,7 @@
 <% image_size = 75 unless image_size %>
-<% if current_user.avatar.attached? %>
-  <%= image_tag url_for(current_user.avatar), class: "rounded-circle", style: "width:#{image_size}px;max-height:#{image_size}px;" %>
+<% avatar_to_display = current_user unless avatar_to_display %>
+<% if avatar_to_display.avatar.attached? %>
+  <%= image_tag url_for(avatar_to_display.avatar), class: "rounded-circle img-fluid", style: "width:#{image_size}px;max-height:#{image_size}px;" %>
 <% else %>
-  <%= image_tag "default_avatar", class: "rounded-circle", style: "width:#{image_size}px;max-height:#{image_size}px;" %>
+  <%= image_tag "default_avatar", class: "rounded-circle img-fluid", style: "width:#{image_size}px;max-height:#{image_size}px;" %>
 <% end %>

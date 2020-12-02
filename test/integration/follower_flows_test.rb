@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class FollowerFlowsTest < ActionDispatch::IntegrationTest
-  # binding.pry
   include AuthenticationHelper
 
   setup do
@@ -9,14 +8,14 @@ class FollowerFlowsTest < ActionDispatch::IntegrationTest
     @v = users(:v)
   end
 
-  test "a user can follow another user" do
-    assert true, "<= got it!"
-  end
-
-  test "a follower sees the unfollow button when viewing profiles of people they follow" do
+  test "users can follow and unfollow eachother" do
+    assert @v.followers.include? @ian
     sign_in @ian
     visit user_path @v
     click_on "Unfollow"
-    assert_false @v.followers.include? @ian
+    @v.reload
+    assert @v.followers.include?(@ian) == false
+    click_on "Follow"
+    assert @v.followers.include? @ian
   end
 end

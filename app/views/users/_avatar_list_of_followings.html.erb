@@ -1,0 +1,18 @@
+
+<div class="container">
+  <div class="row my-3">
+    <% if current_user.followings.size > 0 %>
+      <% current_user.followings.each do |follower| %>
+        <div class="col text-center">
+          <%= link_to follower do %>
+            <%= render "users/small_circular_avatar", avatar_to_display: follower %>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col">
+        <%= link_to "Find people to follow", users_path, class: "btn btn-primary btn-block my-3" %>
+        <div>
+    <% end %>
+  </div>
+</div>

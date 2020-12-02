@@ -1,6 +1,7 @@
 <main role="main">
   <% if current_user %>
     <%= render "layouts/nav_for_user_settings" %>
+    <%= render "users/avatar_list_of_followings" %>
     <%= render "list_challenges", challenges: @challenges %>
     <hr>
   <% else %>
