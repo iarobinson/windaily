@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'careers', to: 'pages#careers'
   get 'pricing', to: 'pages#pricing'
   get 'my_challenges', to: 'challenges#my_challenges'
+  get 'office', to: 'pages#office'
 
   devise_for :users, controllers: {
       sessions: 'users/sessions'

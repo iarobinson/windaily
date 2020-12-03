@@ -14,9 +14,13 @@
   </head>
 
   <body>
-    <%= render "/layouts/notification" if notice %>
-    <%= render "/layouts/nav" %>
-    <%= yield %>
-    <%= render "/layouts/footer" unless current_user %>
+    <% unless @ignore_normal_layout %>
+      <%= render "/layouts/notification" if notice %>
+      <%= render "/layouts/nav" %>
+      <%= yield %>
+      <%= render "/layouts/footer" unless current_user %>
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>
