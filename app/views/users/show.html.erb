@@ -31,7 +31,7 @@
         <ul class="list-group list-group-flush">
           <% if @user.moniker %>
             <li class="list-group-item text-center">
-              <small><%= "#@#{@user.moniker}" %></small>
+              <small><%= "@#{@user.moniker}" if @user.moniker %></small>
             </li>
           <% end %>
           <li class="list-group-item">

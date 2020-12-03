@@ -1,22 +1,5 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-md-3 pb-5">
-
-      <h1><%= @win.title %></h1>
-      <p>
-        <%= image_tag @win.user.avatar, class: "img-fluid", width: "50px" if @win.user.avatar.attached? %>
-        <%= @win.user.moniker %>
-      </p>
-      <p><%= @win.description %></p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <%= render "reel_of_uploaded_assets", assets: @win.images %>
-    </div>
-  </div>
-  <div class="col-md-6 offset-md-3 pb-5">
-    <%= link_to 'Edit', edit_challenge_win_path(@challenge, @win), class: "btn btn-block btn-primary" %>
-    <%= link_to 'Back', challenge_path(@challenge), class: "btn btn-block btn-primary" %>
-  </div>
+<div class="p-3">
+  <%= render "challenges/wins/win", win: @win %>
+  <%= link_to 'Edit', edit_challenge_win_path(@challenge, @win), class: "btn btn-block btn-primary" %>
+  <%= link_to 'Back', challenge_path(@challenge), class: "btn btn-block btn-primary" %>
 </div>

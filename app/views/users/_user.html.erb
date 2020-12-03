@@ -1,13 +1,14 @@
-<p>ID: <%= user.id %></p>
-<p>Email: <%= user.email %></p>
-<p>First Name: <%= user.first_name %></p>
-<p>Last Name: <%= user.last_name %></p>
-<p>Phone: <%= user.phone %></p>
-<p>Description: <%= user.description %></p>
-<p>Created at: <%= user.created_at %></p>
-<p>Updated at: <%= user.updated_at %></p>
-<p>Moniker: <%= user.moniker %></p>
-<p>Playment Plan: <%= user.payment_plan %></p>
-<p>Visibility: <%= user.visibility %></p>
-<p>Slug: <%= user.slug %></p>
-<%= image_tag url_for(user.avatar), style: "width:75px" if user.avatar.attached? %>
+<div class="row m-1">
+  <div class="col-4 py-1">
+    <%= link_to user_path(user) do %>
+      <%= render "users/small_circular_avatar", avatar_to_display: user %>
+    <% end %>
+  </div>
+  <div class="col-8">
+    <%= user.first_name if user.first_name %>
+    <%= user.last_name if user.last_name %><br>
+    <%= "@#{user.moniker}" if user.moniker %><br>
+    <span class="badge badge-success"><%= "Wins #{user.wins.size}" %></span>
+    <span class="badge badge-primary"><%= "Challenges #{user.challenges.size}" %></span>
+  </div>
+</div>

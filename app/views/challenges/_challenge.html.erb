@@ -1,1 +1,7 @@
-<%= challenge.inspect %>
+<div class="row">
+  <div class="col">
+    <%= image_tag challenge.images.sample, class: "img-fluid" if challenge.images.attached? %>
+    <%= challenge.title %><br>
+    <%= challenge.inspect %>
+  </div>
+</div>

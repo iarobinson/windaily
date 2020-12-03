@@ -8,16 +8,7 @@
     <div class="col-md-8">
       <% if @wins.count > 0 %>
         <% @wins.each do |win| %>
-          <div class="card mb-3">
-            <div class="card-header">
-              <%= link_to win.title, challenge_win_path(@challenge, win) %>
-            </div>
-            <div class="card-body">
-              <%= win.description if win.description %><br>
-              <%= win.user.inspect if win.user %><br>
-              <%= win.inspect %>
-            </div>
-          </div>
+          <%= render win %>
         <% end %>
       <% else %>
         <p>

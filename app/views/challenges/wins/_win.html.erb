@@ -1,42 +1,24 @@
-<div class="row pb-3">
-  <div class="col-md-2 text-center">
-    <% if win.user %>
-      <% unless win.user.avatar.attached? %>
-        <%= image_tag "default_avatar.jpg", class: 'img-fluid rounded-circle', width: "50px" %>
-      <% else %>
-        <%= image_tag win.user.thumbnail, class: 'img-fluid rounded-circle', width: "50px" %>
-      <% end %>
-    <% end %>
+<div class="row my-1">
+  <div class="col-3 text-center">
+    <%= render "users/small_circular_avatar", avatar_to_display: win.user, image_size: 105 %>
+  </div>
+  <div class="col-7">
     <p>
       <small>
         <%= "@#{win.user.moniker}" if win.user %><br>
-        <%= time_ago_in_words(win.created_at) + " ago" %>
+        <%= "#{win.title}" if win.title %><br>
       </small>
     </p>
   </div>
-
-  <div class="col-md-6">
-    <h4><%= win.title %></h4>
-    <p><%= win.description %></p>
-  </div>
-
-  <div class="col-md-2">
-    <% if current_user === win.user %>
-      <%= link_to edit_challenge_win_path(win.challenge, win), class: "btn btn-block mb-3 btn-primary"  do %>
-        <%= material_icon.edit %><br>Edit
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="col-md-2">
-    <%= link_to challenge_win_path(win.challenge, win), class: "btn btn-block mb-3 btn-primary"  do %>
-      <%= material_icon.remove_red_eye %><br>show
+  <div class="col-2 text-center">
+    <%= link_to challenge_win_path(win.challenge, win) do %>
+      <i class="material-icons md-24">settings</i>
     <% end %>
   </div>
 </div>
 
-<% if win.images.attached? %>
-  <div class="row pb-3">
-    <%= render "challenges/wins/row_of_win_assets", assets: win.images.limit(10) %>
+<div class="row mb-4">
+  <div class="col-12">
+    <%= render "challenges/wins/images", images: win.images if win.images.attached? %>
   </div>
-<% end %>
+</div>

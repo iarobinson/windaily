@@ -1,9 +1,5 @@
-<div class="container">
-  <div class="row">
-    <% challenges.each do |challenge| %>
-      <div class="col">
-        <%= render "challenges/challenge_card", challenge: challenge %>
-      </div>
-    <% end %>
-  </div>
-</div>
+<ul class="list-group">
+  <% challenges.each do |challenge| %>
+    <%= render "challenges/_challenge_list_item", challenge: challenge %>
+  <% end %>
+</ul>
