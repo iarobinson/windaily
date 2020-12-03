@@ -48,7 +48,7 @@ class ChallengesController < ApplicationController
 
   def new
     @challenge = Challenge.new
-    @challenges = current_user.challenges
+    @challenges = current_user.challenges if current_user
   end
 
   def edit

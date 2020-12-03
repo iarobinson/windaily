@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @users = User.all
     @followers = current_user.followers
     @followings = current_user.followings
+    @wins = Win.all
   end
 
   def new

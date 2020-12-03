@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'pages#index'
   get 'about', to: 'pages#about'
   get 'careers', to: 'pages#careers'
+  get 'add', to: 'pages#add'
   get 'pricing', to: 'pages#pricing'
   get 'my_challenges', to: 'challenges#my_challenges'
   get 'office', to: 'pages#office'

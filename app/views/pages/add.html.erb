@@ -18,7 +18,6 @@
 
 <div class="tab-content pb-5 <%= standard_column_setting %>" id="myTabContent">
   <div class="tab-pane fade show active" id="add-a-win" role="tabpanel" aria-labelledby="add-a-win-tab">
-    <div class="text-center"><h5>Record Win for which Challenge?</h5></div>
     <ul class="list-group list-group-flush">
       <% @challenges.reverse.each do |challenge| %>
         <%= link_to challenge, class: "list-group-item list-group-item-action" do %>
@@ -31,8 +30,8 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <div class="text-center"><h5>Create a Challenge</h5></div>
-          <%= render 'form', challenge: @challenge %>
+          <h5>Create a Challenge</h5>
+          <%= render 'challenges/form', challenge: @challenge %>
         </div>
       </div>
     </div>
@@ -41,7 +40,7 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <div class="text-center"><h5>Add a Friend</h5></div>
+          <h5>Add a Friend</h5>
           <%= render "users/add_friend_form" %>
         </div>
       </div>

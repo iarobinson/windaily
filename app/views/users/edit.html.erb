@@ -7,7 +7,14 @@
       <div class="card mb-3">
         <div class="card-body">
           <%= render @user %>
-          <%= link_to "...edit security settings.", edit_user_registration_path, class: "float-right mt-4" %>
+          <div class="row mt-4">
+            <div class="col">
+              <%= link_to "Edit Security Settings", edit_user_registration_path, class: "btn btn-block btn-primary" %>
+            </div>
+            <div class="col">
+              <%= link_to "View Public Profile", user_path(current_user), class: "btn btn-block btn-primary" %>
+            </div>
+          </div>
         </div>
       </div>
 

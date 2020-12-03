@@ -1,7 +1,15 @@
 <div class="container">
   <div class="row py-3">
     <div class="col-md-4 pb-5 py-3">
-      <%= image_tag @challenge.primary_image, class: "img-fluid rounded pb-3" if @challenge.primary_image.attached? %>
+      <% if @challenge.users.include?(current_user) %>
+        <%= link_to "Record a Win", new_challenge_win_path(@challenge), class: "btn btn-block btn-success" %>
+        <%= link_to "Add a Friend", new_user_path(challenge: @challenge), class: "btn btn-block btn-info" %>
+        <%= link_to 'Edit', edit_challenge_path(@challenge), class: "btn btn-block btn-primary" if @challenge.owner == current_user %>
+      <% else %>
+        <%= link_to 'Join', challenge_join_path(@challenge), class: "btn btn-block btn-success" %>
+      <% end %>
+
+      <%= image_tag @challenge.primary_image, class: "img-fluid rounded py-3" if @challenge.primary_image.attached? %>
       <h3>
         <%= @challenge.title %>
       </h3>
@@ -25,15 +33,6 @@
           </p>
         </div>
       <% end %>
-
-      <% if @challenge.users.include?(current_user) %>
-        <%= link_to "Record a Win", new_challenge_win_path(@challenge), class: "btn btn-block btn-success" %>
-        <%= link_to "Add a Friend", new_user_path(challenge: @challenge), class: "btn btn-block btn-info" %>
-        <%= link_to 'Edit', edit_challenge_path(@challenge), class: "btn btn-block btn-primary" %>
-      <% else %>
-        <%= link_to 'Join', challenge_join_path(@challenge), class: "btn btn-block btn-success" %>
-      <% end %>
-      <%= link_to 'All Challenges', challenges_path, class: "btn btn-block btn-secondary" %>
     </div>
 
     <div class="col-md-8 pb-5 py-3">
@@ -41,7 +40,7 @@
         <div class="row">
           <div class="col">
             <% @challenge.wins.reverse.each do |win| %>
-              <%= render "challenges/wins/win", win: win %>
+              <%= render "challenges/wins/win", win: win, avatar_to_display: win.user %>
             <% end %>
           </div>
         </div>
