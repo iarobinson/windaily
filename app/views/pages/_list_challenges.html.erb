@@ -1,5 +1,5 @@
 <ul class="list-group">
-  <% challenges.each do |challenge| %>
-    <%= render "challenges/_challenge_list_item", challenge: challenge %>
+  <% @challenges.each do |challenge| %>
+    <%= render "challenges/challenge_list_item", challenge: challenge %>
   <% end %>
 </ul>

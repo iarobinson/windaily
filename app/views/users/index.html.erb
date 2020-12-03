@@ -1,6 +1,41 @@
-<% @users.each do |user| %>
-  <%= link_to user_path(user) do %>
-    <%= render user %>
-    <hr>
-  <% end %>
-<% end %>
+<ul class="nav nav-tabs mt-3 mb-3 pl-3" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Followers</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Following</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+    <% @users.each do |user| %>
+      <div class="col-12">
+        <%= link_to user_path(user) do %>
+          <%= render user %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <% @followers.each do |user| %>
+      <div class="col-12">
+        <%= link_to user_path(user) do %>
+          <%= render user %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+    <% @followings.each do |user| %>
+      <div class="col-12">
+        <%= link_to user_path(user) do %>
+          <%= render user %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br>

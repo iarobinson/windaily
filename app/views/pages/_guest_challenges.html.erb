@@ -1,0 +1,28 @@
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+
+      <% @challenges.reverse.each do |challenge| %>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <%= image_tag url_for(challenge.primary_image), class: "img-fluid" if challenge.primary_image.attached? %>
+            <div class="card-body">
+              <h5><%= challenge.title %></h5>
+              <p class="card-text">
+                <%= challenge.description %>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= link_to "View", challenge, class: "btn btn-sm btn-outline-dark" %>
+                  <%= link_to "Edit", edit_challenge_path(challenge), class: "btn btn-sm btn-outline-dark" %>
+                  <%= link_to "Join", challenge_join_path(challenge), class: "btn btn-sm btn-outline-dark" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
