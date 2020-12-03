@@ -1,23 +1,10 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <div class="card my-3">
-        <div class="card-body">
-          <%= form_with model: @user, url: user_index_path(@user), method: "POST" do |f| %>
-            <%= f.hidden_field :challenge_id, value: params[:challenge] if params[:challenge]%>
-            <div class="form-group">
-              <%= f.label :email %>
-              <%= f.email_field :email, placeholder: 'your_friend@testing.com', autofocus: true, autocomplete: "email", class:"form-control" %>
-            </div>
-            <h1 class="text-center">or</h1>
-            <div class="form-group">
-              <%= f.label :phone %>
-              <%= f.telephone_field :phone, placeholder: '(xxx) xxx-xxxx', class:"form-control", pattern: "[0-9]{10}" %>
-            </div>
-            <%= f.submit "Add a Friend", class: "btn btn-block btn-primary" %>
-          <% end %>
-        </div>
+<div class="container">
+  <div class="row my-5">
+    <div class="<%= standard_column_setting %>">
+      <div class="text-center">
+        <h2>Add Friend</h2>
       </div>
+      <%= render "add_friend_form" %>
     </div>
   </div>
 </div>

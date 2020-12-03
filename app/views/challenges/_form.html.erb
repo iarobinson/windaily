@@ -1,4 +1,4 @@
-<%= form_with(model: challenge, local: true) do |f| %>
+<%= form_with(model: challenge, local: true, id: "new_challenge_form") do |f| %>
   <% if challenge.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -34,17 +34,17 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :frequency %>
+  <!-- <div class="form-group">
+    <%#= f.label :frequency %>
     <p class="small text-muted">This will be something like daily, weekly, monthly or whatever. Please just type it in now. I'll get it working now.</p>
-    <%= f.text_area :frequency, class: "form-control" %>
+    <%#= f.text_area :frequency, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :visibility %>
+    <%#= f.label :visibility %>
     <p class="small text-muted">Is this a public or private?</p>
-    <%= select_tag(:visibility, options_for_select([["Draft", 0], ["Private", 1], ["Public", 2]], selected: 2), class: 'form-control') %>
-  </div>
+    <%#= select_tag(:visibility, options_for_select([["Draft", 0], ["Private", 1], ["Public", 2]], selected: 2), class: 'form-control') %>
+  </div> -->
 
   <% unless current_user %>
     <div class="form-group">

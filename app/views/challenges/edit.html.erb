@@ -5,12 +5,13 @@
 
       <%= render 'form', challenge: @challenge %>
 
-      <%= link_to 'Show', @challenge, class: "btn btn-block btn-info" %>
-      <%= link_to 'Back', challenges_path, class: "btn btn-block btn-secondary" %>
-      <%= link_to "Destroy this Challenge and All it's Wins Forever",
+      <%= link_to 'View Public Challenge', @challenge, class: "btn btn-block btn-primary" %>
+      <%= link_to 'All Challenges', challenges_path, class: "btn btn-block btn-primary" %>
+      <!-- <%#= link_to "Destroy this Challenge and All it's Wins Forever",
                   challenge_path(@challenge), method: :delete,
                   class: "btn btn-block btn-warning",
                   data: {confirm: "Are you sure? This cannot be undone and is effective immediately."} %>
+                  -->
     </div>
   </div>
 </div>

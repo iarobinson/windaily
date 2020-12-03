@@ -28,6 +28,7 @@ We kept it up for months afterwards by sending each other WhatsApp messages. I'v
 - [ ] Follow this tutorial to set up subscription payments via stripe (https://www.toptal.com/ruby-on-rails/ruby-on-rails-ecommerce-tutorial)
 - [ ] Make sure the challenge titles are unique....
 - [ ] Challenge create fill add helper needs to reflect the file name when a user is creatinga  new challenge
+- [ ] Automate an email to all users which promotes the wins from the past week
 
 
 Public/Private ability for both challenges and users needs to be set up

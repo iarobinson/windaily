@@ -1,17 +1,18 @@
 <ul class="nav nav-tabs mt-3 mb-3 pl-3" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-    <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All</a>
+    <a class="nav-link active" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="following" aria-selected="true">Following</a>
   </li>
   <li class="nav-item" role="presentation">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Followers</a>
+    <a class="nav-link" id="followers-tab" data-toggle="tab" href="#followers" role="tab" aria-controls="followers" aria-selected="false">Followers</a>
   </li>
   <li class="nav-item" role="presentation">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Following</a>
+    <a class="nav-link" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="false">All Users</a>
   </li>
 </ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
-    <% @users.each do |user| %>
+
+<div class="tab-content <%= standard_column_setting %>" id="myTabContent">
+  <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+    <% @followings.each do |user| %>
       <div class="col-12">
         <%= link_to user_path(user) do %>
           <%= render user %>
@@ -19,7 +20,7 @@
       </div>
     <% end %>
   </div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <div class="tab-pane fade" id="followers" role="tabpanel" aria-labelledby="followers-tab">
     <% @followers.each do |user| %>
       <div class="col-12">
         <%= link_to user_path(user) do %>
@@ -28,13 +29,13 @@
       </div>
     <% end %>
   </div>
-  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-    <% @followings.each do |user| %>
-      <div class="col-12">
-        <%= link_to user_path(user) do %>
-          <%= render user %>
-        <% end %>
-      </div>
+  <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all-tab">
+    <% @users.each do |user| %>
+    <div class="col-12">
+      <%= link_to user_path(user) do %>
+      <%= render user %>
+      <% end %>
+    </div>
     <% end %>
   </div>
 </div>

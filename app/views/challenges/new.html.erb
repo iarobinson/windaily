@@ -1,10 +1,49 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-md-3 pb-5">
-      <h4 class="text-center py-3">Create a Challenge</h4>
+<ul class="nav nav-tabs mt-3 mb-3 pl-3" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="add-a-win-tab" data-toggle="tab" href="#add-a-win" role="tab" aria-controls="add-a-win" aria-selected="true">
+      + Win
+    </a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="create-a-challenge-tab" data-toggle="tab" href="#create-a-challenge" role="tab" aria-controls="create-a-challenge" aria-selected="false">
+      + Challenge
+    </a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="add-a-friend-tab" data-toggle="tab" href="#add-a-friend" role="tab" aria-controls="add-a-friend" aria-selected="false">
+      + Friend
+    </a>
+  </li>
+</ul>
 
-      <%= render 'form', challenge: @challenge %>
-      <%= link_to 'All Challenges', challenges_path, class: "btn btn-block btn-secondary my-3" %>
+<div class="tab-content pb-5 <%= standard_column_setting %>" id="myTabContent">
+  <div class="tab-pane fade show active" id="add-a-win" role="tabpanel" aria-labelledby="add-a-win-tab">
+    <ul class="list-group list-group-flush">
+      <% @challenges.reverse.each do |challenge| %>
+        <%= link_to challenge, class: "list-group-item list-group-item-action" do %>
+          <%= render challenge %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="tab-pane fade" id="create-a-challenge" role="tabpanel" aria-labelledby="create-a-challenge-tab">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h5>Create a Challenge</h5>
+          <%= render 'form', challenge: @challenge %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="add-a-friend" role="tabpanel" aria-labelledby="add-a-friend-tab">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h5>Add a Friend</h5>
+          <%= render "users/add_friend_form" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

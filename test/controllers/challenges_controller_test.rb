@@ -15,18 +15,20 @@ class ChallengesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_challenge_url
-    assert_response :success
+    sign_in @ian
+    visit new_challenge_url
+    page.has_content? "Create a Challenge"
   end
 
   test "should create challenge" do
     sign_in @ian
 
     visit new_challenge_path
-    within "form" do
+    click_on "+ Challenge"
+    within "form#new_challenge_form" do
       fill_in "challenge_title", with: "TITLE of Challenge TK"
       fill_in "challenge_description", with: "DESCRIPTION of Challenge TK"
-      fill_in "challenge_frequency", with: "FREQUENCY of Challenge TK"
+      # fill_in "challenge_frequency", with: "FREQUENCY of Challenge TK"
       click_on "Create Challenge"
     end
     page.has_content? "Challenge was successfully created."
@@ -62,9 +64,10 @@ class ChallengesControllerTest < ActionDispatch::IntegrationTest
     original_win_count = Win.all.size
 
     sign_in_user_and_edit_challenge
-    click_on "Destroy this Challenge and All it's Wins Forever"
-    assert_equal original_challenge_count - 1, Challenge.all.size
-    assert_equal original_win_count - original_challenge_win_count, Win.all.size
+    # # TODO there should be a way for users to destroy challenges, but I disabled it for now.
+    # click_on "Destroy this Challenge and All it's Wins Forever"
+    # assert_equal original_challenge_count - 1, Challenge.all.size
+    # assert_equal original_win_count - original_challenge_win_count, Win.all.size
   end
 
   def sign_in_user_and_edit_challenge

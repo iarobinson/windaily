@@ -1,27 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="<%= standard_column_setting %> mb-5 mt-3">
+
       <h2 class="text-center">Profile</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 offset-md-3 py-4">
 
       <div class="card mb-3">
-        <div class="row">
-          <div class="col-3">
-            <%= render "users/small_circular_avatar" %>
-          </div>
-          <div class="col-9 py-3">
-            <p>
-              <%= @user.first_name %> <%= @user.last_name %> | <%= @user.email %>
-            </p>
-            <p>
-              <%= link_to "View Public Profile", user_path(@user) %>
-            </p>
-          </div>
+        <div class="card-body">
+          <%= render @user %>
+          <%= link_to "...edit security settings.", edit_user_registration_path, class: "float-right mt-4" %>
         </div>
       </div>
+
       <div class="card mb-3">
         <div class="card-header">
           Public Settings
@@ -49,6 +38,7 @@
           <% end %>
         </div>
       </div>
+
     </div>
   </div>
 </div>

@@ -48,7 +48,7 @@ class ChallengesController < ApplicationController
 
   def new
     @challenge = Challenge.new
-    @users = User.all
+    @challenges = current_user.challenges
   end
 
   def edit

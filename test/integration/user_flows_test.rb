@@ -18,11 +18,11 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   test "user can create a challenge, add friends and record wins" do
     create_new_user
     visit new_challenge_path
-    within "form" do
+    within "form#new_challenge_form" do
       fill_in "challenge_title", with: "Test Challenge"
       fill_in "challenge_description", with: "This is the description for a test challenge"
-      fill_in "challenge_frequency", with: "test frequency daily"
-      select "Public"
+      # fill_in "challenge_frequency", with: "test frequency daily"
+      # select "Public"
       click_on "Create Challenge"
     end
     page.has_content? "Challenge was successfully created."
@@ -32,7 +32,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
       fill_in "win_description", with: "the win description goes here"
       click_on "Save"
     end
-    page.has_content? "Win was successfully saved for this challenge."
+    page.has_content? "Your win has been logged."
     page.has_content? "title for the first win of the test challenge"
     assert_equal Challenge.last.title, "Test Challenge"
     # TODO this still needs work

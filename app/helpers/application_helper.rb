@@ -6,4 +6,8 @@ module ApplicationHelper
       return `<%= link_to 'Join Challenge', #{challenge}, class: 'btn btn-block btn-primary' %>`.html_safe
     end
   end
+
+  def standard_column_setting
+    "col-sx-6 offset-sx-3 col-sm-8 offset-sm-2 col-md-6 offset-md-3"
+  end
 end

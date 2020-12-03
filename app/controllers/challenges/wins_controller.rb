@@ -24,7 +24,7 @@ class Challenges::WinsController < ApplicationController
     respond_to do |format|
       if @win.save
         UserMailer.notify_others_of_win(@win).deliver_later
-        format.html { redirect_to challenge_path(@win.challenge), notice: 'Win was successfully saved for this challenge.' }
+        format.html { redirect_to challenge_path(@win.challenge), notice: 'Your win has been logged.' }
       else
         format.html { render :new }
         format.json { render json: @challenge.errors, status: :unprocessable_entity }
