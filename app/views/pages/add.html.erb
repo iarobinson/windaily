@@ -10,8 +10,8 @@
     </a>
   </li>
   <li class="nav-item" role="presentation">
-    <a class="nav-link" id="add-a-friend-tab" data-toggle="tab" href="#add-a-friend" role="tab" aria-controls="add-a-friend" aria-selected="false">
-      + Friend
+    <a class="nav-link" id="add-a-user-tab" data-toggle="tab" href="#add-a-user" role="tab" aria-controls="add-a-user" aria-selected="false">
+      + User
     </a>
   </li>
 </ul>
@@ -19,10 +19,17 @@
 <div class="tab-content pb-5 <%= standard_column_setting %>" id="myTabContent">
   <div class="tab-pane fade show active" id="add-a-win" role="tabpanel" aria-labelledby="add-a-win-tab">
     <ul class="list-group list-group-flush">
-      <% @challenges.reverse.each do |challenge| %>
-        <%= link_to challenge, class: "list-group-item list-group-item-action" do %>
-          <%= render challenge %>
+      <% if @challenges.size > 0 %>
+        <div class="text-center"><h5>Record Win for which Challenge?</h5></div>
+        <% @challenges.reverse.each do |challenge| %>
+          <%= link_to challenge, class: "list-group-item list-group-item-action" do %>
+            <%= render challenge %>
+          <% end %>
         <% end %>
+      <% else %>
+        <h5>Welcome to Win Daily</h5>
+        <p>In order to log wins, you need to join a challenge.</p>
+        <%= link_to "Find a Challenge", challenges_path, class: "btn btn-block btn-primary" %>
       <% end %>
     </ul>
   </div>
@@ -30,18 +37,33 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h5>Create a Challenge</h5>
+          <div class="text-center"><h5>Create a Challenge</h5></div>
           <%= render 'challenges/form', challenge: @challenge %>
         </div>
       </div>
     </div>
   </div>
-  <div class="tab-pane fade" id="add-a-friend" role="tabpanel" aria-labelledby="add-a-friend-tab">
+  <div class="tab-pane fade" id="add-a-user" role="tabpanel" aria-labelledby="add-a-user-tab">
     <div class="container">
       <div class="row">
         <div class="col">
-          <h5>Add a Friend</h5>
-          <%= render "users/add_friend_form" %>
+          <div class="text-center"><h5>Add a Friend</h5></div>
+          <%= form_with(url: "/users", method: "post", id: "email_new_user_form") do |f| %>
+            <%= f.hidden_field :challenge_id, value: params[:challenge] if params[:challenge]%>
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, placeholder: 'your_friend@testing.com', autofocus: true, autocomplete: "email", class:"form-control" %>
+            </div>
+            <%= f.submit "Add a Friend", class: "btn btn-block btn-primary" %>
+          <% end %>
+          <%= form_with model: @user, local: true, id: "phone_new_user_form" do |f| %>
+            <h1 class="text-center">or</h1>
+            <div class="form-group">
+              <%= f.label :phone %>
+              <%= f.telephone_field :phone, placeholder: '(xxx) xxx-xxxx', class:"form-control", pattern: "[0-9]{10}" %>
+            </div>
+            <%= f.submit "Add a Friend", class: "btn btn-block btn-primary" %>
+          <% end %>
         </div>
       </div>
     </div>

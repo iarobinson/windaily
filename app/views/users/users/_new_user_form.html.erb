@@ -1,4 +1,7 @@
-<%= form_with model: @user, url: new_user_path, method: "POST" do |f| %>
+<div class="text-center">
+  <h2>Add Friend</h2>
+</div>
+<%= form_with model: @user, url: "/dashboard", id: "new_user_form" do |f| %>
   <%= f.hidden_field :challenge_id, value: params[:challenge] if params[:challenge]%>
   <div class="form-group">
     <%= f.label :email %>

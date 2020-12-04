@@ -1,0 +1,9 @@
+<div class="<%= standard_column_setting %>">
+  <% @users.each do |user| %>
+    <div class="col-12">
+      <%= link_to user_path(user) do %>
+      <%= render user %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

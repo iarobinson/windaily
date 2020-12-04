@@ -6,16 +6,18 @@
     <a class="nav-link" id="followers-tab" data-toggle="tab" href="#followers" role="tab" aria-controls="followers" aria-selected="false">Followers</a>
   </li>
   <li class="nav-item" role="presentation">
-    <a class="nav-link" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="false">All Users</a>
+    <a class="nav-link" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="false">Everyone</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="add-user-tab" data-toggle="tab" href="#add-user" role="tab" aria-controls="add-user" aria-selected="false">Add User</a>
   </li>
 </ul>
-
-<div class="tab-content <%= standard_column_setting %>" id="myTabContent">
+<div class="tab-content <%= standard_column_setting %> mb-5" id="myTabContent">
   <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
     <% @followings.each do |user| %>
       <div class="col-12">
         <%= link_to user_path(user) do %>
-          <%= render user %>
+          <%= render "users/users/user", user: user %>
         <% end %>
       </div>
     <% end %>
@@ -24,19 +26,22 @@
     <% @followers.each do |user| %>
       <div class="col-12">
         <%= link_to user_path(user) do %>
-          <%= render user %>
+          <%= render "users/users/user", user: user %>
         <% end %>
       </div>
     <% end %>
   </div>
   <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all-tab">
     <% @users.each do |user| %>
-    <div class="col-12">
-      <%= link_to user_path(user) do %>
-      <%= render user %>
-      <% end %>
-    </div>
+      <div class="col-12">
+        <%= link_to user_path(user) do %>
+          <%= render "users/users/user", user: user %>
+        <% end %>
+      </div>
     <% end %>
+  </div>
+  <div class="tab-pane fade" id="add-user" role="tabpanel" aria-labelledby="add-user-tab">
+    <%= render "users/users/new_user_form", url: "/dashboard" %>
   </div>
 </div>
 <br>

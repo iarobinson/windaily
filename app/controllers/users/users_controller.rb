@@ -1,12 +1,9 @@
-class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :edit, :create, :update]
+class Users::UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :new, :edit]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
-    @followers = current_user.followers
-    @followings = current_user.followings
-    @wins = Win.all
   end
 
   def new
@@ -23,11 +20,11 @@ class UsersController < ApplicationController
     challenge = Challenge.find(params[:challenge_id]) if params[:challenge_id]
     challenge = Challenge.find(params[:user][:challenge_id]) if params[:user][:challenge_id]
     automatically_generated_password = Devise.friendly_token.first(6)
-    if User.where(email: user_params[:email]).exists?
+    if user_params[:email].present? && User.where(email: user_params[:email]).exists?
       @user = User.where(email: user_params[:email]).first
       challenge.users << @user
       UserMailer.you_have_been_challenged_email(current_user, @user, challenge, automatically_generated_password).deliver_later
-    elsif User.where(phone: user_params[:phone]).exists?
+    elsif user_params[:phone].present? && User.where(phone: user_params[:phone]).exists?
       @user = User.where(phone: user_params[:phone]).first
       challenge.users << @user
       UserMailer.you_have_been_challenged_email(current_user, @user, challenge, automatically_generated_password).deliver_later
@@ -44,13 +41,18 @@ class UsersController < ApplicationController
         TwilioTextMessenger.new(@user.phone, text_message).send!
       end
       @user.password = automatically_generated_password
-      challenge.users << @user
+      challenge.users << @user if challenge.present?
     end
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(challenge_path(challenge), notice: 'User added.') }
-        format.json { render json: @user, status: :created, location: @user }
+        if challenge.present?
+          format.html { redirect_to(challenge_path(challenge), notice: 'User added.') }
+          format.json { render json: @user, status: :created, location: @user }
+        else
+          format.html { redirect_to(community_path, notice: 'User added.') }
+          format.json { render json: @user, status: :created, location: @user }
+        end
       else
         format.html { redirect_to(challenge_path(challenge), notice: 'There was an error saving that user. They may exist.') }
         format.json { render json: @user.errors, status: :unprocessable_entity }

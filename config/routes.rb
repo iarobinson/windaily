@@ -3,17 +3,18 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   get 'careers', to: 'pages#careers'
   get 'add', to: 'pages#add'
+  get 'community', to: 'pages#community'
   get 'pricing', to: 'pages#pricing'
   get 'my_challenges', to: 'challenges#my_challenges'
   get 'office', to: 'pages#office'
 
   devise_for :users, controllers: {
-      sessions: 'users/sessions'
-    } do
+    registrations: "users/registrations", sessions: "users/sessions"
+  } do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  resources :users do
+  resources :users, path: "profile", module: "users" do
     resources :followers, only: [:create, :destroy]
   end
 
