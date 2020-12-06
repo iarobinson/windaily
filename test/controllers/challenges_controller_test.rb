@@ -23,7 +23,7 @@ class ChallengesControllerTest < ActionDispatch::IntegrationTest
   test "should create challenge" do
     sign_in @ian
 
-    visit new_challenge_path
+    visit add_path
     click_on "+ Challenge"
     within "form#new_challenge_form" do
       fill_in "challenge_title", with: "TITLE of Challenge TK"

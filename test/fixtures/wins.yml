@@ -14,9 +14,9 @@ ian_burpee_win_2:
   challenge: burpees_each_day
   created_at: <%= Time.now - 2.days %>
 
-david_win_on:
+jan_win_on:
   title: Feeling awesome buddy.
   description: Had a great day of burpees.
   challenge: burpees_each_day
-  user: david
+  user: jan
   created_at: <%= Time.now - 3.days %>

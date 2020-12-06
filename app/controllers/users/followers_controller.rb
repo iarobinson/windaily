@@ -1,4 +1,4 @@
-class FollowersController < ApplicationController
+class Users::FollowersController < ApplicationController
   before_action :authenticate_user!
 
   # TODO: Sanitize these parameters

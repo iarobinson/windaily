@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def add
     if current_user
+      @user = User.new
       @challenge = Challenge.new
       @users = User.all
       @followers = current_user.followers

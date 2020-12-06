@@ -20,7 +20,7 @@
         <h3>Participants:</h3>
         <div class="list-group pb-3">
           <% @challenge.users.each do |user| %>
-            <%= render "users/list_group_item", user: user %>
+            <%= render "users/users/list_group_item", user: user %>
           <% end %>
         </div>
       <% else %>
