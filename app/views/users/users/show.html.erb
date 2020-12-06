@@ -6,9 +6,15 @@
         <li class="list-group-item list-group-item text-center text-center">
           <h5 class="card-title">Wins (<%= @user.wins.size %>)</h5>
         </li>
-        <% @user.wins.reverse.each do |win| %>
+        <% if @user.wins.size > 0 %>
+          <% @user.wins.reverse.each do |win| %>
+            <li class="list-group-item list-group-item">
+              <%= render "challenges/wins/win", win: win %>
+            </li>
+          <% end %>
+        <% else %>
           <li class="list-group-item list-group-item">
-            <%= render "challenges/wins/win", win: win %>
+            <p>No wins logged yet.
           </li>
         <% end %>
       </ul>

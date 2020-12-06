@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
+  <div class="row pb-5">
+    <div class="<%= standard_column_setting %> py-3">
       <h1>Editing Win</h1>
       <%= render 'form', url: challenge_win_path(@challenge, @win), win: @win %>
       <%= link_to 'Show', challenge_win_path(@challenge, @win), class: "btn btn-block btn-primary" %>
