@@ -19,4 +19,9 @@ module AuthenticationHelper
       click_on "Sign up"
     end
   end
+
+  def sign_out user
+    visit edit_user_registration_path user
+    click_on "Sign Out"
+  end
 end

@@ -33,7 +33,6 @@ class Users::UsersController < ApplicationController
       UserMailer.you_have_been_challenged_email(current_user, @user, challenge, automatically_generated_password).deliver_later
       notification_message += "This user's phone # is already on WinDaily, they have been notified of your challenge.\n"
     else
-      binding.pry
       if params[:email]
         @user = User.new email: params[:email]
       else
@@ -66,13 +65,13 @@ class Users::UsersController < ApplicationController
     respond_to do |format|
       if @user.save
 
-        binding.pry
         @user.followers << current_user if current_user
         if challenge.present?
           UserMailer.you_have_been_challenged_email(current_user, @user, automatically_generated_password).deliver_later
           format.html { redirect_to(challenge_path(challenge), notice: notification_message) }
           format.json { render json: @user, status: :created, location: @user }
         else
+          UserMailer.you_have_been_invited_to_win_daily(current_user, @user, automatically_generated_password).deliver_later
           format.html { redirect_to(community_path, notice: notification_message) }
           format.json { render json: @user, status: :created, location: @user }
         end

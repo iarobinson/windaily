@@ -9,10 +9,10 @@
           <%= render @user %>
           <div class="row mt-4">
             <div class="col">
-              <%= link_to "Edit Security Settings", edit_user_registration_path, class: "btn btn-block btn-primary" %>
+              <%= link_to "Security settings", edit_user_registration_path %>
             </div>
             <div class="col">
-              <%= link_to "View Public Profile", user_path(current_user), class: "btn btn-block btn-primary" %>
+              <%= link_to "Public profile", user_path(current_user) %>
             </div>
           </div>
         </div>

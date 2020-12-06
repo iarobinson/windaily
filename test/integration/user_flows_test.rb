@@ -4,13 +4,13 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   include AuthenticationHelper
 
   setup do
-    @user = users(:ian)
+    @ian = users(:ian)
   end
 
   test "user can sign in and sign out" do
-    sign_in @user
+    sign_in @ian
     page.has_content? "Signed in successfully."
-    visit edit_user_registration_path @user
+    visit edit_user_registration_path @ian
     click_link "Sign Out"
     page.has_content? "Signed out successfully."
   end
@@ -38,8 +38,31 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     # TODO this still needs work
   end
 
-  test "user can use forgot password processs" do
-    # TODO
-    # assert_equal fail
+  test "existing user can invite another via email and the new user can sign in" do
+    sign_in @ian
+    visit new_user_path
+    within "form" do
+      fill_in "user_email", with: "robot-email@testing.com"
+      click_on "Add a Friend"
+    end
+    page.has_content? "robot-email@testing.com have been sent an email with your challenge."
+    new_user = User.last
+    assert_equal new_user.email, "robot-email@testing.com"
+    sign_out @ian
+    sign_in new_user
+  end
+
+  test "existing user can invite another via email on add page" do
+    sign_in @ian
+    visit add_path
+    within "form#new_user_form" do
+      fill_in "user_email", with: "robot-email2@testing.com"
+      click_on "Add a Friend"
+    end
+    page.has_content? "robot-email@testing.com have been sent an email with your challenge."
+    new_user = User.last
+    assert_equal new_user.email, "robot-email2@testing.com"
+    sign_out @ian
+    sign_in new_user
   end
 end
