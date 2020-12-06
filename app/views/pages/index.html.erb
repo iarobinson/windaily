@@ -1,7 +1,6 @@
 <% if current_user %>
   <!-- <%#= render "users/avatar_list_of_followings" %> -->
   <%= render "users/users/wins_from_followings" %>
-  <hr>
 <% else %>
   <%= render "new_user_view" %>
   <%= render "guest_challenges", challenges: @challenges %>

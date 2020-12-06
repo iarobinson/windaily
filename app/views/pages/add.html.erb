@@ -18,7 +18,7 @@
 
 <div class="tab-content pb-5 <%= standard_column_setting %>" id="myTabContent">
   <div class="tab-pane fade show active" id="add-a-win" role="tabpanel" aria-labelledby="add-a-win-tab">
-    <ul class="list-group list-group-flush">
+    <ul class="list-group">
       <% if @challenges.size > 0 %>
         <div class="text-center"><h5>Record Win for which Challenge?</h5></div>
         <% @challenges.reverse.each do |challenge| %>

@@ -1,0 +1,5 @@
+<% if current_user.nil? || current_user.challenges.include?(challenge) %>
+  <%= link_to 'Join', challenge_join_path(challenge), class: "btn btn-block btn-primary" %>
+<% else %>
+  <%= link_to 'Leave', challenge_leave_path(challenge), class: "btn btn-block btn-primary" %>
+<% end %>

@@ -1,8 +1,17 @@
 <div class="container">
   <div class="row py-3">
     <div class="<%= standard_column_setting %>">
-      <% @wins.reverse.each do |win| %>
-        <%= render "challenges/wins/win", win: win %>
+      <% if @wins.size > 0 %>
+        <% @wins.reverse.each do |win| %>
+          <%= render "challenges/wins/win", win: win %>
+        <% end %>
+      <% else %>
+        <h3>Welcome to Win Daily!</h3>
+        <p>There isn't anything to show here as you just got started.</p>
+        <p>Take some actions to get started:</p>
+        <%= link_to "Join a Community", community_path, class: "btn btn-block btn-primary my-3" %>
+        <%= link_to "Add a Challenge", add_path, class: "btn btn-block btn-primary my-3" %>
+        <%= link_to "Customize Your Profile", edit_user_path(current_user), class: "btn btn-block btn-primary my-3" %>
       <% end %>
     </div>
   </div>

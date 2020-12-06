@@ -67,7 +67,7 @@ class Users::UsersController < ApplicationController
 
         @user.followers << current_user if current_user
         if challenge.present?
-          UserMailer.you_have_been_challenged_email(current_user, @user, automatically_generated_password).deliver_later
+          UserMailer.you_have_been_challenged_email(current_user, @user, challenge, automatically_generated_password).deliver_later
           format.html { redirect_to(challenge_path(challenge), notice: notification_message) }
           format.json { render json: @user, status: :created, location: @user }
         else

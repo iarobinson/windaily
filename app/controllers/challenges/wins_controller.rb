@@ -1,5 +1,6 @@
 class Challenges::WinsController < ApplicationController
-  before_action :set_challenge, :authenticate_user!
+  before_action :set_challenge
+  before_action :authenticate_user!, except: [:show]
   before_action :set_win, except: [:index, :new, :create]
 
   def index

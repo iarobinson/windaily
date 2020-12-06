@@ -1,0 +1,2 @@
+<%= image_tag "default_challenge_primary_image.jpg", class: "img-fluid" unless challenge.primary_image.attached? %>
+<%= image_tag challenge.primary_image, class: "img-fluid" if challenge.primary_image.attached? %>

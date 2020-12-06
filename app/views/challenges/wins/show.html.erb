@@ -1,5 +1,7 @@
-<div class="p-3 <%= standard_column_setting %>">
+<div class="mb-5 p-3 <%= standard_column_setting %>">
   <%= render "challenges/wins/win", win: @win %>
-  <%= link_to 'Edit', edit_challenge_win_path(@challenge, @win), class: "btn btn-block btn-primary" %>
+  <% if current_user %>
+    <%= link_to 'Edit', edit_challenge_win_path(@challenge, @win), class: "btn btn-block btn-primary" if @win.user == current_user %>
+  <% end %>
   <%= link_to 'View Challenge', challenge_path(@challenge), class: "btn btn-block btn-primary" %>
 </div>
