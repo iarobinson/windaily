@@ -38,12 +38,17 @@ class User < ApplicationRecord
    end
 
    def generate_slug
+     # TODO: This is a disgrace. I need to think of somethin far better than this.
      return slug if self.slug
      automated_slug = ""
      i = 0
      while i <= self.email.length
        break if self.email[i] == "@"
-       automated_slug += self.email[i]
+       if self.email[i] == "."
+         automated_slug += "-"
+       else
+         automated_slug += self.email[i]
+       end
        i += 1
      end
      self.slug = automated_slug
