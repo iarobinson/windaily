@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-4 offset-4">
+    <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#whyChargeModal">
+      Why we charge
+    </button>
+  </div>
+</div>
+
+<div class="modal fade" id="whyChargeModal" tabindex="-1" role="dialog" aria-labelledby="whyChargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="whyChargeModalLabel">Why charge?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Someone builds a cool, free product, it gets popular, and that popularity attracts a buyer. The new owner shuts the product down and the founders issue a glowing press release about how excited they are about synergies going forward. They are never heard from again.</p>
+        <p>Whether or not this is done in good faith, in practice this kind of 'exit event' is a pump-and-dump scheme. The very popularity that attracts a buyer also makes the project financially unsustainable. The owners cash out, the acquirer gets some good engineers, and the users get screwed.</p>
+        <p>To avoid this problem, avoid mom-and-pop projects that don't take your money! You might call this the anti-free-software movement.</p>
+        <p>If every additional user is putting money in the developers' pockets, then you're less likely to see the site disappear overnight. If every new user is costing the developers money, and the site is really taking off, then get ready to read about those synergies.</p>
+        <p>To illustrate, we have prepared this handy chart:</p>
+      </div>
+      <div class="text-center">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col"> Free </th>
+              <th scope="col"> Paid</th>
+            </tr>
+            <tr>
+              <td>
+                <b>Stagnant</b>
+              </td>
+              <td style="background:#fee;color:#000;">losing money</td>
+              <td style="background:#efe;color:#000;">making money</td>
+            </tr>
+            <tr>
+              <td><b>Growing</b></td>
+              <td style="background:#fcc;color:#000;">losing more money</td>
+              <td style="background:#cfc;color:#000;">making more money</td>
+            </tr>
+            <tr>
+              <td><b>Exploding</b></td>
+              <td style="background:#faa;color:#000;">losing lots of money</td>
+              <td style="background:#afa;color:#000;">making lots of money</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-body">
+        <p>What if a little site you love doesn't have a business model? Yell at the developers! Explain that you are tired of good projects folding and are willing to pay cash American dollar to prevent that from happening. It doesn't take prohibitive per-user revenue to put a project in the black. It just requires a number greater than zero.</p>
+        <p>I love free software and could not have built my site without it. But free web services are not like free software. If your free software project suddenly gets popular, you gain resources: testers, developers and people willing to pitch in. If your free website takes off, you lose resources. Your time is spent firefighting and your money all goes to the nice people at Linode.</p>
+        <p>So stop getting caught off guard when your favorite project sells out! “They were getting so popular, why did they have to shut it down?” Because it's hard to resist a big payday when you are rapidly heading into debt. And because it's culturally acceptable to leave your user base high and dry if you get a good offer, citing self-inflicted financial hardship.</p>
+        <p>Like a service? Make them charge you or show you ads. If they won't do it, clone them and do it yourself. Soon you'll be the only game in town!</p>
+        <p>
+          — Maciej from
+          <%= link_to "Pinboard", 'https://blog.pinboard.in/2011/12/don_t_be_a_free_user/', target: "_blank" %>.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

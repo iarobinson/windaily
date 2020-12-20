@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  resources :users, path: "profile", module: "users" do
+  resources :users, path: "profiles", module: "users" do
     resources :followers, only: [:create, :destroy]
   end
 

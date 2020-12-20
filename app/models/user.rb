@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   include FriendlyId
   friendly_id :moniker, use: :slugged
+  validates :moniker, uniqueness: true
   before_save :generate_slug
 
   # Include default devise modules. Others available are:
@@ -15,6 +16,11 @@ class User < ApplicationRecord
 
    def thumbnail
      return self.avatar.variant(resize: "150x150!").processed
+   end
+
+   def square_avatar_image
+     # # TODO - This isn't working
+     return self.avatar.variant(combine_options: { gravity: "center", crop: "800x800" })
    end
 
    enum payment_plan: [:free, :first_class, :partner_class]
@@ -38,6 +44,7 @@ class User < ApplicationRecord
    end
 
    def generate_slug
+     self.slug = moniker if moniker
      # TODO: This is a disgrace. I need to think of somethin far better than this.
      return slug if self.slug
      automated_slug = ""

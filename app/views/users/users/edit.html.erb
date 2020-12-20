@@ -1,8 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="<%= standard_column_setting %> mb-5 mt-3">
-
-      <h2 class="text-center">Profile</h2>
+  <div class="row mb-5">
+    <div class="<%= standard_column_setting %> py-3">
 
       <div class="card mb-3">
         <div class="card-body">
@@ -25,7 +23,7 @@
         <div class="card-body">
           <%= form_with(model: @user, url: user_url(@user), method: :patch, local: true) do |f| %>
             <div class="form-group">
-              <%= f.label :moniker %><br />
+              <%= f.label :moniker, "Username" %><small class="text-muted float-right">What do you want your @name to be?</small><br />
               <%= f.text_area :moniker, class:"form-control" %>
             </div>
 
