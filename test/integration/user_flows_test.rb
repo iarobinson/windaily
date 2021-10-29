@@ -40,8 +40,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "existing user can invite another via email and the new user can sign in" do
     sign_in @ian
-    visit new_user_path
-    within "form" do
+    visit add_path
+    within "form#new_user_form" do
       fill_in "user_email", with: "robot-email@testing.com"
       click_on "Add a Friend"
     end
@@ -64,5 +64,16 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_equal new_user.email, "robot-email2@testing.com"
     sign_out @ian
     sign_in new_user
+  end
+
+  test "existing user can invite another via text on add page" do
+    sign_in @ian
+    visit add_path
+    within "form#new_user_form" do
+      fill_in "user_phone", with: "1212121212"
+      click_on "Add a Friend"
+    end
+    assert page.has_content? "1212121212 has been sent an invite", "Should be readable<-"
+
   end
 end

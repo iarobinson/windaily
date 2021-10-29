@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'my_challenges', to: 'challenges#my_challenges'
   get 'office', to: 'pages#office'
 
+  get 'societygain', to: 'pages#society_gain'
+
   devise_for :users, controllers: {
     registrations: "users/registrations", sessions: "users/sessions"
   } do

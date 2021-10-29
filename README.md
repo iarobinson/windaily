@@ -41,7 +41,7 @@ Public/Private ability for both challenges and users needs to be set up
 - [ ] We want people in challenges to be able to see users there... this will be a tricky controller call to get users that might be set to visibiliity _only me_ to still be visiible to those they are in challenges with....
 
 
-## Wild awesome things to add:
+## Things to add:
 
 - [ ] Calling the app EternalBraggingRights.com  or whetvere
 - [ ] Animations for when you beat your frines (The Hulk, Macho Man Randy Savage, Street Fighter, Flexing)

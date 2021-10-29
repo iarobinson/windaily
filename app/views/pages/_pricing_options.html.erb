@@ -1,51 +1,57 @@
-<!-- <div class="row"> -->
-  <div class="card-deck mb-3 text-center">
-    <div class="card mb-4 box-shadow">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Free</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>Invite friends</li>
-          <li>Create public challenges</li>
-          <li>Participate in up to 3 challenges</li>
-          <li>Freely save your data for 3 months</li>
-        </ul>
-        <%= link_to "Sigun up for free", new_user_registration_path, class: "btn btn-lg btn-block btn-outline-primary" %>
-      </div>
+<div class="card-deck mb-3 text-center">
+
+  <div class="card mb-4 box-shadow">
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal">Free</h4>
     </div>
-    <div class="card mb-4 box-shadow">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Polymath</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">$10 <small class="text-muted">/ mo</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>Long term data</li>
-          <li>Access to the community</li>
-          <li>Unlimited wins & challenges</li>
-          <li>Create private challenges</li>
-        </ul>
-        <%= link_to "Get Started", new_user_registration_path(payment_plan: 1), class: "btn btn-lg btn-block btn-primary" %>
-      </div>
-    </div>
-    <div class="card mb-4 box-shadow">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">We Build for You</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">
-          $300 <small class="text-muted">/ mo</small>
-        </h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>Phone support</li>
-          <li>Email/Slack support</li>
-          <li>Your feature requests take top priority</li>
-          <li>We work with you to build your community</li>
-        </ul>
-        <%= link_to "Partner with us", new_user_registration_path(payment_plan: 2), class: "btn btn-lg btn-block btn-primary" %>
-      </div>
+    <div class="card-body">
+      <h1 class="card-title pricing-card-title">
+        $0 <small class="text-muted">/ mo</small>
+      </h1>
+      <ul class="list-unstyled mt-3 mb-4">
+        <li>Invite friends</li>
+        <li>Create public challenges</li>
+        <li>Participate in up to 3 challenges</li>
+        <li>Freely save your data for 3 months</li>
+      </ul>
+      <%= link_to "Sigun up for free", new_user_registration_path, class: "btn btn-lg btn-block btn-outline-primary" %>
     </div>
   </div>
+
+  <div class="card mb-4 box-shadow">
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal">Polymath</h4>
+    </div>
+    <div class="card-body">
+      <h1 class="card-title pricing-card-title">
+        $10 <small class="text-muted">/ mo</small>
+      </h1>
+      <ul class="list-unstyled mt-3 mb-4">
+        <li>Long term data</li>
+        <li>Access to the community</li>
+        <li>Unlimited wins & challenges</li>
+        <li>Create private challenges</li>
+      </ul>
+      <%= link_to "Get Started", new_user_registration_path(payment_plan: 1), class: "btn btn-lg btn-block btn-primary" %>
+    </div>
+  </div>
+
+  <div class="card mb-4 box-shadow">
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal">We Build for You</h4>
+    </div>
+    <div class="card-body">
+      <h1 class="card-title pricing-card-title">
+        $300 <small class="text-muted">/ mo</small>
+      </h1>
+      <ul class="list-unstyled mt-3 mb-4">
+        <li>Phone support</li>
+        <li>Email/Slack support</li>
+        <li>Your feature requests take top priority</li>
+        <li>We work with you to build your community</li>
+      </ul>
+      <%= link_to "Partner with us", new_user_registration_path(payment_plan: 2), class: "btn btn-lg btn-block btn-primary" %>
+    </div>
+  </div>
+
 </div>

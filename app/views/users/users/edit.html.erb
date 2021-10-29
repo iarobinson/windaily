@@ -23,8 +23,8 @@
         <div class="card-body">
           <%= form_with(model: @user, url: user_url(@user), method: :patch, local: true) do |f| %>
             <div class="form-group">
-              <%= f.label :moniker, "Username" %><small class="text-muted float-right">What do you want your @name to be?</small><br />
-              <%= f.text_area :moniker, class:"form-control" %>
+              <%= f.label :slug, "Slug" %><small class="text-muted float-right">What do you want your @name to be?</small><br />
+              <%= f.text_area :slug, class:"form-control" %>
             </div>
 
             <div class="form-group">

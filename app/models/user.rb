@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include FriendlyId
   friendly_id :moniker, use: :slugged
-  validates :moniker, uniqueness: true
+  # validates :moniker, uniqueness: true
   before_save :generate_slug
 
   # Include default devise modules. Others available are:
@@ -44,7 +44,7 @@ class User < ApplicationRecord
    end
 
    def generate_slug
-     self.slug = moniker if moniker
+     # self.slug = moniker if moniker
      # TODO: This is a disgrace. I need to think of somethin far better than this.
      return slug if self.slug
      automated_slug = ""
