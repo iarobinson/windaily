@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.6'
+ruby '3.1.0'
 
 gem "aws-sdk-s3", require: false
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -17,7 +17,8 @@ gem 'material_icons'
 gem 'mini_magick', '~> 4.8'
 gem 'pg'
 gem 'puma', '~> 3.12'
-gem 'rails', '6.0.0'
+gem 'rails', '6.1.4'
+gem 'activesupport', '~> 6.1.4'
 gem 'sass-rails', '~> 5.0'
 gem 'sendgrid-ruby'
 gem 'sprockets-rails', require: 'sprockets/railtie'
@@ -25,6 +26,7 @@ gem 'twilio-ruby'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 5.x'
 gem 'turbolinks', '~> 5'
+gem 'rack', '= 2.2.2'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
